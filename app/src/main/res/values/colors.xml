@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorme_bg">#2E3257</color>
+    <color name="wdet">#f4f4f4</color>
+    <color name="white">#ffffff</color>
+    <color name="red">#E22018</color>
+    <color name="yellow">#FFF79A</color>
+    <color name="orrange">#FF8C1C</color>
+    <color name="gray">#767679</color>
+    <color name="green">#009383</color>
+    <color name="btnsel2">#D4DFE0</color>
+    <color name="border">#16BB91</color>
+    <color name="darkgreen">#B1EBDC</color>
+
+    <color name="popup_main_background">#b0000000</color>
+    <color name="choose_eara_item_press_color">#f4f4f4</color>
+    <color name="whbackground">#b2d4d2</color>
+    <color name="item_yes">#FFFFf0</color>
+    <color name="item_ok">#e66</color>
+    <color name="color_no">#b6d4b0</color>
+    <color name="biankuang">#81D741</color>
+    <color name="bgdjs">#76797C</color>
+    <color name="textselfirst">#667171</color>
+    <color name="textselsecond">#00A84B</color>
+
+
+    <color name="toolbar_title">#666666</color>
+    <color name="color_yes">#89BC51</color>
+    <color name="color_ok">#e32333</color>
+    <color name="no_color">#00000000</color>
+    <color name="backgroundColorPress">#EB6100</color>
+    <color name="write">#ffffff</color><!--老花色 -->
+    <color name="dark_bg">#667171</color>
+    <color name="popup_left_bg">#eee</color>
+    <color name="backgroundColor">#685678</color>
+    <color name="popup_right_bg">#6B7F56</color>561150
+    <color name="popup_right_bg_selected">#ccc</color>
+    <color name="div_gray">#00A84B</color>
+
+    <color name="lightskyblue">#87CEFA</color><!--亮天蓝色-->
+    <color name="cornflowerblue">#6495ED</color><!--菊兰色 -->
+    <color name="ivory">#FCB127</color><!--象牙色 -->
+    <color name="lightyellow">#D4D4D4</color><!--亮黄色 -->
+    <color name="snow">#16BB91</color>
+    <color name="floralwhite">#FFFAF0</color><!--花白色 -->
+    <color name="lemonchiffon">#FFBA02</color><!--柠檬绸色 -->
+    <color name="cornsilk">#FFF8DC</color><!--米绸色 -->
+    <color name="seashell">#FF8108</color><!--海贝色 -->
+    <color name="lavenderblush">#0000</color><!--淡紫红 -->
+    <color name="papayawhip">#E84849</color><!--番木色 -->
+    <color name="blanchedalmond">#FFEBCD</color><!--白杏色 -->
+    <color name="mistyrose">#303F9F</color><!--浅玫瑰色 -->
+    <color name="text_color">#717171</color><!--浅玫瑰色 -->
+    <color name="bisque">#FFE4C4</color><!--桔黄色 -->
+    <color name="moccasin">#30302E</color><!--鹿皮色 -->
+    <color name="navajowhite">#FFDEAD</color><!--纳瓦白 -->
+    <color name="peachpuff">#FFDAB9</color><!--桃色 -->
+    <color name="gold">#FFD700</color><!--金色 -->
+    <color name="pink">#561150</color><!--粉红色 -->
+    <color name="lightpink">#FFB6C1</color><!--亮粉红色 -->
+    <color name="orange">#FFA500</color><!--橙色 -->
+    <color name="lightsalmon">#FFA07A</color><!--亮肉色 -->
+    <color name="darkorange">#FF8C00</color><!--暗桔黄色 -->
+    <color name="coral">#FF7F50</color><!--珊瑚色 -->
+    <color name="hotpink">#FF69B4</color><!--热粉红色 -->
+    <color name="tomato">#fefcfc</color><!--西红柿色 -->
+    <color name="orangered">#FF4500</color><!--红橙色 -->
+    <color name="deeppink">#FF1493</color><!--深粉红色 -->
+    <color name="fuchsia">#FF00FF</color><!--紫红色 -->
+    <color name="magenta">#FF00FF</color><!--红紫色 -->
+
+    <color name="lightgoldenrodyellow">#FAFAD2</color><!--亮金黄色 -->
+    <color name="linen">#FAF0E6</color><!--亚麻色 -->
+    <color name="antiquewhite">#FAEBD7</color><!--古董白 -->
+    <color name="salmon">#FA8072</color><!--鲜肉色 -->
+    <color name="ghostwhite">#F8F8FF</color><!--幽灵白 -->
+    <color name="mintcream">#F5FFFA</color><!--薄荷色 -->
+    <color name="whitesmoke">#F5F5F5</color><!--烟白色 -->
+    <color name="beige">#514F50</color><!--米色 -->
+    <color name="wheat">#F5DEB3</color><!--浅黄色 -->
+    <color name="sandybrown">#F4A460</color><!--沙褐色 -->
+    <color name="azure">#F0FFFF</color><!--天蓝色 -->
+    <color name="blue">#398BFB</color><!--蓝色 -->
+    <color name="darkblue">#019FE9</color><!--深蓝色 -->
+    <color name="blue_dep">#0075AA</color>
+</resources>

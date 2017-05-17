@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.zhy.autolayout.AutoFrameLayout
+        android:id="@+id/owner_main_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+    </com.zhy.autolayout.AutoFrameLayout>
+
+
+    <!--分界线-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px01"
+        android:background="#D4D4D4"/>
+
+    <!--最下面的控制板-->
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px110"
+        android:orientation="horizontal">
+
+        <TextView android:id="@+id/tv_main_goods"
+            style="@style/TextViewStyleSelect"
+            android:drawableTop="@drawable/sel_good"
+            android:text="货源"/>
+
+        <TextView android:id="@+id/tv_main_route"
+            style="@style/TextViewStyleSelect"
+            android:drawableTop="@drawable/sel_route"
+            android:text="路线"/>
+
+
+        <TextView android:id="@+id/tv_main_release_options"
+            style="@style/TextViewStyleSelect"
+            android:drawableTop="@drawable/sel_option"
+            android:text="发布车源"/>
+
+        <TextView android:id="@+id/tv_main_me"
+            style="@style/TextViewStyleSelect"
+            android:drawableTop="@drawable/sel_mine"
+            android:text="我的"/>
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

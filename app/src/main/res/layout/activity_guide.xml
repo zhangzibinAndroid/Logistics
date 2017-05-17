@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:indicator="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/wel_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:placeholderImageScaleType="fitXY"
+        />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/welcome_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px80"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/px80"
+        android:tag="(0,60){0,0,40}">
+
+
+        <com.returnlive.wuliu.view.Xcircleindicator
+            android:id="@+id/Xcircleindicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/px20"
+            indicator:circleInterval="@dimen/px20"
+            indicator:fillColor="#ff0000"
+            indicator:radius="@dimen/px10"
+            indicator:strokeColor="#cecece" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <ImageView android:id="@+id/img_guild"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/experience"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/px420"/>
+
+    <TextView android:id="@+id/tv_djs"
+        android:layout_width="@dimen/px120"
+        android:layout_height="@dimen/px50"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/px20"
+        android:layout_marginRight="@dimen/px20"
+        android:visibility="gone"
+        android:text="3 跳过"/>
+
+</com.zhy.autolayout.AutoRelativeLayout>

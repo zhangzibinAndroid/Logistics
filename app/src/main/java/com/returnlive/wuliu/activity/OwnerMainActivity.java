@@ -1,0 +1,105 @@
+package com.returnlive.wuliu.activity;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.TextView;
+
+import com.returnlive.wuliu.R;
+import com.returnlive.wuliu.fragment.GoodsFragment;
+import com.returnlive.wuliu.fragment.MineFragment;
+import com.returnlive.wuliu.fragment.OptionFragment;
+import com.returnlive.wuliu.fragment.RouteFragment;
+import com.zhy.autolayout.AutoFrameLayout;
+
+import org.xutils.view.annotation.Event;
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
+
+/**
+ * @author 张梓彬
+ * Data : 2017/5/17 0017
+ * Time : 下午 5:32
+ * Describe : 车主版MainActivity，用于被Fragment依附
+ */
+public class OwnerMainActivity extends AppCompatActivity {
+
+    @ViewInject(R.id.owner_main_fragment)
+    AutoFrameLayout owner_main_fragment;
+    @ViewInject(R.id.tv_main_goods)
+    TextView tv_main_goods;
+    @ViewInject(R.id.tv_main_route)
+    TextView tv_main_route;
+    @ViewInject(R.id.tv_main_release_options)
+    TextView tv_main_release_options;
+    @ViewInject(R.id.tv_main_me)
+    TextView tv_main_me;
+
+    private GoodsFragment goodsFragment;
+    private RouteFragment routeFragment;
+    private OptionFragment optionFragment;
+    private MineFragment mineFragment;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_owner_main);
+        x.view().inject(this);
+        initView();
+    }
+
+    private void initView() {
+        goodsFragment = new GoodsFragment();
+        routeFragment = new RouteFragment();
+        optionFragment = new OptionFragment();
+        mineFragment = new MineFragment();
+        setReplaceFragment(goodsFragment);
+        tv_main_goods.setSelected(true);
+        tv_main_goods.setTextColor(getResources().getColor(R.color.textselsecond));
+    }
+
+    @Event(value = {R.id.tv_main_goods, R.id.tv_main_route, R.id.tv_main_release_options, R.id.tv_main_me})
+    private void onClick(View view) {
+        tv_main_goods.setSelected(false);
+        tv_main_route.setSelected(false);
+        tv_main_release_options.setSelected(false);
+        tv_main_me.setSelected(false);
+        tv_main_goods.setTextColor(getResources().getColor(R.color.textselfirst));
+        tv_main_route.setTextColor(getResources().getColor(R.color.textselfirst));
+        tv_main_release_options.setTextColor(getResources().getColor(R.color.textselfirst));
+        tv_main_me.setTextColor(getResources().getColor(R.color.textselfirst));
+        switch (view.getId()) {
+            case R.id.tv_main_goods:
+                setReplaceFragment(goodsFragment);
+                tv_main_goods.setSelected(true);
+                tv_main_goods.setTextColor(getResources().getColor(R.color.textselsecond));
+
+                break;
+            case R.id.tv_main_route:
+                setReplaceFragment(routeFragment);
+                tv_main_route.setSelected(true);
+                tv_main_route.setTextColor(getResources().getColor(R.color.textselsecond));
+
+                break;
+            case R.id.tv_main_release_options:
+                setReplaceFragment(optionFragment);
+                tv_main_release_options.setSelected(true);
+                tv_main_release_options.setTextColor(getResources().getColor(R.color.textselsecond));
+
+                break;
+            case R.id.tv_main_me:
+                setReplaceFragment(mineFragment);
+                tv_main_me.setSelected(true);
+                tv_main_me.setTextColor(getResources().getColor(R.color.textselsecond));
+
+                break;
+        }
+    }
+
+    private void setReplaceFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.owner_main_fragment, fragment).commit();
+    }
+}
