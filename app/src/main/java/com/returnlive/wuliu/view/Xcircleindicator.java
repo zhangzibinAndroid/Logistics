@@ -9,11 +9,13 @@ import android.view.View;
 
 import com.returnlive.wuliu.R;
 
-/**
- * Created by Administrator on 2017/3/30.
- * 圆点
- */
 
+/**
+ * 作者：张梓彬
+ * 日期：2017/5/17 0017
+ * 时间：下午 11:24
+ * 描述：引导页上的圆点
+ */
 public class Xcircleindicator extends View {
     private int radius = 4;
     private final Paint mPaintStroke = new Paint(Paint.ANTI_ALIAS_FLAG);

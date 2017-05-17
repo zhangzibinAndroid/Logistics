@@ -62,6 +62,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.LoginActivity"></activity>
+        <activity android:name=".activity.ForgetPassWordActivity"></activity>
         <activity android:name=".activity.OwnerMainActivity"></activity>
 
     </application>

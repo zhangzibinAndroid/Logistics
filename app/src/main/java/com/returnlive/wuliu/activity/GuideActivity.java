@@ -209,7 +209,7 @@ public class GuideActivity extends Activity implements ViewPager.OnPageChangeLis
             @Override
             public void onFinish() {
                 if (!isEnter){
-                    pageJump(OwnerMainActivity.class);
+                    pageJump(LoginActivity.class);
                 }
             }
         };
@@ -220,11 +220,11 @@ public class GuideActivity extends Activity implements ViewPager.OnPageChangeLis
     private void onClick(View view) {
         switch (view.getId()) {
             case R.id.img_guild:
-                pageJump(OwnerMainActivity.class);
+                pageJump(LoginActivity.class);
                 break;
             case R.id.tv_djs:
                 isEnter = true;
-                pageJump(OwnerMainActivity.class);
+                pageJump(LoginActivity.class);
                 break;
         }
     }

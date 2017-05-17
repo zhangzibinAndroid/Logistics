@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_forget_pass_word"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/ftoolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#16BB91"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:title="@string/forget_password2" />
+
+
+        <EditText
+            android:id="@+id/edt_phone"
+            android:layout_width="match_parent"
+            android:layout_height="90px"
+            android:layout_below="@+id/ftoolbar"
+            android:layout_marginBottom="@dimen/px30"
+            android:layout_marginLeft="@dimen/px30"
+            android:layout_marginRight="@dimen/px30"
+            android:layout_marginTop="100px"
+            android:background="@color/blue"
+            android:gravity="left|center"
+            android:hint="请输入手机号码"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:paddingLeft="20px"
+            android:textColor="@color/black"
+            android:textSize="32px" />
+
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/rel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edt_phone"
+            android:layout_marginLeft="@dimen/px30"
+            android:layout_marginRight="@dimen/px30">
+
+            <EditText
+                android:id="@+id/edt_code"
+                android:layout_width="450px"
+                android:layout_height="90px"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="15px"
+                android:background="@drawable/blue_dep_cricle"
+                android:hint="@string/please_input_verification_code"
+                android:paddingLeft="20px"
+                android:paddingRight="20px"
+                android:textColor="@color/black"
+                android:textSize="32px" />
+
+            <Button
+                android:id="@+id/btn_codenumber"
+                android:layout_width="wrap_content"
+                android:layout_height="90px"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/edt_code"
+                android:background="@drawable/shape_color_pwd2"
+                android:paddingLeft="20px"
+                android:paddingRight="20px"
+                android:text="获取验证码"
+                android:textColor="@color/white"
+                android:textSize="@dimen/px28" />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+        <EditText
+            android:id="@+id/edt_new_pwds"
+            android:layout_width="match_parent"
+            android:layout_height="90px"
+            android:layout_below="@+id/rel"
+            android:layout_margin="@dimen/px30"
+            android:background="@color/blue"
+            android:digits="@string/rule_password"
+            android:gravity="left|center"
+            android:hint="请输入新密码"
+            android:inputType="textPassword"
+            android:maxLength="30"
+            android:minEms="6"
+            android:paddingLeft="20px"
+            android:textColor="@color/black"
+            android:textSize="32px" />
+
+        <EditText
+            android:id="@+id/edt_pwds_ok"
+            android:layout_width="match_parent"
+            android:layout_height="90px"
+            android:layout_below="@+id/edt_new_pwds"
+            android:layout_marginBottom="@dimen/px30"
+            android:layout_marginLeft="@dimen/px30"
+            android:layout_marginRight="@dimen/px30"
+            android:background="@color/blue"
+            android:gravity="left|center"
+            android:hint="密码确认"
+            android:inputType="textPassword"
+            android:maxLength="30"
+            android:minEms="6"
+            android:paddingLeft="20px"
+            android:digits="@string/rule_password"
+            android:textColor="@color/black"
+            android:textSize="32px" />
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="match_parent"
+            android:layout_height="90px"
+            android:layout_below="@+id/edt_pwds_ok"
+            android:layout_marginLeft="@dimen/px30"
+            android:layout_marginRight="@dimen/px30"
+            android:layout_marginTop="@dimen/px50"
+            android:background="@drawable/blue_dep_bg"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="32px" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <!--加载页面-->
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/rel_loading"
+        android:layout_width="260px"
+        android:layout_height="250px"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/shape_loading"
+        android:visibility="gone">
+
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gifView_forgetpass"
+            android:layout_width="260px"
+            android:layout_height="260px"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="-20px"
+            android:scaleType="centerInside"
+            android:src="@mipmap/loaging">
+        </pl.droidsonroids.gif.GifImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20px"
+            android:text="@string/please_waitting"
+            android:textColor="#fff"
+            android:textSize="28px" />
+
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoRelativeLayout>
