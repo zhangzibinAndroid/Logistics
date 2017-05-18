@@ -164,39 +164,4 @@
         </com.zhy.autolayout.AutoLinearLayout>
     </ScrollView>
 
-    <!--加载页面-->
-
-    <com.zhy.autolayout.AutoRelativeLayout
-        android:id="@+id/rel_register"
-        android:layout_width="260px"
-        android:layout_height="250px"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:background="@drawable/shape_loading"
-        android:visibility="gone">
-
-
-        <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/gifView_forgetpass"
-            android:layout_width="260px"
-            android:layout_height="260px"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="-20px"
-            android:scaleType="centerInside"
-            android:src="@mipmap/loaging"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20px"
-            android:text="请稍后.."
-            android:textColor="#fff"
-            android:textSize="28px" />
-
-
-    </com.zhy.autolayout.AutoRelativeLayout>
-
-
 </com.zhy.autolayout.AutoRelativeLayout>

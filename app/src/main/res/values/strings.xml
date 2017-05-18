@@ -74,9 +74,44 @@
     <string name="show_route">路线</string>
     <string name="show_me">我的</string>
     <string name="restart_getcode">重新获取</string>
-    <string name="please_waitting">请稍后..</string>
+    <string name="please_waitting">请稍等..</string>
     <string name="phone_not_empty">手机号不能为空</string>
+    <string name="pwds_not_empty">密码不能为空</string>
     <string name="pwds_not_same">两次密码不一致，请重新输入</string>
     <string name="rule_password">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`¬!"£$%^*()~=#{}[];':,./?/*-_+&#060;&#062;&#064;&#038;</string>
+    <string name="msg_send_success">短信已发送</string>
+    <string name="name_empity">用户名为空</string>
+    <string name="name_already_save">手机号码已注册</string>
+    <string name="phone_error">手机号格式错误</string>
+    <string name="pwed_empity">密码为空</string>
+    <string name="pwed_error">密码应在6-30位之间</string>
+    <string name="send_code_error">验证码错误</string>
+    <string name="send_code_start">短信已发送</string>
+    <string name="send_cord_url_error">短信接口错误</string>
+    <string name="send_code_receiver_error">短信码获取失败</string>
+    <string name="phone_not_registered">用户名未注册</string>
+    <string name="pwds_error">密码错误</string>
+    <string name="shipper_authentication_failed">货主认证失败</string>
+    <string name="opptions_authentication_failed">车源认证失败</string>
+    <string name="user_details_obtain_failed">用户详情获取失败</string>
+    <string name="illegal_request">非法请求</string>
+    <string name="login_timeout">登录超时</string>
+    <string name="another_place_login">异地登录</string>
+    <string name="exit_failed">退出失败</string>
+    <string name="goods_options_information_addfailed">货源OR车源信息添加失败</string>
+    <string name="goods_options_list_obtain_failed">货源OR车源列表获取失败</string>
+    <string name="goods_options_idempity">货源OR车源id不可为空</string>
+    <string name="goods_options_details_obbtain_failed">货源OR车源详情获取失败</string>
+    <string name="networ_anomalies">网络异常，请检查网络</string>
+    <string name="register_success">注册成功</string>
+    <string name="registering">正在注册...</string>
+    <string name="login_success">登录成功</string>
+    <string name="determine">确定</string>
+    <string name="enter_new_pwds">请输入新密码</string>
+    <string name="enter_new_pwds_again">请确认密码</string>
+    <string name="get_send_code">获取验证码</string>
+    <string name="enter_phone">请输入手机号码</string>
+    <string name="pwds_reset_success">密码设置成功</string>
+
 
 </resources>

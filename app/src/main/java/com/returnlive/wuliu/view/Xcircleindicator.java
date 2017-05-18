@@ -115,7 +115,6 @@ public class Xcircleindicator extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        // Draw stroked circles
         for (int iLoop = 0; iLoop < pageTotalCount; iLoop++) {
             canvas.drawCircle(getPaddingLeft() + radius
                     + (iLoop * (2 * radius + circleInterval)), getPaddingTop()
@@ -132,15 +131,12 @@ public class Xcircleindicator extends View {
         int specMode = MeasureSpec.getMode(measureSpec);
         int specSize = MeasureSpec.getSize(measureSpec);
 
-        // We were told how big to be
         if (specMode == MeasureSpec.EXACTLY) {
             result = specSize;
-        } else { // Calculate the width according the views count
+        } else {
             result = getPaddingLeft() + getPaddingRight()
                     + (pageTotalCount * 2 * radius) + (pageTotalCount - 1)
                     * circleInterval;
-            // Respect AT_MOST value if that was what is called for by
-            // measureSpec
             if (specMode == MeasureSpec.AT_MOST) {
                 result = Math.min(result, specSize);
             }
@@ -154,15 +150,11 @@ public class Xcircleindicator extends View {
         int specMode = MeasureSpec.getMode(measureSpec);
         int specSize = MeasureSpec.getSize(measureSpec);
 
-        // We were told how big to be
         if (specMode == MeasureSpec.EXACTLY) {
             result = specSize;
         }
-        // Measure the height
         else {
             result = 2 * radius + getPaddingTop() + getPaddingBottom();
-            // Respect AT_MOST value if that was what is called for by
-            // measureSpec
             if (specMode == MeasureSpec.AT_MOST) {
                 result = Math.min(result, specSize);
             }

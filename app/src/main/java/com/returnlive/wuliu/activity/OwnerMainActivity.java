@@ -2,18 +2,14 @@ package com.returnlive.wuliu.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-
 import com.returnlive.wuliu.R;
 import com.returnlive.wuliu.fragment.GoodsFragment;
 import com.returnlive.wuliu.fragment.MineFragment;
 import com.returnlive.wuliu.fragment.OptionFragment;
 import com.returnlive.wuliu.fragment.RouteFragment;
-import com.zhy.autolayout.AutoFrameLayout;
-
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -26,8 +22,7 @@ import org.xutils.x;
  */
 public class OwnerMainActivity extends AppCompatActivity {
 
-    @ViewInject(R.id.owner_main_fragment)
-    AutoFrameLayout owner_main_fragment;
+
     @ViewInject(R.id.tv_main_goods)
     TextView tv_main_goods;
     @ViewInject(R.id.tv_main_route)

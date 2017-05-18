@@ -36,6 +36,7 @@
             android:textColor="@color/white"
             android:inputType="phone"
             android:maxLength="11"
+            android:textColorHint="@color/gray"
             android:text="18795934365"
             android:background="@null"
             android:singleLine="true"/>
@@ -45,7 +46,7 @@
             android:layout_width="@dimen/px45"
             android:layout_height="@dimen/px45"
             android:layout_toRightOf="@+id/edt_username"
-           android:layout_alignParentRight="true"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
             android:src="@drawable/ic_delect"
@@ -84,6 +85,7 @@
             android:inputType="textPassword"
             android:hint="@string/login_password"
             android:text="123456"
+            android:textColorHint="@color/gray"
             android:digits="@string/rule_password"
             android:textColor="@color/white"
             android:singleLine="true"/>
