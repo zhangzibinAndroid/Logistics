@@ -2,9 +2,12 @@ package com.returnlive.wuliu.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.returnlive.wuliu.R;
 import com.returnlive.wuliu.fragment.GoodsFragment;
 import com.returnlive.wuliu.fragment.MineFragment;
@@ -22,7 +25,6 @@ import org.xutils.x;
  */
 public class OwnerMainActivity extends AppCompatActivity {
 
-
     @ViewInject(R.id.tv_main_goods)
     TextView tv_main_goods;
     @ViewInject(R.id.tv_main_route)
@@ -36,6 +38,8 @@ public class OwnerMainActivity extends AppCompatActivity {
     private RouteFragment routeFragment;
     private OptionFragment optionFragment;
     private MineFragment mineFragment;
+    private long exitTime = 0;//点击2次返回，退出程序
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,5 +100,24 @@ public class OwnerMainActivity extends AppCompatActivity {
     private void setReplaceFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.owner_main_fragment, fragment).commit();
+    }
+
+
+    //点击两次退出
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - exitTime) > 2000) {//两秒内再次点击返回则退出
+                Toast.makeText(getApplicationContext(), "再按一次退出程序",
+                        Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                System.exit(0);
+            }
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 }
