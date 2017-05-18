@@ -405,26 +405,28 @@
             <com.zhy.autolayout.AutoRelativeLayout
                 android:id="@+id/lay_mycertification"
                 android:layout_width="match_parent"
-                android:background="@drawable/btn_sel"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_sel">
 
-                <TextView android:id="@+id/mycertification"
+                <TextView
+                    android:id="@+id/mycertification"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/mycertification"
-                    android:gravity="center"
-                    android:textSize="30px"
-                    android:padding="@dimen/px25"
                     android:layout_marginLeft="@dimen/px50"
-                    android:drawableLeft="@drawable/ic_me_certification" />
+                    android:drawableLeft="@drawable/ic_me_certification"
+                    android:gravity="center"
+                    android:padding="@dimen/px25"
+                    android:text="@string/mycertification"
+                    android:textSize="30px" />
 
-                <TextView android:id="@+id/tv_certification"
+                <TextView
+                    android:id="@+id/tv_certification"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/mycertification"
                     android:layout_alignBaseline="@+id/mycertification"
-                    android:textColor="@color/red"
-                    android:text="@string/tv_certification"/>
+                    android:layout_toRightOf="@+id/mycertification"
+                    android:text="@string/tv_certification"
+                    android:textColor="@color/red" />
 
             </com.zhy.autolayout.AutoRelativeLayout>
 

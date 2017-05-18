@@ -65,6 +65,7 @@
         <activity android:name=".activity.LoginActivity"></activity>
         <activity android:name=".activity.ForgetPassWordActivity"></activity>
         <activity android:name=".activity.OwnerMainActivity"></activity>
+        <activity android:name=".activity.SettingActivity"></activity>
 
     </application>
 

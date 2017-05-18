@@ -4,15 +4,20 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.returnlive.wuliu.R;
+import com.returnlive.wuliu.constant.NetworkUrl;
 import com.returnlive.wuliu.fragment.GoodsFragment;
 import com.returnlive.wuliu.fragment.MineFragment;
 import com.returnlive.wuliu.fragment.OptionFragment;
 import com.returnlive.wuliu.fragment.RouteFragment;
+import com.returnlive.wuliu.utils.MyCallBack;
+import com.returnlive.wuliu.utils.XUtil;
+
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -33,12 +38,13 @@ public class OwnerMainActivity extends AppCompatActivity {
     TextView tv_main_release_options;
     @ViewInject(R.id.tv_main_me)
     TextView tv_main_me;
-
+    private static final String TAG = "OwnerMainActivity";
     private GoodsFragment goodsFragment;
     private RouteFragment routeFragment;
     private OptionFragment optionFragment;
     private MineFragment mineFragment;
     private long exitTime = 0;//点击2次返回，退出程序
+    private String url = "http://wuliu.returnlive.com/mobile/Info/outLogin/uid/{uid}/z_session_{uid}/{z_session_uid}";
 
 
     @Override
@@ -113,11 +119,38 @@ public class OwnerMainActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
                 exitTime = System.currentTimeMillis();
             } else {
-                System.exit(0);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        exitInterface();
+                    }
+                }).start();
+
             }
             return true;
         }
 
         return super.onKeyDown(keyCode, event);
+    }
+
+
+    //用户退出接口
+    private void exitInterface() {
+        XUtil.Get(NetworkUrl.EXIT_SYSTEM, null, new MyCallBack<String>(){
+            @Override
+            public void onSuccess(String result) {
+                super.onSuccess(result);
+                System.exit(0);
+
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                super.onError(ex, isOnCallback);
+                System.exit(0);
+
+            }
+        });
+
     }
 }
