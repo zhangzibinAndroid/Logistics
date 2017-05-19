@@ -11,14 +11,14 @@ import com.returnlive.wuliu.R;
 
 /**
  * @author 张梓彬
- * Data : 2017/5/17 0017
- * Time : 下午 5:35
- * Describe : 车主路线
+ * Data : 2017/5/19 0019
+ * Time : 上午 10:49
+ * Describe : 货主路线
  */
-public class RouteFragment extends Fragment {
+public class RouteShipperFragment extends Fragment {
 
 
-    public RouteFragment() {
+    public RouteShipperFragment() {
         // Required empty public constructor
     }
 
@@ -27,7 +27,7 @@ public class RouteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_route, container, false);
+        return inflater.inflate(R.layout.fragment_route_shipper, container, false);
     }
 
 }

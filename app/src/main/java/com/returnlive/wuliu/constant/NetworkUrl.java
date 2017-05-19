@@ -10,7 +10,7 @@ import com.returnlive.wuliu.gson.GsonParsing;
  * Describe : 网络请求接口
  */
 public class NetworkUrl {
-    public static final String VERSION_UPDATE = "http://192.168.0.14/phpShare";
+    public static final String VERSION_UPDATE = "http://192.168.0.14";
     public static final String WULIU_URL = "http://wuliu.returnlive.com/mobile/";
     public static final String REGISTER_URL = WULIU_URL+"User/register";
     public static final String SENDCODE_URL = WULIU_URL+"User/sendCode";

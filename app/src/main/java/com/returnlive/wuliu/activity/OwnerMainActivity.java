@@ -1,22 +1,26 @@
 package com.returnlive.wuliu.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.returnlive.wuliu.R;
 import com.returnlive.wuliu.constant.NetworkUrl;
+import com.returnlive.wuliu.fragment.CarGoodsFragment;
 import com.returnlive.wuliu.fragment.GoodsFragment;
 import com.returnlive.wuliu.fragment.MineFragment;
-import com.returnlive.wuliu.fragment.OptionFragment;
-import com.returnlive.wuliu.fragment.RouteFragment;
+import com.returnlive.wuliu.fragment.OptionOwnerFragment;
+import com.returnlive.wuliu.fragment.OptionShipperFragment;
+import com.returnlive.wuliu.fragment.RouteOwnerFragment;
+import com.returnlive.wuliu.fragment.RouteShipperFragment;
 import com.returnlive.wuliu.utils.MyCallBack;
 import com.returnlive.wuliu.utils.XUtil;
+import com.zhy.autolayout.AutoLinearLayout;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -24,9 +28,9 @@ import org.xutils.x;
 
 /**
  * @author 张梓彬
- * Data : 2017/5/17 0017
- * Time : 下午 5:32
- * Describe : 车主版MainActivity，用于被Fragment依附
+ *         Data : 2017/5/17 0017
+ *         Time : 下午 5:32
+ *         Describe : 车主版MainActivity，用于被Fragment依附
  */
 public class OwnerMainActivity extends AppCompatActivity {
 
@@ -37,14 +41,26 @@ public class OwnerMainActivity extends AppCompatActivity {
     @ViewInject(R.id.tv_main_release_options)
     TextView tv_main_release_options;
     @ViewInject(R.id.tv_main_me)
-    TextView tv_main_me;
+    public TextView tv_main_me;
     private static final String TAG = "OwnerMainActivity";
+    @ViewInject(R.id.tv_main_cars)
+    TextView tv_main_cars;
+    @ViewInject(R.id.tv_main_route2)
+    TextView tv_main_route2;
+    @ViewInject(R.id.tv_main_release_goods)
+    TextView tv_main_release_goods;
+    @ViewInject(R.id.tv_main_me2)
+    public TextView tv_main_me2;
+    public AutoLinearLayout lay_ship;
+    public AutoLinearLayout lay_owner;
     private GoodsFragment goodsFragment;
-    private RouteFragment routeFragment;
-    private OptionFragment optionFragment;
+    private RouteOwnerFragment routeOwnerFragment;
+    private OptionOwnerFragment optionOwnerFragment;
+    private CarGoodsFragment carGoodsFragment;
+    private RouteShipperFragment routeShipperFragment;
+    private OptionShipperFragment optionShipperFragment;
     private MineFragment mineFragment;
     private long exitTime = 0;//点击2次返回，退出程序
-    private String url = "http://wuliu.returnlive.com/mobile/Info/outLogin/uid/{uid}/z_session_{uid}/{z_session_uid}";
 
 
     @Override
@@ -55,26 +71,59 @@ public class OwnerMainActivity extends AppCompatActivity {
         initView();
     }
 
-    private void initView() {
-        goodsFragment = new GoodsFragment();
-        routeFragment = new RouteFragment();
-        optionFragment = new OptionFragment();
-        mineFragment = new MineFragment();
-        setReplaceFragment(goodsFragment);
-        tv_main_goods.setSelected(true);
-        tv_main_goods.setTextColor(getResources().getColor(R.color.textselsecond));
+    public void showLay(boolean isOwner){
+        if (isOwner) {
+            lay_owner.setVisibility(View.VISIBLE);
+            lay_ship.setVisibility(View.GONE);
+        }else {
+            lay_owner.setVisibility(View.GONE);
+            lay_ship.setVisibility(View.VISIBLE);
+        }
     }
 
-    @Event(value = {R.id.tv_main_goods, R.id.tv_main_route, R.id.tv_main_release_options, R.id.tv_main_me})
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
+    private void initView() {
+        goodsFragment = new GoodsFragment();
+        routeOwnerFragment = new RouteOwnerFragment();
+        optionOwnerFragment = new OptionOwnerFragment();
+        carGoodsFragment = new CarGoodsFragment();
+        routeShipperFragment = new RouteShipperFragment();
+        optionShipperFragment = new OptionShipperFragment();
+        mineFragment = new MineFragment();
+        setReplaceFragment(mineFragment);
+        tv_main_me.setSelected(true);
+        tv_main_me.setTextColor(getResources().getColor(R.color.textselsecond));
+        tv_main_me2.setSelected(true);
+        tv_main_me2.setTextColor(getResources().getColor(R.color.textselsecond));
+    }
+
+    @Event(value = {R.id.tv_main_goods, R.id.tv_main_route, R.id.tv_main_release_options, R.id.tv_main_me, R.id.tv_main_cars, R.id.tv_main_route2, R.id.tv_main_release_goods, R.id.tv_main_me2})
     private void onClick(View view) {
         tv_main_goods.setSelected(false);
         tv_main_route.setSelected(false);
         tv_main_release_options.setSelected(false);
         tv_main_me.setSelected(false);
+
+        tv_main_cars.setSelected(false);
+        tv_main_route2.setSelected(false);
+        tv_main_release_goods.setSelected(false);
+        tv_main_me2.setSelected(false);
+
         tv_main_goods.setTextColor(getResources().getColor(R.color.textselfirst));
         tv_main_route.setTextColor(getResources().getColor(R.color.textselfirst));
         tv_main_release_options.setTextColor(getResources().getColor(R.color.textselfirst));
         tv_main_me.setTextColor(getResources().getColor(R.color.textselfirst));
+
+        tv_main_cars.setTextColor(getResources().getColor(R.color.textselfirst));
+        tv_main_route2.setTextColor(getResources().getColor(R.color.textselfirst));
+        tv_main_release_goods.setTextColor(getResources().getColor(R.color.textselfirst));
+        tv_main_me2.setTextColor(getResources().getColor(R.color.textselfirst));
         switch (view.getId()) {
             case R.id.tv_main_goods:
                 setReplaceFragment(goodsFragment);
@@ -83,13 +132,13 @@ public class OwnerMainActivity extends AppCompatActivity {
 
                 break;
             case R.id.tv_main_route:
-                setReplaceFragment(routeFragment);
+                setReplaceFragment(routeOwnerFragment);
                 tv_main_route.setSelected(true);
                 tv_main_route.setTextColor(getResources().getColor(R.color.textselsecond));
 
                 break;
             case R.id.tv_main_release_options:
-                setReplaceFragment(optionFragment);
+                setReplaceFragment(optionOwnerFragment);
                 tv_main_release_options.setSelected(true);
                 tv_main_release_options.setTextColor(getResources().getColor(R.color.textselsecond));
 
@@ -98,6 +147,30 @@ public class OwnerMainActivity extends AppCompatActivity {
                 setReplaceFragment(mineFragment);
                 tv_main_me.setSelected(true);
                 tv_main_me.setTextColor(getResources().getColor(R.color.textselsecond));
+                break;
+            case R.id.tv_main_cars:
+                tv_main_cars.setSelected(true);
+                tv_main_cars.setTextColor(getResources().getColor(R.color.textselsecond));
+                setReplaceFragment(carGoodsFragment);
+
+                break;
+            case R.id.tv_main_route2:
+                tv_main_route2.setSelected(true);
+                tv_main_route2.setTextColor(getResources().getColor(R.color.textselsecond));
+                setReplaceFragment(routeShipperFragment);
+
+
+                break;
+            case R.id.tv_main_release_goods:
+                tv_main_release_goods.setSelected(true);
+                tv_main_release_goods.setTextColor(getResources().getColor(R.color.textselsecond));
+                setReplaceFragment(optionShipperFragment);
+
+                break;
+            case R.id.tv_main_me2:
+                tv_main_me2.setSelected(true);
+                tv_main_me2.setTextColor(getResources().getColor(R.color.textselsecond));
+                setReplaceFragment(mineFragment);
 
                 break;
         }
@@ -136,7 +209,7 @@ public class OwnerMainActivity extends AppCompatActivity {
 
     //用户退出接口
     private void exitInterface() {
-        XUtil.Get(NetworkUrl.EXIT_SYSTEM, null, new MyCallBack<String>(){
+        XUtil.Get(NetworkUrl.EXIT_SYSTEM, null, new MyCallBack<String>() {
             @Override
             public void onSuccess(String result) {
                 super.onSuccess(result);
@@ -153,4 +226,6 @@ public class OwnerMainActivity extends AppCompatActivity {
         });
 
     }
+
+
 }

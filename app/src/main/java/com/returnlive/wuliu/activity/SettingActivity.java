@@ -91,35 +91,6 @@ public class SettingActivity extends AppCompatActivity {
         isLoading = false;
     }
 
-//    @OnClick({R.id.tv_modify_login_password, R.id.tv_modify_pay_password, R.id.chb_open_voice_broadcast_remind, R.id.lay_voice_broadcast_time, R.id.lay_help, R.id.lay_version, R.id.tv_about, R.id.tv_exit})
-//    public void onClick(View view) {
-//        switch (view.getId()) {
-//            case R.id.tv_modify_login_password://修改登录密码
-//                break;
-//            case R.id.tv_modify_pay_password://修改支付密码
-//                break;
-//            case R.id.chb_open_voice_broadcast_remind://开启语音播报提醒
-//                break;
-//            case R.id.lay_voice_broadcast_time://语音播放时间
-//                break;
-//            case R.id.lay_help://帮助中心
-//                pageJump(HelpCenterActivity.class);
-//                break;
-//            case R.id.lay_version://版本更新
-//                if (!isLoading){
-//                    versionUpdata();
-//                }
-//
-//                break;
-//            case R.id.tv_about://关于
-//                pageJump(AboutActivity.class);
-//                break;
-//            case R.id.tv_exit://退出账号
-//                break;
-//        }
-//    }
-
-
     private void versionUpdata() {
         isLoading = true;
         new Thread() {
@@ -210,8 +181,6 @@ public class SettingActivity extends AppCompatActivity {
         x.http().get(param, new Callback.ProgressCallback<File>() {
             @Override
             public void onSuccess(File file) {
-
-                Log.d("TAG",file.toString());
                 down();
             }
 
@@ -247,10 +216,6 @@ public class SettingActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
     }
 
 
@@ -264,37 +229,7 @@ public class SettingActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-
                 downloadprogressfile(url);
-
-
-               /* OkHttpUtils.get().url(url).build().execute(new FileCallBack(Environment.getExternalStorageDirectory() + "/wuliu", "wuliu.apk") {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(SettingActivity.this, "网络异常", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onResponse(File response, int id) {
-                        down();
-                    }
-
-
-                    @Override
-                    public void inProgress(float progress, long total, int id) {
-                        super.inProgress(progress, total, id);
-                        int mtotal = (int) total;
-                        pBar.setMax(mtotal);
-                        pBar.setProgress((int) (mtotal * progress));
-                    }
-                });*/
-
-
             }
         }).start();
     }
@@ -330,6 +265,7 @@ public class SettingActivity extends AppCompatActivity {
             case R.id.lay_voice_broadcast_time:
                 break;
             case R.id.lay_help:
+                pageJump(HelpCenterActivity.class);
                 break;
             case R.id.lay_version:
                 if (!isLoading){
@@ -337,9 +273,16 @@ public class SettingActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.tv_about:
+                pageJump(AboutActivity.class);
                 break;
             case R.id.tv_exit:
                 break;
         }
+    }
+
+
+    public void pageJump(Class<?> cls) {
+        Intent intent = new Intent(getApplicationContext(), cls);
+        startActivity(intent);
     }
 }

@@ -24,6 +24,7 @@ import com.returnlive.wuliu.entity.LoginSuccessEntity;
 import com.returnlive.wuliu.gson.GsonParsing;
 import com.returnlive.wuliu.utils.ErrorCode;
 import com.returnlive.wuliu.utils.MyCallBack;
+import com.returnlive.wuliu.utils.SharedPreferencesUtils;
 import com.returnlive.wuliu.utils.XUtil;
 import com.zhy.autolayout.AutoRelativeLayout;
 import org.json.JSONException;
@@ -70,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
     private long mTimeRemaining;
     private static final long COUNTER_TIME = 120;
     private ProgressDialog pro;
+    private SharedPreferencesUtils sharedPreferencesUtils;
 
 
     @Override
@@ -80,6 +82,9 @@ public class LoginActivity extends AppCompatActivity {
         initView();
     }
 
+
+
+
     private void initView() {
         edt_username.setHintTextColor(Color.argb(125, 255, 255, 255));
         edt_password.setHintTextColor(Color.argb(125, 255, 255, 255));
@@ -88,6 +93,8 @@ public class LoginActivity extends AppCompatActivity {
         //设置控件获取焦点监听
         edt_username.addTextChangedListener(textWatcher);
         edt_password.addTextChangedListener(textWatcher);
+        sharedPreferencesUtils = new SharedPreferencesUtils(this);
+        sharedPreferencesUtils.sharedPreferenceRead();
     }
 
     @Override
@@ -97,6 +104,8 @@ public class LoginActivity extends AppCompatActivity {
         edt_password.setHintTextColor(Color.argb(125, 255, 255, 255));
         edt_username.setTextColor(Color.argb(125, 255, 255, 255));
         edt_password.setTextColor(Color.argb(125, 255, 255, 255));
+
+
     }
 
     /**
@@ -439,8 +448,10 @@ public class LoginActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                pageJump(OwnerMainActivity.class);
-                finish();
+                    pageJump(OwnerMainActivity.class);
+                    finish();
+
+
 
             } else {
                 errorCode(result);

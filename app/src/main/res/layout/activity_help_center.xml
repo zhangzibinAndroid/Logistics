@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.returnlive.wuliu.activity.HelpCenterActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/ftoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/title_bg"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sel_backbg"
+                android:src="@drawable/ic_back" />
+
+            <View
+                android:layout_width="@dimen/px02"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/px15"
+                android:background="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/px15"
+                android:text="@string/tv_help"
+                android:textColor="@color/white"
+                android:textSize="@dimen/px40" />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <TextView android:id="@+id/tv_helptitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:textSize="40px"
+        android:layout_gravity="center"/>
+
+    <TextView android:id="@+id/tv_helpcontext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20px" />
+
+</com.zhy.autolayout.AutoLinearLayout>

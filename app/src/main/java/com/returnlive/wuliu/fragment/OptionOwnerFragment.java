@@ -12,12 +12,12 @@ import com.returnlive.wuliu.R;
  * @author 张梓彬
  * Data : 2017/5/17 0017
  * Time : 下午 5:36
- * Describe : 车主车源页面
+ * Describe : 车主发布车源页面
  */
-public class OptionFragment extends Fragment {
+public class OptionOwnerFragment extends Fragment {
 
 
-    public OptionFragment() {
+    public OptionOwnerFragment() {
         // Required empty public constructor
     }
 

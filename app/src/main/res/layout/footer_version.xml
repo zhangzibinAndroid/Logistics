@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/tv_footer_no"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_toLeftOf="@+id/view_f"
+            android:background="@drawable/sel_color_btn"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="#0c7fe0"
+            android:textSize="40px" />
+
+        <View
+            android:id="@+id/view_f"
+            android:layout_width="1px"
+            android:layout_height="100px"
+            android:layout_centerHorizontal="true"
+            android:background="#DBDBDB" />
+
+        <TextView
+            android:id="@+id/tv_footer_yes"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_toRightOf="@+id/view_f"
+            android:background="@drawable/sel_color_btn2"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="#e3280f"
+            android:textSize="40px" />
+
+</com.zhy.autolayout.AutoRelativeLayout>

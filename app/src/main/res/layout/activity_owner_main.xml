@@ -5,14 +5,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <com.zhy.autolayout.AutoFrameLayout
         android:id="@+id/owner_main_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
     </com.zhy.autolayout.AutoFrameLayout>
-
 
     <!--分界线-->
     <TextView
@@ -24,6 +22,39 @@
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/px110"
+        android:visibility="gone"
+        android:id="@+id/lay_ship"
+        android:orientation="horizontal">
+
+        <TextView android:id="@+id/tv_main_cars"
+            style="@style/TextViewStyleSelect"
+            android:drawableTop="@drawable/sel_option"
+            android:text="车源"/>
+
+        <TextView android:id="@+id/tv_main_route2"
+            style="@style/TextViewStyleSelect"
+            android:drawableTop="@drawable/sel_route"
+            android:text="路线"/>
+
+
+        <TextView android:id="@+id/tv_main_release_goods"
+            style="@style/TextViewStyleSelect"
+            android:drawableTop="@drawable/sel_good"
+            android:text="发布货源"/>
+
+        <TextView android:id="@+id/tv_main_me2"
+            style="@style/TextViewStyleSelect"
+            android:drawableTop="@drawable/sel_mine"
+            android:text="我的"/>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+
+    <!--最下面的控制板-->
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px110"
+        android:id="@+id/lay_owner"
         android:orientation="horizontal">
 
         <TextView android:id="@+id/tv_main_goods"
@@ -47,4 +78,5 @@
             android:drawableTop="@drawable/sel_mine"
             android:text="我的"/>
     </com.zhy.autolayout.AutoLinearLayout>
+
 </com.zhy.autolayout.AutoLinearLayout>
