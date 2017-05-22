@@ -60,6 +60,7 @@
     <dimen name="px250">250px</dimen>
     <dimen name="px260">260px</dimen>
     <dimen name="px350">350px</dimen>
+    <dimen name="px400">400px</dimen>
     <dimen name="px410">410px</dimen>
     <dimen name="px420">420px</dimen>
     <dimen name="px450">450px</dimen>
