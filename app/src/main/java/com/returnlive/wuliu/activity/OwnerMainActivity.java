@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.returnlive.wuliu.R;
+import com.returnlive.wuliu.application.LogisticsApplication;
 import com.returnlive.wuliu.constant.NetworkUrl;
 import com.returnlive.wuliu.fragment.CarGoodsFragment;
 import com.returnlive.wuliu.fragment.GoodsFragment;
@@ -68,6 +69,7 @@ public class OwnerMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_main);
         x.view().inject(this);
+        LogisticsApplication.addActivity(this);
         initView();
     }
 

@@ -67,11 +67,6 @@ public class ForgetPassWordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_pass_word);
         x.view().inject(this);
-        initView();
-    }
-
-    private void initView() {
-
     }
 
 

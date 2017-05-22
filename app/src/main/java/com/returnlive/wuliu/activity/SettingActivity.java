@@ -21,7 +21,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.returnlive.wuliu.R;
+import com.returnlive.wuliu.application.LogisticsApplication;
+import com.returnlive.wuliu.constant.NetworkUrl;
 import com.returnlive.wuliu.entity.UpdateInfo;
+import com.returnlive.wuliu.utils.MyCallBack;
 import com.returnlive.wuliu.utils.UpdateInfoService;
 import com.returnlive.wuliu.utils.XUtil;
 
@@ -50,6 +53,7 @@ public class SettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         x.view().inject(this);
+        LogisticsApplication.addActivity(this);
         initView();
     }
 
@@ -276,6 +280,12 @@ public class SettingActivity extends AppCompatActivity {
                 pageJump(AboutActivity.class);
                 break;
             case R.id.tv_exit:
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        exitInterface();
+                    }
+                }).start();
                 break;
         }
     }
@@ -284,5 +294,31 @@ public class SettingActivity extends AppCompatActivity {
     public void pageJump(Class<?> cls) {
         Intent intent = new Intent(getApplicationContext(), cls);
         startActivity(intent);
+    }
+
+    //用户退出接口
+    private void exitInterface() {
+        XUtil.Get(NetworkUrl.EXIT_SYSTEM, null, new MyCallBack<String>() {
+            @Override
+            public void onSuccess(String result) {
+                super.onSuccess(result);
+                pageJump(LoginActivity.class);
+                LogisticsApplication.clearActivity();
+
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                super.onError(ex, isOnCallback);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(SettingActivity.this, getResources().getString(R.string.networ_anomalies), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }
+        });
+
     }
 }

@@ -1,8 +1,12 @@
 package com.returnlive.wuliu.application;
 
+import android.app.Activity;
 import android.app.Application;
 import com.zhy.autolayout.config.AutoLayoutConifg;
 import org.xutils.x;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author 张梓彬
@@ -12,10 +16,28 @@ import org.xutils.x;
  */
 
 public class LogisticsApplication extends Application{
+    private static List<Activity> lists = new ArrayList<>();
+
     @Override
     public void onCreate() {
         super.onCreate();
         AutoLayoutConifg.getInstance().useDeviceSize();
         x.Ext.init(this);
+    }
+
+
+
+    public static void addActivity(Activity activity) {
+        lists.add(activity);
+    }
+
+    public static void clearActivity() {
+        if (lists != null) {
+            for (Activity activity : lists) {
+                activity.finish();
+            }
+
+            lists.clear();
+        }
     }
 }
