@@ -95,7 +95,6 @@ public class ShipperCertificationActivity extends AppCompatActivity {
             case R.id.lay_portraitship:
                 showChoosePicDialog("设置头像");
                 ConstantNumber.CAMERA_TYPE = ConstantNumber.NUMBER_THREE;
-                Log.e(TAG, "ConstantNumber.CAMERA_TYPE== "+ConstantNumber.CAMERA_TYPE );
 
                 break;
             case R.id.lay_idship_certification:
@@ -118,18 +117,15 @@ public class ShipperCertificationActivity extends AppCompatActivity {
             case R.id.lay_business_card:
                 showChoosePicDialog("设置名片");
                 ConstantNumber.CAMERA_TYPE = ConstantNumber.NUMBER_FOUR;
-                Log.e(TAG, "ConstantNumber.CAMERA_TYPE== "+ConstantNumber.CAMERA_TYPE );
                 break;
             case R.id.lay_door_head:
                 showChoosePicDialog("设置门头照");
                 ConstantNumber.CAMERA_TYPE = ConstantNumber.NUMBER_FIVE;
-                Log.e(TAG, "ConstantNumber.CAMERA_TYPE== "+ConstantNumber.CAMERA_TYPE );
 
                 break;
             case R.id.lay_business_license:
                 showChoosePicDialog("设置营业执照");
                 ConstantNumber.CAMERA_TYPE = ConstantNumber.NUMBER_SIX;
-                Log.e(TAG, "ConstantNumber.CAMERA_TYPE== "+ConstantNumber.CAMERA_TYPE );
 
                 break;
             case R.id.tv_contactship_customer:
@@ -217,6 +213,21 @@ public class ShipperCertificationActivity extends AppCompatActivity {
                     }
                     break;
             }
+        }else if (requestCode == ConstantNumber.NUMBER_ELEVEN && resultCode == ConstantNumber.NUMBER_ELEVEN){
+            String name = data.getStringExtra("name");
+            tv_yournameship.setText(name);
+        }else if (requestCode == ConstantNumber.NUMBER_TWELVE && resultCode == ConstantNumber.NUMBER_TWELVE){
+            String idCard = data.getStringExtra("idCard");
+            tv_yourIDcardship.setText(idCard);
+        }else if (requestCode == ConstantNumber.NUMBER_THIRTEEN && resultCode == ConstantNumber.NUMBER_THIRTEEN){
+            String companyName = data.getStringExtra("companyName");
+            tv_company_name.setText(companyName);
+        }else if (requestCode == ConstantNumber.NUMBER_FOURTEEN && resultCode == ConstantNumber.NUMBER_FOURTEEN){
+            String companyAddress = data.getStringExtra("companyAddress");
+            tv_company_address.setText(companyAddress);
+        }else if (requestCode == ConstantNumber.NUMBER_FIFTEEN && resultCode == ConstantNumber.NUMBER_FIFTEEN){
+            String position = data.getStringExtra("position");
+            tv_yourposition.setText(position);
         }
 
 

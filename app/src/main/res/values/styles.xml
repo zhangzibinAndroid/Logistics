@@ -34,4 +34,14 @@
         <item name="android:layout_marginRight">@dimen/px40</item>
     </style>
 
+    <style name="Editext_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/px80</item>
+        <item name="android:layout_margin">@dimen/px20</item>
+        <item name="android:background">@drawable/shape_border</item>
+        <item name="android:textSize">@dimen/px30</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:padding">@dimen/px20</item>
+    </style>
+
 </resources>

@@ -120,6 +120,11 @@
     <string name="please_enter_company_name">请输入公司名称</string>
     <string name="please_enter_company_address">请输入公司地址</string>
     <string name="please_enter_position">请输入您的职位</string>
+    <string name="name_not_empty">姓名不能为空</string>
+    <string name="idCard_not_empty">身份证号不能为空</string>
+    <string name="company_name_not_empty">公司名称不能为空</string>
+    <string name="company_address_not_empty">公司地址不能为空</string>
+    <string name="position_not_empty">职位不能为空</string>
 
 
 </resources>

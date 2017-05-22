@@ -11,7 +11,7 @@
         android:background="@color/title_bg"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <com.zhy.autolayout.AutoLinearLayout
+        <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -20,14 +20,18 @@
             <ImageView
                 android:id="@+id/img_back"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
                 android:background="@drawable/sel_backbg"
                 android:src="@drawable/ic_back" />
 
-            <View
+            <View android:id="@+id/view"
                 android:layout_width="@dimen/px02"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/px15"
+                android:layout_toRightOf="@+id/img_back"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/px60"
                 android:background="@color/white" />
 
             <TextView
@@ -36,66 +40,47 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/px15"
                 android:text="editext"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/view"
                 android:textColor="@color/white"
-                android:textSize="@dimen/px40" />
+                android:textSize="@dimen/px35" />
 
 
             <TextView android:id="@+id/tv_save"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/px120"
+                android:layout_height="match_parent"
                 android:text="@string/saves"
+                android:gravity="center"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/px20"
                 android:background="@drawable/sel_backbg"
-                android:layout_marginLeft="@dimen/px400"
-                android:textSize="@dimen/px40"/>
+                android:textColor="@color/white"
+                android:textSize="@dimen/px35"/>
 
-        </com.zhy.autolayout.AutoLinearLayout>
+        </com.zhy.autolayout.AutoRelativeLayout>
     </android.support.v7.widget.Toolbar>
 
 
     <EditText android:id="@+id/edt_name"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/px80"
-        android:layout_margin="@dimen/px20"
-        android:background="@drawable/shape_border"
-        android:hint="@string/please_enter_name"
-        android:visibility="gone"
-        android:padding="@dimen/px20"/>
+        style="@style/Editext_style"
+        android:hint="@string/please_enter_name"/>
 
     <EditText android:id="@+id/edt_id_card"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/px80"
-        android:layout_margin="@dimen/px20"
-        android:background="@drawable/shape_border"
-        android:hint="@string/please_enter_id_card"
-        android:visibility="gone"
-        android:padding="@dimen/px20"/>
+        style="@style/Editext_style"
+        android:hint="@string/please_enter_id_card"/>
 
     <EditText android:id="@+id/edt_company_name"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/px80"
-        android:layout_margin="@dimen/px20"
-        android:background="@drawable/shape_border"
-        android:hint="@string/please_enter_company_name"
-        android:visibility="gone"
-        android:padding="@dimen/px20"/>
+        style="@style/Editext_style"
+        android:hint="@string/please_enter_company_name"/>
 
     <EditText android:id="@+id/edt_company_address"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/px80"
-        android:layout_margin="@dimen/px20"
-        android:background="@drawable/shape_border"
-        android:hint="@string/please_enter_company_address"
-        android:visibility="gone"
-        android:padding="@dimen/px20"/>
+        style="@style/Editext_style"
+        android:hint="@string/please_enter_company_address"/>
 
 
     <EditText android:id="@+id/edt_position"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/px80"
-        android:layout_margin="@dimen/px20"
-        android:background="@drawable/shape_border"
-        android:hint="@string/please_enter_position"
-        android:visibility="gone"
-        android:padding="@dimen/px20"/>
+        style="@style/Editext_style"
+        android:hint="@string/please_enter_position"/>
 
 </com.zhy.autolayout.AutoLinearLayout>
