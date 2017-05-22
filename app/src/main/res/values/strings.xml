@@ -115,6 +115,11 @@
     <string name="tv_context">内容</string>
     <string name="tv_version_owner">当前版本：司机版</string>
     <string name="tv_version_shipper">当前版本：货主版</string>
+    <string name="please_enter_name">请输入姓名</string>
+    <string name="please_enter_id_card">请输入身份证号</string>
+    <string name="please_enter_company_name">请输入公司名称</string>
+    <string name="please_enter_company_address">请输入公司地址</string>
+    <string name="please_enter_position">请输入您的职位</string>
 
 
 </resources>
