@@ -44,4 +44,10 @@
         <item name="android:padding">@dimen/px20</item>
     </style>
 
+    <style name="ImageViewStyle">
+        <item name="android:layout_width">@dimen/px700</item>
+        <item name="android:layout_height">@dimen/px500</item>
+        <item name="android:layout_marginTop">@dimen/px40</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
 </resources>

@@ -70,6 +70,7 @@
         <activity android:name=".activity.DriverCertificationActivity" />
         <activity android:name=".activity.ShipperCertificationActivity" />
         <activity android:name=".activity.EditextActivity" />
+        <activity android:name=".activity.PhoneActivity" />
     </application>
 
 </manifest>

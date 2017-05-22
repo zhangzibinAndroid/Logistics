@@ -17,7 +17,10 @@ public class ConstantNumber {
     public static final int NUMBER_FOUR = 4;
     public static final int NUMBER_FIVE = 5;
     public static final int NUMBER_SIX = 6;
-
+    public static final int NUMBER_SEVEN = 7;
+    public static final int NUMBER_EIGHT = 8;
+    public static final int NUMBER_NINE = 9;
+    public static final int NUMBER_TEN = 10;
     public static final int NUMBER_ELEVEN = 11;
     public static final int NUMBER_TWELVE = 12;
     public static final int NUMBER_THIRTEEN = 13;

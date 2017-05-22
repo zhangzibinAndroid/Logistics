@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/ftoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/title_bg"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:background="@drawable/sel_backbg"
+                android:src="@drawable/ic_back" />
+
+            <View android:id="@+id/view"
+                android:layout_width="@dimen/px02"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/px15"
+                android:layout_toRightOf="@+id/img_back"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/px60"
+                android:background="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/px15"
+                android:text="imageView"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/view"
+                android:textColor="@color/white"
+                android:textSize="@dimen/px35" />
+
+
+            <TextView android:id="@+id/tv_save"
+                android:layout_width="@dimen/px120"
+                android:layout_height="match_parent"
+                android:text="@string/saves"
+                android:gravity="center"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/px20"
+                android:background="@drawable/sel_backbg"
+                android:textColor="@color/white"
+                android:textSize="@dimen/px35"/>
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/img_head_portrait"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/px120"
+        android:layout_width="@dimen/px320"
+        android:layout_height="@dimen/px320"/>
+
+
+    <ImageView android:id="@+id/img_business_card"
+        style="@style/ImageViewStyle"/>
+
+    <ImageView android:id="@+id/img_door_picture"
+        style="@style/ImageViewStyle"/>
+
+    <ImageView android:id="@+id/img_business_license"
+        style="@style/ImageViewStyle"/>
+
+</com.zhy.autolayout.AutoLinearLayout>

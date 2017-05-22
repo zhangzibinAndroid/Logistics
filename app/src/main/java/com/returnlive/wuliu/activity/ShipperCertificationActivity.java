@@ -3,6 +3,7 @@ package com.returnlive.wuliu.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -13,17 +14,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.returnlive.wuliu.R;
 import com.returnlive.wuliu.constant.ConstantNumber;
 import com.returnlive.wuliu.utils.ImageUtils;
-
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
-
 import java.io.File;
-import java.util.Calendar;
 
 /**
  * 作者： 张梓彬
@@ -61,6 +58,8 @@ public class ShipperCertificationActivity extends AppCompatActivity {
     protected static Uri tempUri;
     private static final String TAG = "ShipperCertificationAct";
     private String imagePath;
+    private boolean isSetHead,isSetBusinessCard,isSetDoorPhone,isSetBusinessLicense = false;
+    public static Bitmap head_portrait_bitmap,businessCardBitmap,doorPhoneBitmap,businessLicenseBitmap;
 
 
     @Override
@@ -93,8 +92,14 @@ public class ShipperCertificationActivity extends AppCompatActivity {
 
                 break;
             case R.id.lay_portraitship:
-                showChoosePicDialog("设置头像");
                 ConstantNumber.CAMERA_TYPE = ConstantNumber.NUMBER_THREE;
+                if (!isSetHead){
+                    showChoosePicDialog("设置头像");
+                }else {
+                    head_portrait_bitmap = ((BitmapDrawable) img_portraitship.getDrawable()).getBitmap();
+                    pageJumpWithData(PhoneActivity.class,ConstantNumber.NUMBER_SEVEN);
+                }
+
 
                 break;
             case R.id.lay_idship_certification:
@@ -115,17 +120,32 @@ public class ShipperCertificationActivity extends AppCompatActivity {
 
                 break;
             case R.id.lay_business_card:
-                showChoosePicDialog("设置名片");
                 ConstantNumber.CAMERA_TYPE = ConstantNumber.NUMBER_FOUR;
+                if (!isSetBusinessCard){
+                    showChoosePicDialog("设置名片");
+                }else {
+                    businessCardBitmap = ((BitmapDrawable) img_business_card.getDrawable()).getBitmap();
+                    pageJumpWithData(PhoneActivity.class,ConstantNumber.NUMBER_EIGHT);
+                }
                 break;
             case R.id.lay_door_head:
-                showChoosePicDialog("设置门头照");
                 ConstantNumber.CAMERA_TYPE = ConstantNumber.NUMBER_FIVE;
+                if (!isSetDoorPhone){
+                    showChoosePicDialog("设置门头照");
+                }else {
+                    doorPhoneBitmap = ((BitmapDrawable) img_door_head.getDrawable()).getBitmap();
+                    pageJumpWithData(PhoneActivity.class,ConstantNumber.NUMBER_NINE);
+                }
 
                 break;
             case R.id.lay_business_license:
-                showChoosePicDialog("设置营业执照");
                 ConstantNumber.CAMERA_TYPE = ConstantNumber.NUMBER_SIX;
+                if (!isSetBusinessLicense){
+                    showChoosePicDialog("设置营业执照");
+                }else {
+                    businessLicenseBitmap = ((BitmapDrawable) img_business_license.getDrawable()).getBitmap();
+                    pageJumpWithData(PhoneActivity.class,ConstantNumber.NUMBER_TEN);
+                }
 
                 break;
             case R.id.tv_contactship_customer:
@@ -134,6 +154,8 @@ public class ShipperCertificationActivity extends AppCompatActivity {
                 break;
         }
     }
+
+
 
 
     public void pageJumpWithData(Class<?> cls,int requestCode) {
@@ -198,15 +220,19 @@ public class ShipperCertificationActivity extends AppCompatActivity {
                     if (data != null) {
                         switch (ConstantNumber.CAMERA_TYPE){
                             case ConstantNumber.NUMBER_THREE:
+                                isSetHead = true;
                                 setImageToView(data,img_portraitship,"head_portrait_pic"); // 让刚才选择裁剪得到的图片显示在界面上
                                 break;
                             case ConstantNumber.NUMBER_FOUR:
+                                isSetBusinessCard = true;
                                 setImageToView(data,img_business_card,"business_card_pic");
                                 break;
                             case ConstantNumber.NUMBER_FIVE:
+                                isSetDoorPhone = true;
                                 setImageToView(data,img_door_head,"door_picture_pic");
                                 break;
                             case ConstantNumber.NUMBER_SIX:
+                                isSetBusinessLicense = true;
                                 setImageToView(data,img_business_license,"business_license_pic");
                                 break;
                         }
@@ -228,6 +254,17 @@ public class ShipperCertificationActivity extends AppCompatActivity {
         }else if (requestCode == ConstantNumber.NUMBER_FIFTEEN && resultCode == ConstantNumber.NUMBER_FIFTEEN){
             String position = data.getStringExtra("position");
             tv_yourposition.setText(position);
+        }else if (requestCode == ConstantNumber.NUMBER_SEVEN && resultCode == ConstantNumber.NUMBER_SEVEN){
+            img_portraitship.setImageBitmap(PhoneActivity.head_portrait_bitmap);
+
+        }else if (requestCode == ConstantNumber.NUMBER_EIGHT && resultCode == ConstantNumber.NUMBER_EIGHT){
+            img_business_card.setImageBitmap(PhoneActivity.businessCardBitmap);
+        }else if (requestCode == ConstantNumber.NUMBER_NINE && resultCode == ConstantNumber.NUMBER_NINE){
+            img_door_head.setImageBitmap(PhoneActivity.doorPhoneBitmap);
+
+        }else if (requestCode == ConstantNumber.NUMBER_TEN && resultCode == ConstantNumber.NUMBER_TEN){
+            img_business_license.setImageBitmap(PhoneActivity.businessLicenseBitmap);
+
         }
 
 
