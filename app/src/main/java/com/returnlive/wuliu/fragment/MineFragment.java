@@ -18,8 +18,10 @@ import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.OnClickListener;
 import com.orhanobut.dialogplus.ViewHolder;
 import com.returnlive.wuliu.R;
+import com.returnlive.wuliu.activity.DriverCertificationActivity;
 import com.returnlive.wuliu.activity.OwnerMainActivity;
 import com.returnlive.wuliu.activity.SettingActivity;
+import com.returnlive.wuliu.activity.ShipperCertificationActivity;
 import com.returnlive.wuliu.utils.SharedPreferencesUtils;
 import com.returnlive.wuliu.view.RoundImageView;
 import com.zhy.autolayout.AutoLinearLayout;
@@ -231,6 +233,11 @@ public class MineFragment extends Fragment {
             case R.id.lay_topup:
                 break;
             case R.id.lay_mycertification:
+                if (isChecked) {
+                    pageJump(DriverCertificationActivity.class);//司机认证
+                } else {
+                    pageJump(ShipperCertificationActivity.class);//货主认证
+                }
                 break;
             case R.id.lay_set:
                 pageJump(SettingActivity.class);

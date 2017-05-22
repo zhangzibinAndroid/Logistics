@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_shipper_certification"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/write">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/ftoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/title_bg"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView android:id="@+id/img_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sel_backbg"
+                android:src="@drawable/ic_back"/>
+
+            <View android:layout_marginLeft="@dimen/px15"
+                android:layout_width="@dimen/px02"
+                android:layout_height="match_parent"
+                android:background="@color/white"/>
+
+            <TextView android:id="@+id/tv_title"
+                android:layout_marginLeft="@dimen/px15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="@string/shipper_certification"
+                android:textSize="@dimen/px40"/>
+
+        </com.zhy.autolayout.AutoLinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/px15"
+        android:textSize="@dimen/px30"
+        android:text="@string/information_certification"
+        android:drawableLeft="@drawable/ic_cerfication_warning" />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/write"
+            android:layout_margin="@dimen/px10"
+            android:orientation="vertical">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/lay_yournameship"
+                android:background="@drawable/btn_sel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <TextView android:id="@+id/tv_yournameship"
+                    style="@style/TextViewStyle"
+                    android:text="@string/your_name"
+                    android:singleLine="true"
+                    android:layout_margin="@dimen/px10"
+                    android:drawableRight="@drawable/ic_right"
+                    android:background="@drawable/shape_border"/>
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/lay_yourIDcardship"
+                android:background="@drawable/btn_sel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView android:id="@+id/tv_yourIDcardship"
+                    style="@style/TextViewStyle"
+                    android:text="@string/id_number"
+                    android:layout_margin="@dimen/px10"
+                    android:singleLine="true"
+                    android:drawableRight="@drawable/ic_right"
+                    android:background="@drawable/shape_border"/>
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/px10"
+            android:orientation="vertical">
+
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/lay_portraitship"
+                android:background="@drawable/btn_sel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView android:id="@+id/tv_portraitship"
+                    style="@style/TextViewStyle"
+                    android:text="@string/head_portrait"
+                    android:layout_margin="@dimen/px10"
+                    android:drawableRight="@drawable/ic_right"
+                    android:background="@drawable/shape_border"/>
+                <ImageView android:id="@+id/img_portraitship"
+                    android:layout_width="@dimen/px50"
+                    android:layout_height="@dimen/px50"
+                    android:src="@drawable/ic_camera"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/px85"/>
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/lay_idship_certification"
+                android:background="@drawable/btn_sel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView android:id="@+id/tv_idship_certification"
+                    style="@style/TextViewStyle"
+                    android:text="@string/identity_certification"
+                    android:layout_margin="@dimen/px10"
+                    android:drawableRight="@drawable/ic_right"
+                    android:background="@drawable/shape_border"/>
+
+                <ImageView android:id="@+id/idCardship1"
+                    android:layout_width="@dimen/px50"
+                    android:layout_height="@dimen/px50"
+                    android:src="@drawable/ic_camera"
+                    android:layout_toLeftOf="@+id/idCardship2"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/px10"/>
+
+
+                <ImageView android:id="@+id/idCardship2"
+                    android:layout_width="@dimen/px50"
+                    android:layout_height="@dimen/px50"
+                    android:src="@drawable/ic_camera"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/px85"/>
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <TextView android:id="@+id/tv_company_name"
+        style="@style/TextViewStyle"
+        android:text="@string/company_name"
+        android:singleLine="true"
+        android:layout_marginLeft="@dimen/px20"
+        android:layout_marginRight="@dimen/px20"
+        android:drawableRight="@drawable/ic_right"
+        android:background="@drawable/shape_border" />
+
+    <TextView android:id="@+id/tv_company_address"
+        style="@style/TextViewStyle"
+        android:text="@string/company_address"
+        android:singleLine="true"
+        android:layout_marginTop="@dimen/px20"
+        android:layout_marginLeft="@dimen/px20"
+        android:layout_marginRight="@dimen/px20"
+        android:drawableRight="@drawable/ic_right"
+        android:background="@drawable/shape_border" />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/write"
+            android:layout_margin="@dimen/px10"
+            android:orientation="vertical">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/lay_yourposition"
+                android:background="@drawable/btn_sel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <TextView android:id="@+id/tv_yourposition"
+                    style="@style/TextViewStyle"
+                    android:text="@string/your_position"
+                    android:singleLine="true"
+                    android:layout_margin="@dimen/px10"
+                    android:drawableRight="@drawable/ic_right"
+                    android:background="@drawable/shape_border"/>
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/lay_business_card"
+                android:background="@drawable/btn_sel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView android:id="@+id/tv_business_card"
+                    style="@style/TextViewStyle"
+                    android:text="@string/business_card"
+                    android:layout_margin="@dimen/px10"
+                    android:drawableRight="@drawable/ic_right"
+                    android:background="@drawable/shape_border"/>
+                <ImageView android:id="@+id/img_business_card"
+                    android:layout_width="@dimen/px50"
+                    android:layout_height="@dimen/px50"
+                    android:src="@drawable/ic_camera"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/px85"/>
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/px10"
+            android:orientation="vertical">
+
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/lay_door_head"
+                android:background="@drawable/btn_sel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView android:id="@+id/tv_door_head"
+                    style="@style/TextViewStyle"
+                    android:text="@string/door_head"
+                    android:layout_margin="@dimen/px10"
+                    android:drawableRight="@drawable/ic_right"
+                    android:background="@drawable/shape_border"/>
+
+                <ImageView android:id="@+id/img_door_head"
+                    android:layout_width="@dimen/px50"
+                    android:layout_height="@dimen/px50"
+                    android:src="@drawable/ic_camera"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/px85"/>
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/lay_business_license"
+                android:background="@drawable/btn_sel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView android:id="@+id/tv_business_license"
+                    style="@style/TextViewStyle"
+                    android:text="@string/business_license"
+                    android:layout_margin="@dimen/px10"
+                    android:drawableRight="@drawable/ic_right"
+                    android:background="@drawable/shape_border"/>
+
+                <ImageView android:id="@+id/img_business_license"
+                    android:layout_width="@dimen/px50"
+                    android:layout_height="@dimen/px50"
+                    android:src="@drawable/ic_camera"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/px85"/>
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+
+    <TextView android:id="@+id/tv_contactship_customer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="@string/contact_customer_service"
+        android:textSize="@dimen/px40"
+        android:gravity="center"
+        android:textColor="@color/green"
+        android:padding="@dimen/px20"/>
+
+
+    <Button android:id="@+id/btn_shipsubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_green_sel"
+        android:layout_margin="@dimen/px20"
+        android:text="@string/submit"/>
+
+
+</com.zhy.autolayout.AutoLinearLayout>

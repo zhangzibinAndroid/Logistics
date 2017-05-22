@@ -37,9 +37,6 @@
                 android:textSize="@dimen/px40"/>
 
         </com.zhy.autolayout.AutoLinearLayout>
-
-
-
     </android.support.v7.widget.Toolbar>
 
     <ScrollView

@@ -67,6 +67,8 @@
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.HelpCenterActivity" />
+        <activity android:name=".activity.DriverCertificationActivity" />
+        <activity android:name=".activity.ShipperCertificationActivity" />
     </application>
 
 </manifest>

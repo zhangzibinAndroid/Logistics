@@ -12,7 +12,7 @@ import java.util.List;
  * @author 张梓彬
  * Data : 2017/5/17 0017
  * Time : 下午 2:52
- * Describe : Xutils初始化，autolayout初始化
+ * Describe : Xutils初始化，autolayout初始化,统一关闭多个activity
  */
 
 public class LogisticsApplication extends Application{
