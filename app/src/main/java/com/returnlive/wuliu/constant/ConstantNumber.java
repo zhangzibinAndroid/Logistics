@@ -26,4 +26,5 @@ public class ConstantNumber {
     public static final int NUMBER_THIRTEEN = 13;
     public static final int NUMBER_FOURTEEN = 14;
     public static final int NUMBER_FIFTEEN = 15;
+    public static final int NUMBER_SIXTEEN = 16;
 }

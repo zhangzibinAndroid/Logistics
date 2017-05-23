@@ -1,5 +1,6 @@
 package com.returnlive.wuliu.activity;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -14,13 +15,22 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.returnlive.wuliu.R;
 import com.returnlive.wuliu.constant.ConstantNumber;
+import com.returnlive.wuliu.constant.NetworkUrl;
 import com.returnlive.wuliu.utils.ImageUtils;
+import com.returnlive.wuliu.utils.MyCallBack;
+import com.returnlive.wuliu.utils.XUtil;
+
+import org.xutils.common.Callback;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 作者： 张梓彬
@@ -57,9 +67,12 @@ public class ShipperCertificationActivity extends AppCompatActivity {
     private static final int CROP_SMALL_PICTURE = ConstantNumber.NUMBER_TWO;
     protected static Uri tempUri;
     private static final String TAG = "ShipperCertificationAct";
-    private String imagePath;
-    private boolean isSetHead,isSetBusinessCard,isSetDoorPhone,isSetBusinessLicense = false;
+    public static String imagePath = "",imgPath = "",businessPath = "",doorPath = "",licensePath = "",cardPath1 = "",cardPath2 = "";
+    private boolean isSetHead,isSetBusinessCard,isSetDoorPhone,isSetBusinessLicense,isSetIdCard = false;
     public static Bitmap head_portrait_bitmap,businessCardBitmap,doorPhoneBitmap,businessLicenseBitmap;
+    public static Bitmap idCard_positive_bitmap,idCard_reverse_bitmap;
+    private ProgressDialog pro;
+    private String name,idCard,company_name,company_address,position;
 
 
     @Override
@@ -103,6 +116,18 @@ public class ShipperCertificationActivity extends AppCompatActivity {
 
                 break;
             case R.id.lay_idship_certification:
+                if (!isSetIdCard){
+                    pageJumpWithData(IdCardActivity.class,ConstantNumber.NUMBER_SIXTEEN);
+                }else {
+                    ConstantNumber.ACTION_PAGE = ConstantNumber.NUMBER_TWO;
+                    IdCardActivity.ID_CARD_POSITIVE = 1;
+                    IdCardActivity.ID_CARD_REVERSE = 1;
+                    idCard_positive_bitmap = ((BitmapDrawable)idCardship1.getDrawable()).getBitmap();
+                    idCard_reverse_bitmap = ((BitmapDrawable)idCardship2.getDrawable()).getBitmap();
+                    pageJumpWithData(IdCardActivity.class,ConstantNumber.NUMBER_SIXTEEN);
+
+                }
+
                 break;
             case R.id.tv_company_name:
                 ConstantNumber.ACTION_PAGE = ConstantNumber.NUMBER_THIRTEEN;
@@ -151,8 +176,126 @@ public class ShipperCertificationActivity extends AppCompatActivity {
             case R.id.tv_contactship_customer:
                 break;
             case R.id.btn_shipsubmit:
+                name = tv_yournameship.getText().toString().trim();
+                idCard = tv_yourIDcardship.getText().toString().trim();
+                company_name = tv_company_name.getText().toString().trim();
+                company_address = tv_company_address.getText().toString().trim();
+                position = tv_yourposition.getText().toString().trim();
+
+                if (name.equals("姓名")){
+                    runOnuiToast("姓名不能为空");
+                    return;
+                }else if (idCard.equals("身份证号")){
+                    runOnuiToast("身份证号不能为空");
+                    return;
+                }else if (company_name.equals("公司名称")){
+                    runOnuiToast("公司名称不能为空");
+                    return;
+                }else if (company_address.equals("公司地址")){
+                    runOnuiToast("公司名称不能为空");
+                    return;
+                }else if (position.equals("职位")){
+                    runOnuiToast("职位不能为空");
+                    return;
+                }else if (imgPath.equals("")||imgPath==null){
+                    runOnuiToast("头像未设置");
+                    return;
+                }else if (businessPath.equals("")||businessPath==null){
+                    runOnuiToast("名片未设置");
+                    return;
+                }else if (doorPath.equals("")||doorPath==null){
+                    runOnuiToast("门头照未设置");
+                    return;
+                }else if (licensePath.equals("")||licensePath==null){
+                    runOnuiToast("营业执照未设置");
+                    return;
+                }else if (cardPath1.equals("")||cardPath1==null){
+                    runOnuiToast("身份证正面照未设置");
+                    return;
+                }else if (cardPath2.equals("")||cardPath2==null){
+                    runOnuiToast("身份证反面照未设置");
+                    return;
+                }else {
+                    pro = new ProgressDialog(this);
+                    pro.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    pro.setMessage("信息上传中...");
+                    pro.setCanceledOnTouchOutside(false);
+                    pro.setCancelable(false);
+                    pro.show();
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            uploadfile();
+                        }
+                    }).start();
+                }
                 break;
         }
+    }
+
+    private void uploadfile() {
+        File fileHead = new File(imgPath);//头像
+        File fileBusiness = new File(businessPath);//名片
+        File fileDoor = new File(doorPath);//门头照
+        File fileLicense = new File(licensePath);//营业执照
+        File fileIDCard1 = new File(cardPath1);//身份证正面照
+        File fileIDCard2 = new File(cardPath2);//身份证反面照
+        Map<String,Object> map=new HashMap<>();        //传入自己的相应参数
+        map.put("name", name);
+        map.put("img", fileHead);
+        map.put("card_id", idCard);
+        map.put("card_img[]", fileIDCard1);
+        map.put("card_img[]", fileIDCard2);
+        map.put("company_name", company_name);
+        map.put("company_add",company_address);
+        map.put("job", position);
+        map.put("door", fileDoor);
+        map.put("business", fileBusiness);
+        map.put("license", fileLicense);
+        XUtil.UpLoadFile(NetworkUrl.SHIPPER_CERTIFICATION_URL, map, new MyCallBack<File>(){
+            @Override
+            public void onSuccess(File result) {
+                super.onSuccess(result);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        pro.dismiss();
+                        Toast.makeText(ShipperCertificationActivity.this, getResources().getString(R.string.up_load_success), Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                });
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                super.onError(ex, isOnCallback);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        pro.dismiss();
+                        Toast.makeText(ShipperCertificationActivity.this, getResources().getString(R.string.networ_anomalies), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+        });
+
+    }
+
+
+    private void runOnuiToast(final String text){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(ShipperCertificationActivity.this, text, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
@@ -222,18 +365,23 @@ public class ShipperCertificationActivity extends AppCompatActivity {
                             case ConstantNumber.NUMBER_THREE:
                                 isSetHead = true;
                                 setImageToView(data,img_portraitship,"head_portrait_pic"); // 让刚才选择裁剪得到的图片显示在界面上
+                                imgPath = imagePath;
                                 break;
                             case ConstantNumber.NUMBER_FOUR:
                                 isSetBusinessCard = true;
                                 setImageToView(data,img_business_card,"business_card_pic");
+                                businessPath = imagePath;
                                 break;
                             case ConstantNumber.NUMBER_FIVE:
                                 isSetDoorPhone = true;
                                 setImageToView(data,img_door_head,"door_picture_pic");
+                                doorPath = imagePath;
+
                                 break;
                             case ConstantNumber.NUMBER_SIX:
                                 isSetBusinessLicense = true;
                                 setImageToView(data,img_business_license,"business_license_pic");
+                                licensePath = imagePath;
                                 break;
                         }
                     }
@@ -261,10 +409,12 @@ public class ShipperCertificationActivity extends AppCompatActivity {
             img_business_card.setImageBitmap(PhoneActivity.businessCardBitmap);
         }else if (requestCode == ConstantNumber.NUMBER_NINE && resultCode == ConstantNumber.NUMBER_NINE){
             img_door_head.setImageBitmap(PhoneActivity.doorPhoneBitmap);
-
         }else if (requestCode == ConstantNumber.NUMBER_TEN && resultCode == ConstantNumber.NUMBER_TEN){
             img_business_license.setImageBitmap(PhoneActivity.businessLicenseBitmap);
-
+        }else if (requestCode == ConstantNumber.NUMBER_SIXTEEN && resultCode == ConstantNumber.NUMBER_SIXTEEN){
+            idCardship1.setImageBitmap(IdCardActivity.idCard_positive_bitmap);
+            idCardship2.setImageBitmap(IdCardActivity.idCard_reverse_bitmap);
+            isSetIdCard = true;
         }
 
 
@@ -325,7 +475,6 @@ public class ShipperCertificationActivity extends AppCompatActivity {
     private void uploadPic(Bitmap bitmap,String fileName) {
         imagePath = ImageUtils.savePhoto(bitmap, Environment
                 .getExternalStorageDirectory()+"/wuliu", fileName);
-        Log.e(TAG, "imagePath: "+imagePath);
     }
 
 

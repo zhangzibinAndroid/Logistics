@@ -53,7 +53,7 @@ public class XUtil {
             }
         }
         params.setMultipart(true);
-        Callback.Cancelable cancelable = x.http().get(params, callback);
+        Callback.Cancelable cancelable = x.http().post(params, callback);
         return cancelable;
     }
 

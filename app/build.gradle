@@ -28,7 +28,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.zhy:autolayout:1.4.5'
-    compile 'org.xutils:xutils:3.3.40'
+    compile 'org.xutils:xutils:3.5.0'
     compile 'com.facebook.fresco:fresco:0.12.0'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.4'

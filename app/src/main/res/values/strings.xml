@@ -125,6 +125,7 @@
     <string name="company_name_not_empty">公司名称不能为空</string>
     <string name="company_address_not_empty">公司地址不能为空</string>
     <string name="position_not_empty">职位不能为空</string>
+    <string name="up_load_success">资料上传成功</string>
 
 
 </resources>

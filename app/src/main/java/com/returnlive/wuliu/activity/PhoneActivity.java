@@ -10,7 +10,6 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -101,22 +100,21 @@ public class PhoneActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.tv_save:
-                Log.e(TAG, "ConstantNumber.CAMERA_TYPE:== "+ConstantNumber.CAMERA_TYPE );
                 if (ConstantNumber.CAMERA_TYPE==ConstantNumber.NUMBER_THREE){
                     head_portrait_bitmap = ((BitmapDrawable)img_head_portrait.getDrawable()).getBitmap();
-                    Intent intent = new Intent();
-                    setResult(ConstantNumber.NUMBER_SEVEN, intent);
-                    finish();
+                    finishActivityWithData(ConstantNumber.NUMBER_SEVEN);
 
                 }else if (ConstantNumber.CAMERA_TYPE==ConstantNumber.NUMBER_FOUR){
-//                    finishBitmap(businessCardBitmap,img_business_card,ConstantNumber.NUMBER_EIGHT);
+                    businessCardBitmap = ((BitmapDrawable)img_business_card.getDrawable()).getBitmap();
+                    finishActivityWithData(ConstantNumber.NUMBER_EIGHT);
 
                 }else if (ConstantNumber.CAMERA_TYPE==ConstantNumber.NUMBER_FIVE){
-//                    finishBitmap(doorPhoneBitmap,img_door_picture,ConstantNumber.NUMBER_NINE);
+                    doorPhoneBitmap = ((BitmapDrawable)img_door_picture.getDrawable()).getBitmap();
+                    finishActivityWithData(ConstantNumber.NUMBER_NINE);
 
                 }else if (ConstantNumber.CAMERA_TYPE==ConstantNumber.NUMBER_SIX){
-//                    finishBitmap(businessLicenseBitmap,img_business_license,ConstantNumber.NUMBER_TEN);
-
+                    businessLicenseBitmap = ((BitmapDrawable)img_business_license.getDrawable()).getBitmap();
+                    finishActivityWithData(ConstantNumber.NUMBER_TEN);
                 }
                 break;
             case R.id.img_head_portrait:
@@ -134,9 +132,14 @@ public class PhoneActivity extends AppCompatActivity {
         }
     }
 
-    private void finishBitmap(ImageView imageView,int resultCode){
 
+    private void finishActivityWithData(int resultCode){
+        Intent intent = new Intent();
+        setResult(resultCode, intent);
+        finish();
     }
+
+
 
     protected void showChoosePicDialog(String title) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
