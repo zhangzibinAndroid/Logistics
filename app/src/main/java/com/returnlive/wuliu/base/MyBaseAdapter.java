@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author 张梓彬
@@ -13,9 +14,9 @@ import java.util.ArrayList;
  * Describe : 基础适配器封装类
  */
 public abstract class MyBaseAdapter<E> extends BaseAdapter{
-	private Context context;
-	private LayoutInflater inflater;
-	private ArrayList<E> list = new ArrayList<E>();
+	protected Context context;
+	protected LayoutInflater inflater;
+	protected ArrayList<E> list = new ArrayList<E>();
 
 	public MyBaseAdapter(Context context) {
 		super();
@@ -28,6 +29,11 @@ public abstract class MyBaseAdapter<E> extends BaseAdapter{
 	 * */
 	public void addDATA(E e){
 		list.add(e);
+	}
+
+	public void addAllDataToMyadapter(List<E> e){
+		list.clear();
+		list.addAll(e);//增加一个列表
 	}
 
 	/**

@@ -37,6 +37,5 @@ dependencies {
     //对话框的展示（实现底部可向上拉到动画）
     compile 'com.orhanobut:dialogplus:1.11@aar'
     compile 'com.contrarywind:Android-PickerView:3.2.1'
-
-
+    compile project(':pullToRefreshLibrary')
 }
