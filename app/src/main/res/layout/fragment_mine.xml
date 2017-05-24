@@ -13,7 +13,7 @@
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
 
             <com.zhy.autolayout.AutoRelativeLayout
@@ -22,48 +22,49 @@
                 android:background="@color/colorme_bg">
 
 
-                <TextView android:id="@+id/tv_version_up"
+                <TextView
+                    android:id="@+id/tv_version_up"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_version_owner"
-                    android:textColor="@color/write"
+                    android:layout_marginLeft="@dimen/px60"
                     android:layout_marginTop="@dimen/px30"
-                    android:layout_marginLeft="@dimen/px60"/>
+                    android:text="@string/tv_version_owner"
+                    android:textColor="@color/write" />
 
 
                 <com.zhy.autolayout.AutoRelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/px20"
                     android:layout_below="@+id/tv_version_up"
+                    android:layout_marginTop="@dimen/px20"
                     android:gravity="center">
 
                     <com.zhy.autolayout.AutoLinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_centerVertical="true"
-                        >
+                        android:orientation="horizontal">
                         <!--引用自定义RoundImageView类包名  实现圆形图框-->
                         <com.returnlive.wuliu.view.RoundImageView
                             android:id="@+id/img_driver"
                             android:layout_width="@dimen/px170"
                             android:layout_height="@dimen/px170"
-                            android:src="@mipmap/driver"/>
+                            android:src="@mipmap/driver" />
 
 
-                        <ImageView android:id="@+id/img_switch"
+                        <ImageView
+                            android:id="@+id/img_switch"
                             android:layout_width="@dimen/px170"
                             android:layout_height="@dimen/px170"
                             android:layout_marginLeft="@dimen/px45"
                             android:layout_marginRight="@dimen/px45"
-                            android:src="@mipmap/img_switch"/>
+                            android:src="@mipmap/img_switch" />
                         <!--引用自定义RoundImageView类包名  实现圆形图框-->
                         <com.returnlive.wuliu.view.RoundImageView
                             android:id="@+id/img_shipper"
                             android:layout_width="@dimen/px170"
                             android:layout_height="@dimen/px170"
-                            android:src="@mipmap/shipper"/>
+                            android:src="@mipmap/shipper" />
 
                     </com.zhy.autolayout.AutoLinearLayout>
 
@@ -74,36 +75,38 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true">
 
-                    <TextView android:id="@+id/tv_driver"
+                    <TextView
+                        android:id="@+id/tv_driver"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_driver"
-                        android:textSize="@dimen/px30"
                         android:layout_marginBottom="@dimen/px45"
                         android:layout_marginLeft="@dimen/px120"
-                        android:textColor="@color/orrange"/>
+                        android:text="@string/tv_driver"
+                        android:textColor="@color/orrange"
+                        android:textSize="@dimen/px30" />
 
                     <TextView
                         android:id="@+id/tv_me_change"
                         android:layout_width="150px"
                         android:layout_height="50px"
-                        android:text="@string/tv_switch"
-                        android:padding="3px"
-                        android:textSize="30px"
-                        android:gravity="center"
-                        android:background="@drawable/sel_me_checke_color"
                         android:layout_centerHorizontal="true"
-                        android:textColor="@color/write"/>
+                        android:background="@drawable/sel_me_checke_color"
+                        android:gravity="center"
+                        android:padding="3px"
+                        android:text="@string/tv_switch"
+                        android:textColor="@color/write"
+                        android:textSize="30px" />
 
-                    <TextView android:id="@+id/tv_shipper"
+                    <TextView
+                        android:id="@+id/tv_shipper"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_shipper"
-                        android:textSize="@dimen/px30"
-
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="@dimen/px120"
-                        android:textColor="@color/gray"/>
+
+                        android:text="@string/tv_shipper"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/px30" />
 
                 </com.zhy.autolayout.AutoRelativeLayout>
 
@@ -113,7 +116,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/px15"
-                android:background="#E9EDEE"/>
+                android:background="#E9EDEE" />
 
             <com.zhy.autolayout.AutoRelativeLayout
                 android:id="@+id/lay_carmasyer"
@@ -126,66 +129,69 @@
                     android:layout_height="@dimen/px120"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/px50"
-                    android:src="@mipmap/default_personal_image"/>
+                    android:src="@mipmap/default_personal_image" />
 
-                <TextView android:id="@+id/tv_kind"
+                <TextView
+                    android:id="@+id/tv_kind"
                     android:layout_width="@dimen/px80"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_ownner"
-                    android:gravity="center"
-                    android:background="@color/yellow"
-                    android:layout_alignTop="@+id/tv_drivername"
-                    android:layout_toRightOf="@+id/tv_drivername"
                     android:layout_alignBaseline="@+id/tv_drivername"
+                    android:layout_alignTop="@+id/tv_drivername"
                     android:layout_marginLeft="@dimen/px20"
-                    android:textColor="@color/red"/>
+                    android:layout_toRightOf="@+id/tv_drivername"
+                    android:background="@color/yellow"
+                    android:gravity="center"
+                    android:text="@string/tv_ownner"
+                    android:textColor="@color/red" />
 
-                <TextView android:id="@+id/tv_level"
+                <TextView
+                    android:id="@+id/tv_level"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_level"
+                    android:layout_alignBaseline="@+id/tv_drivername"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/px100"
+                    android:drawableLeft="@drawable/ic_me_pentagram"
                     android:gravity="center"
-                    android:layout_alignBaseline="@+id/tv_drivername"
-                    android:drawableLeft="@drawable/ic_me_pentagram"/>
+                    android:text="@string/tv_level" />
 
 
-
-                <TextView android:id="@+id/tv_drivername"
+                <TextView
+                    android:id="@+id/tv_drivername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_name"
-                    android:textSize="@dimen/px35"
-                    android:layout_marginLeft="@dimen/px20"
-                    android:textColor="@color/black"
                     android:layout_alignTop="@+id/img_personal"
-                    android:layout_toRightOf="@+id/img_personal"/>
+                    android:layout_marginLeft="@dimen/px20"
+                    android:layout_toRightOf="@+id/img_personal"
+                    android:text="@string/tv_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/px35" />
 
-                <TextView android:id="@+id/tv_getorder"
+                <TextView
+                    android:id="@+id/tv_getorder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_getorder"
+                    android:layout_alignBottom="@+id/img_personal"
                     android:layout_alignLeft="@+id/tv_drivername"
-                    android:layout_alignBottom="@+id/img_personal" />
+                    android:text="@string/tv_getorder" />
 
-                <TextView android:id="@+id/tv_sendcar"
+                <TextView
+                    android:id="@+id/tv_sendcar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_sendcar"
+                    android:layout_alignBottom="@+id/img_personal"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/px50"
-                    android:layout_alignBottom="@+id/img_personal" />
+                    android:text="@string/tv_sendcar" />
 
             </com.zhy.autolayout.AutoRelativeLayout>
 
 
-
             <com.zhy.autolayout.AutoRelativeLayout
                 android:id="@+id/lay_shipper"
-                android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/px160">
+                android:layout_height="@dimen/px160"
+                android:visibility="gone">
                 <!--引用自定义RoundImageView类包名-->
                 <com.returnlive.wuliu.view.RoundImageView
                     android:id="@+id/img_personalshipper"
@@ -193,56 +199,60 @@
                     android:layout_height="@dimen/px120"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/px50"
-                    android:src="@mipmap/default_personal_image"/>
+                    android:src="@mipmap/default_personal_image" />
 
-                <TextView android:id="@+id/tv_shipperkind"
+                <TextView
+                    android:id="@+id/tv_shipperkind"
                     android:layout_width="@dimen/px80"
                     android:layout_height="wrap_content"
-                    android:text="@string/shipper"
-                    android:gravity="center"
-                    android:background="@color/yellow"
-                    android:layout_alignTop="@+id/tv_shippername"
-                    android:layout_toRightOf="@+id/tv_shippername"
                     android:layout_alignBaseline="@+id/tv_shippername"
+                    android:layout_alignTop="@+id/tv_shippername"
                     android:layout_marginLeft="@dimen/px20"
-                    android:textColor="@color/red"/>
+                    android:layout_toRightOf="@+id/tv_shippername"
+                    android:background="@color/yellow"
+                    android:gravity="center"
+                    android:text="@string/shipper"
+                    android:textColor="@color/red" />
 
-                <TextView android:id="@+id/tv_levelshipper"
+                <TextView
+                    android:id="@+id/tv_levelshipper"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_level"
+                    android:layout_alignBaseline="@+id/tv_shippername"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/px100"
+                    android:drawableLeft="@drawable/ic_me_pentagram"
                     android:gravity="center"
-                    android:layout_alignBaseline="@+id/tv_shippername"
-                    android:drawableLeft="@drawable/ic_me_pentagram"/>
+                    android:text="@string/tv_level" />
 
 
-
-                <TextView android:id="@+id/tv_shippername"
+                <TextView
+                    android:id="@+id/tv_shippername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_name"
-                    android:textSize="@dimen/px35"
-                    android:layout_marginLeft="@dimen/px20"
-                    android:textColor="@color/black"
                     android:layout_alignTop="@+id/img_personalshipper"
-                    android:layout_toRightOf="@+id/img_personalshipper" />
+                    android:layout_marginLeft="@dimen/px20"
+                    android:layout_toRightOf="@+id/img_personalshipper"
+                    android:text="@string/tv_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/px35" />
 
-                <TextView android:id="@+id/tv_getordershipper"
+                <TextView
+                    android:id="@+id/tv_getordershipper"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_getorder"
+                    android:layout_alignBottom="@+id/img_personalshipper"
                     android:layout_alignLeft="@+id/tv_shippername"
-                    android:layout_alignBottom="@+id/img_personalshipper" />
+                    android:text="@string/tv_getorder" />
 
-                <TextView android:id="@+id/tv_sendcarshipper"
+                <TextView
+                    android:id="@+id/tv_sendcarshipper"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_sendcar"
+                    android:layout_alignBottom="@+id/img_personalshipper"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="@dimen/px50"
-                    android:layout_alignBottom="@+id/img_personalshipper" />
+                    android:text="@string/tv_sendcar" />
 
             </com.zhy.autolayout.AutoRelativeLayout>
 
@@ -250,7 +260,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/px15"
-                android:background="#E9EDEE"/>
+                android:background="#E9EDEE" />
 
             <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
@@ -259,139 +269,149 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/myorder"
-                    android:gravity="center"
-                    android:textSize="@dimen/px30"
-                    android:padding="@dimen/px15"
                     android:layout_marginLeft="@dimen/px50"
-                    android:drawableLeft="@drawable/ic_me_order" />
+                    android:drawableLeft="@drawable/ic_me_order"
+                    android:gravity="center"
+                    android:padding="@dimen/px15"
+                    android:text="@string/myorder"
+                    android:textSize="@dimen/px30" />
 
             </com.zhy.autolayout.AutoRelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/px02"
-                android:background="#E9EDEE"/>
+                android:background="#E9EDEE" />
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/px15"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="@dimen/px15">
 
-                <TextView android:id="@+id/tv_clinchdeal"
+                <TextView
+                    android:id="@+id/tv_clinchdeal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:drawableTop="@drawable/ic_me_clinchdeal"
                     android:gravity="center"
-                    android:text="@string/tv_clinchdeal"/>
+                    android:text="@string/tv_clinchdeal" />
 
-                <TextView android:id="@+id/tv_alclinchdeal"
+                <TextView
+                    android:id="@+id/tv_alclinchdeal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:drawableTop="@drawable/ic_me_alclinchdeal"
                     android:gravity="center"
-                    android:text="@string/tv_alclinchdeal"/>
+                    android:text="@string/tv_alclinchdeal" />
 
-                <TextView android:id="@+id/tv_receivegoods"
+                <TextView
+                    android:id="@+id/tv_receivegoods"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:drawableTop="@drawable/ic_me_receivegoods"
                     android:gravity="center"
-                    android:text="@string/tv_receivegoods"/>
+                    android:text="@string/tv_receivegoods" />
 
-                <TextView android:id="@+id/tv_alreadyfinish"
+                <TextView
+                    android:id="@+id/tv_alreadyfinish"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:drawableTop="@drawable/ic_me_alreadyfinish"
                     android:gravity="center"
-                    android:text="@string/tv_alreadyfinish"/>
+                    android:text="@string/tv_alreadyfinish" />
 
             </com.zhy.autolayout.AutoLinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/px15"
-                android:background="#E9EDEE"/>
+                android:background="#E9EDEE" />
 
             <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/mymoney"
-                    android:gravity="center"
-                    android:textSize="@dimen/px30"
-                    android:padding="@dimen/px15"
                     android:layout_marginLeft="@dimen/px50"
-                    android:drawableLeft="@drawable/ic_me_wallet"/>
+                    android:drawableLeft="@drawable/ic_me_wallet"
+                    android:gravity="center"
+                    android:padding="@dimen/px15"
+                    android:text="@string/mymoney"
+                    android:textSize="@dimen/px30" />
             </com.zhy.autolayout.AutoRelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/px02"
-                android:background="#E9EDEE"/>
+                android:background="#E9EDEE" />
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/px15"
                 android:background="@color/write"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/px15">
 
                 <com.zhy.autolayout.AutoRelativeLayout
+                    android:id="@+id/lay_balance"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/lay_balance"
-                    android:background="@drawable/btn_sel"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_sel">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_balance"
                         android:layout_centerHorizontal="true"
-                        android:textSize="@dimen/px30"/>
-                    <TextView android:id="@+id/tv_balance"
+                        android:text="@string/tv_balance"
+                        android:textSize="@dimen/px30" />
+
+                    <TextView
+                        android:id="@+id/tv_balance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0"
+                        android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
+                        android:text="0"
                         android:textColor="@color/red"
-                        android:textSize="@dimen/px30"
-                        android:layout_alignParentBottom="true"/>
+                        android:textSize="@dimen/px30" />
 
                 </com.zhy.autolayout.AutoRelativeLayout>
 
                 <View
                     android:layout_width="@dimen/px02"
                     android:layout_height="match_parent"
-                    android:layout_weight="0"
                     android:layout_marginBottom="@dimen/px15"
-                    android:background="#E9EDEE"/>
+                    android:layout_weight="0"
+                    android:background="#E9EDEE" />
 
                 <com.zhy.autolayout.AutoRelativeLayout
+                    android:id="@+id/lay_topup"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/px90"
-                    android:id="@+id/lay_topup"
-                    android:background="@drawable/btn_sel"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_sel">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_topup"
                         android:layout_centerHorizontal="true"
-                        android:textSize="@dimen/px30"/>
+                        android:text="@string/tv_topup"
+                        android:textSize="@dimen/px30" />
+
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
-                        android:src="@drawable/ic_me_tixian"
-                        android:layout_alignParentBottom="true"/>
+                        android:src="@drawable/ic_me_tixian" />
 
                 </com.zhy.autolayout.AutoRelativeLayout>
 
@@ -400,12 +420,13 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/px15"
-                android:background="#E9EDEE"/>
+                android:background="#E9EDEE" />
 
             <com.zhy.autolayout.AutoRelativeLayout
                 android:id="@+id/lay_mycertification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:background="@drawable/btn_sel">
 
                 <TextView
@@ -416,7 +437,7 @@
                     android:drawableLeft="@drawable/ic_me_certification"
                     android:gravity="center"
                     android:padding="@dimen/px25"
-                    android:text="@string/mycertification"
+                    android:text="@string/shipper_certification"
                     android:textSize="30px" />
 
                 <TextView
@@ -430,26 +451,57 @@
 
             </com.zhy.autolayout.AutoRelativeLayout>
 
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/lay_my_driver_certification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:background="@drawable/btn_sel">
+
+                <TextView
+                    android:id="@+id/my_driver_certification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/px50"
+                    android:drawableLeft="@drawable/ic_me_certification"
+                    android:gravity="center"
+                    android:padding="@dimen/px25"
+                    android:text="@string/driver_certification"
+                    android:textSize="30px" />
+
+                <TextView
+                    android:id="@+id/tv_driver_certification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/my_driver_certification"
+                    android:layout_toRightOf="@+id/my_driver_certification"
+                    android:text="@string/tv_certification"
+                    android:textColor="@color/red" />
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/px15"
-                android:background="#E9EDEE"/>
+                android:background="#E9EDEE" />
 
             <com.zhy.autolayout.AutoRelativeLayout
                 android:id="@+id/lay_set"
                 android:layout_width="match_parent"
-                android:background="@drawable/btn_sel"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_sel">
 
-                <TextView android:id="@+id/tv_setting"
+                <TextView
+                    android:id="@+id/tv_setting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tv_set"
-                    android:gravity="center"
-                    android:textSize="@dimen/px30"
-                    android:padding="@dimen/px25"
                     android:layout_marginLeft="@dimen/px50"
-                    android:drawableLeft="@drawable/ic_me_setting" />
+                    android:drawableLeft="@drawable/ic_me_setting"
+                    android:gravity="center"
+                    android:padding="@dimen/px25"
+                    android:text="@string/tv_set"
+                    android:textSize="@dimen/px30" />
 
             </com.zhy.autolayout.AutoRelativeLayout>
 

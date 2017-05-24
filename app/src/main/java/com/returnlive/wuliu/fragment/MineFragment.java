@@ -4,6 +4,8 @@ package com.returnlive.wuliu.fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -13,16 +15,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.OnClickListener;
 import com.orhanobut.dialogplus.ViewHolder;
 import com.returnlive.wuliu.R;
 import com.returnlive.wuliu.activity.DriverCertificationActivity;
+import com.returnlive.wuliu.activity.LoginActivity;
 import com.returnlive.wuliu.activity.OwnerMainActivity;
 import com.returnlive.wuliu.activity.SettingActivity;
 import com.returnlive.wuliu.activity.ShipperCertificationActivity;
+import com.returnlive.wuliu.constant.ConstantNumber;
+import com.returnlive.wuliu.constant.NetworkUrl;
+import com.returnlive.wuliu.entity.UserMessageEntity;
+import com.returnlive.wuliu.gson.GsonParsing;
+import com.returnlive.wuliu.utils.MyCallBack;
 import com.returnlive.wuliu.utils.SharedPreferencesUtils;
+import com.returnlive.wuliu.utils.XUtil;
 import com.returnlive.wuliu.view.RoundImageView;
 import com.zhy.autolayout.AutoLinearLayout;
 import com.zhy.autolayout.AutoRelativeLayout;
@@ -30,6 +40,10 @@ import com.zhy.autolayout.AutoRelativeLayout;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
+
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author 张梓彬
@@ -98,8 +112,12 @@ public class MineFragment extends Fragment {
     TextView mycertification;
     @ViewInject(R.id.tv_certification)
     TextView tv_certification;
+    @ViewInject(R.id.tv_driver_certification)
+    TextView tv_driver_certification;
     @ViewInject(R.id.lay_mycertification)
     AutoRelativeLayout lay_mycertification;
+    @ViewInject(R.id.lay_my_driver_certification)
+    AutoRelativeLayout lay_my_driver_certification;
     @ViewInject(R.id.tv_setting)
     TextView tv_setting;
     @ViewInject(R.id.lay_set)
@@ -110,11 +128,32 @@ public class MineFragment extends Fragment {
     private OwnerMainActivity ownerMainActivity;
     private ProgressDialog pro;
     public static boolean isChecked = false;//默认司机版
+    private String CERTIFICATION_CODE = "1";
 
 
     public MineFragment() {
     }
 
+    protected Handler userMessageHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            String result = (String) msg.obj;
+            UserMessageEntity.UserBean userMessage =  GsonParsing.gsonUserMessage(result);
+            if (userMessage.getCar_auth().equals(CERTIFICATION_CODE)){
+                tv_driver_certification.setText("（已认证）");
+            } else{
+                tv_driver_certification.setText("（未认证）");
+
+            }
+
+            if (userMessage.getUser_auth().equals(CERTIFICATION_CODE)) {
+                tv_certification.setText("（已认证）");
+            }else {
+                tv_certification.setText("（未认证）");
+            }
+        }
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -126,7 +165,58 @@ public class MineFragment extends Fragment {
         sharedPreferencesUtils.sharedPreferenceRead();
         isChecked = sharedPreferencesUtils.loginState;
         initView();
+        addUserMessage();
         return view;
+    }
+
+    private void addUserMessage() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                getUserMessage();
+            }
+        }).start();
+
+    }
+
+    public static String timeStamp2Date(String seconds,String format) {
+        if(seconds == null || seconds.isEmpty() || seconds.equals("null")){
+            return "";
+        }
+        if(format == null || format.isEmpty()) format = "yyyy-MM-dd HH:mm:ss";
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        return sdf.format(new java.util.Date(Long.valueOf(seconds+"000")));
+    }
+
+    private void getUserMessage() {
+        NetworkUrl networkUrl = new NetworkUrl();
+        XUtil.Get(networkUrl.USER_MESSAGE_URL, null, new MyCallBack<String>() {
+
+            @Override
+            public void onSuccess(String result) {
+                super.onSuccess(result);
+                Message msg = new Message();
+                msg.obj = result;
+                userMessageHandler.sendMessage(msg);
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                super.onError(ex, isOnCallback);
+
+                runOnUiShowToast(getResources().getString(R.string.networ_anomalies));
+            }
+        });
+
+    }
+
+    private void runOnUiShowToast(final String text) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getActivity(), text, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void initView() {
@@ -143,6 +233,8 @@ public class MineFragment extends Fragment {
             ownerMainActivity.showLay(true);
             lay_carmasyer.setVisibility(View.VISIBLE);
             lay_shipper.setVisibility(View.GONE);
+            lay_mycertification.setVisibility(View.GONE);
+            lay_my_driver_certification.setVisibility(View.VISIBLE);
         }else {
             tv_version_up.setText(getResources().getString(R.string.tv_version_shipper));
             tv_driver.setTextColor(getResources().getColor(R.color.gray));
@@ -155,7 +247,12 @@ public class MineFragment extends Fragment {
             ownerMainActivity.showLay(false);
             lay_carmasyer.setVisibility(View.GONE);
             lay_shipper.setVisibility(View.VISIBLE);
+            lay_mycertification.setVisibility(View.VISIBLE);
+            lay_my_driver_certification.setVisibility(View.GONE);
         }
+
+
+
 
     }
 
@@ -170,6 +267,7 @@ public class MineFragment extends Fragment {
         tvContext.setText("您确定要切换为："+msgLater+"？");
         //弹窗
         DialogPlus dialogPlus=DialogPlus.newDialog(getActivity())
+                .setCancelable(false)
                 .setContentHolder(new ViewHolder(viewContex))
                 .setHeader(viewHeader)
                 .setFooter(R.layout.footer_version)//添加脚布局
@@ -183,6 +281,7 @@ public class MineFragment extends Fragment {
                                 dialog.dismiss();
                                 break;
                             case R.id.tv_footer_yes:
+                                addUserMessage();
                                 dialog.dismiss();
                                 showProgressDialog();
                                 isChecked = isCheck;
@@ -218,7 +317,7 @@ public class MineFragment extends Fragment {
         }).start();
     }
 
-    @Event(value = {R.id.img_driver, R.id.img_shipper, R.id.lay_balance, R.id.lay_topup, R.id.lay_mycertification, R.id.lay_set})
+    @Event(value = {R.id.img_driver, R.id.img_shipper, R.id.lay_balance, R.id.lay_topup, R.id.lay_mycertification, R.id.lay_set,R.id.lay_my_driver_certification})
     private void onClick(View view) {
 
         switch (view.getId()) {
@@ -233,11 +332,12 @@ public class MineFragment extends Fragment {
             case R.id.lay_topup:
                 break;
             case R.id.lay_mycertification:
-                if (isChecked) {
-                    pageJump(DriverCertificationActivity.class);//司机认证
-                } else {
-                    pageJump(ShipperCertificationActivity.class);//货主认证
-                }
+                pageJump(ShipperCertificationActivity.class);//货主认证
+                break;
+
+            case R.id.lay_my_driver_certification:
+                pageJump(DriverCertificationActivity.class);//司机认证
+
                 break;
             case R.id.lay_set:
                 pageJump(SettingActivity.class);

@@ -28,9 +28,9 @@ import java.io.File;
  * 作者： 张梓彬
  * 日期： 2017/5/22 0022
  * 时间： 下午 5:04
- * 描述： 照片显示页面
+ * 描述： 货主认证照片显示页面
  */
-public class PhoneActivity extends AppCompatActivity {
+public class ShipperPhoneActivity extends AppCompatActivity {
 
 
     @ViewInject(R.id.tv_title)
@@ -48,9 +48,9 @@ public class PhoneActivity extends AppCompatActivity {
     protected static final int TAKE_PICTURE = ConstantNumber.NUMBER_ONE;
     private static final int CROP_SMALL_PICTURE = ConstantNumber.NUMBER_TWO;
     protected static Uri tempUri;
-    private String imagePath;
+    public static String imagePath = "",imgPath = "",businessPath = "",doorPath = "",licensePath = "";
     public static Bitmap head_portrait_bitmap,businessCardBitmap,doorPhoneBitmap,businessLicenseBitmap;
-    private static final String TAG = "PhoneActivity";
+    private static final String TAG = "ShipperPhoneActivity";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -103,18 +103,25 @@ public class PhoneActivity extends AppCompatActivity {
                 if (ConstantNumber.CAMERA_TYPE==ConstantNumber.NUMBER_THREE){
                     head_portrait_bitmap = ((BitmapDrawable)img_head_portrait.getDrawable()).getBitmap();
                     finishActivityWithData(ConstantNumber.NUMBER_SEVEN);
+                    ShipperCertificationActivity.imgPath = imgPath;
 
                 }else if (ConstantNumber.CAMERA_TYPE==ConstantNumber.NUMBER_FOUR){
                     businessCardBitmap = ((BitmapDrawable)img_business_card.getDrawable()).getBitmap();
                     finishActivityWithData(ConstantNumber.NUMBER_EIGHT);
+                    ShipperCertificationActivity.businessPath = businessPath;
+
 
                 }else if (ConstantNumber.CAMERA_TYPE==ConstantNumber.NUMBER_FIVE){
                     doorPhoneBitmap = ((BitmapDrawable)img_door_picture.getDrawable()).getBitmap();
                     finishActivityWithData(ConstantNumber.NUMBER_NINE);
+                    ShipperCertificationActivity.doorPath = doorPath;
+
 
                 }else if (ConstantNumber.CAMERA_TYPE==ConstantNumber.NUMBER_SIX){
                     businessLicenseBitmap = ((BitmapDrawable)img_business_license.getDrawable()).getBitmap();
                     finishActivityWithData(ConstantNumber.NUMBER_TEN);
+                    ShipperCertificationActivity.licensePath = licensePath;
+
                 }
                 break;
             case R.id.img_head_portrait:
@@ -197,18 +204,23 @@ public class PhoneActivity extends AppCompatActivity {
                     if (data != null) {
                         switch (ConstantNumber.CAMERA_TYPE){
                             case ConstantNumber.NUMBER_THREE:
-                                setImageToView(data,img_head_portrait,"head_portrait_picture"); // 让刚才选择裁剪得到的图片显示在界面上
+                                setImageToView(data,img_head_portrait,"head_portrait_pic"); // 让刚才选择裁剪得到的图片显示在界面上
+                                imgPath = imagePath;
+
                                 break;
                             case ConstantNumber.NUMBER_FOUR:
-                                setImageToView(data,img_business_card,"business_card_picture");
+                                setImageToView(data,img_business_card,"business_card_pic");
+                                businessPath = imagePath;
 
                                 break;
                             case ConstantNumber.NUMBER_FIVE:
-                                setImageToView(data,img_door_picture,"door_picture_picture");
+                                setImageToView(data,img_door_picture,"door_picture_pic");
+                                doorPath = imagePath;
 
                                 break;
                             case ConstantNumber.NUMBER_SIX:
-                                setImageToView(data,img_business_license,"business_license_picture");
+                                setImageToView(data,img_business_license,"business_license_pic");
+                                licensePath = imagePath;
 
                                 break;
                         }

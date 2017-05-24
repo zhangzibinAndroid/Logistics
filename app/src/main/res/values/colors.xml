@@ -89,4 +89,6 @@
     <color name="blue">#398BFB</color><!--蓝色 -->
     <color name="darkblue">#019FE9</color><!--深蓝色 -->
     <color name="blue_dep">#0075AA</color>
+    <color name="dark_six">#666666</color>
+    <color name="white_four">#D4D4D4</color>
 </resources>

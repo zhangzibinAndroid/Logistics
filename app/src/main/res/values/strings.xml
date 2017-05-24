@@ -120,12 +120,21 @@
     <string name="please_enter_company_name">请输入公司名称</string>
     <string name="please_enter_company_address">请输入公司地址</string>
     <string name="please_enter_position">请输入您的职位</string>
+    <string name="please_enter_car_wgt">请输入载重</string>
+    <string name="please_enter_car_nub">请输入车牌号</string>
     <string name="name_not_empty">姓名不能为空</string>
     <string name="idCard_not_empty">身份证号不能为空</string>
+    <string name="car_wgt_not_empty">载重不能为空</string>
     <string name="company_name_not_empty">公司名称不能为空</string>
     <string name="company_address_not_empty">公司地址不能为空</string>
     <string name="position_not_empty">职位不能为空</string>
     <string name="up_load_success">资料上传成功</string>
+    <string name="address">地址</string>
+    <string name="near">附近</string>
+    <string name="start_area">出发地</string>
+    <string name="destination">目的地</string>
+    <string name="Loading_car_time">装车时间</string>
+    <string name="more">更多</string>
 
 
 </resources>

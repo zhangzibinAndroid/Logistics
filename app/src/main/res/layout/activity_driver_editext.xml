@@ -62,26 +62,24 @@
     </android.support.v7.widget.Toolbar>
 
 
-    <EditText android:id="@+id/edt_name"
+    <EditText android:id="@+id/edt_driver_name"
         style="@style/Editext_style"
         android:hint="@string/please_enter_name"/>
 
-    <EditText android:id="@+id/edt_id_card"
+    <EditText android:id="@+id/edt_driver_idcard"
         style="@style/Editext_style"
         android:digits="1234567890Xx"
         android:hint="@string/please_enter_id_card"/>
 
-    <EditText android:id="@+id/edt_company_name"
+    <EditText android:id="@+id/edt_car_wgt"
         style="@style/Editext_style"
-        android:hint="@string/please_enter_company_name"/>
+        android:digits="1234567890."
+        android:hint="@string/please_enter_car_wgt"/>
 
-    <EditText android:id="@+id/edt_company_address"
+    <EditText android:id="@+id/edt_car_nub"
         style="@style/Editext_style"
-        android:hint="@string/please_enter_company_address"/>
+        android:digits="1234567890."
+        android:hint="@string/please_enter_car_nub"/>
 
-
-    <EditText android:id="@+id/edt_position"
-        style="@style/Editext_style"
-        android:hint="@string/please_enter_position"/>
 
 </com.zhy.autolayout.AutoLinearLayout>

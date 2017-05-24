@@ -11,6 +11,7 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -439,17 +440,20 @@ public class LoginActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             String result = (String) msg.obj;
+            Log.e(TAG, "result: "+result);
             if (result.indexOf(ReturnCode.SUCCESS) > 0) {
                 runOnUiShowToast(getResources().getString(R.string.login_success));
                 LoginSuccessEntity loginSuccessEntity = GsonParsing.gsonLogin(result);
                 GsonParsing.uid = loginSuccessEntity.getId();
                 try {
                     GsonParsing.mSesson = GsonParsing.gsonLoginSesson(result);
+                    Log.e(TAG, "handleMessage: "+GsonParsing.mSesson );
+                    pageJump(OwnerMainActivity.class);
+                    finish();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                    pageJump(OwnerMainActivity.class);
-                    finish();
+
 
 
 

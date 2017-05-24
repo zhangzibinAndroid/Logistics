@@ -211,7 +211,8 @@ public class OwnerMainActivity extends AppCompatActivity {
 
     //用户退出接口
     private void exitInterface() {
-        XUtil.Get(NetworkUrl.EXIT_SYSTEM, null, new MyCallBack<String>() {
+        NetworkUrl networkUrl = new NetworkUrl();
+        XUtil.Get(networkUrl.EXIT_SYSTEM, null, new MyCallBack<String>() {
             @Override
             public void onSuccess(String result) {
                 super.onSuccess(result);

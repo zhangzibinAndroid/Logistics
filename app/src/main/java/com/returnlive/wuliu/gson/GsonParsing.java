@@ -3,9 +3,12 @@ package com.returnlive.wuliu.gson;
 import com.google.gson.Gson;
 import com.returnlive.wuliu.entity.ErrorCodeEntity;
 import com.returnlive.wuliu.entity.LoginSuccessEntity;
+import com.returnlive.wuliu.entity.UserMessageEntity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.List;
 
 
 /**
@@ -36,6 +39,12 @@ public class GsonParsing {
         LoginSuccessEntity user = new LoginSuccessEntity();
         user.setZ_session_id(jsonObject.getString(zSesson+uid));
         return user.getZ_session_id();
+    }
+
+
+    public static UserMessageEntity.UserBean gsonUserMessage(String json){
+        UserMessageEntity userMessage = GsonUtils.parseJsonWithGson(json,UserMessageEntity.class);
+        return userMessage.getCode();
     }
 
 

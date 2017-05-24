@@ -9,6 +9,7 @@ package com.returnlive.wuliu.constant;
 
 public class ConstantNumber {
     public static int ACTION_PAGE = 0;
+    public static int DRIVER_ACTION_PAGE = 0;
     public static int CAMERA_TYPE = 0;
     public static final int NUMBER_ZERO = 0;
     public static final int NUMBER_ONE = 1;
@@ -27,4 +28,5 @@ public class ConstantNumber {
     public static final int NUMBER_FOURTEEN = 14;
     public static final int NUMBER_FIFTEEN = 15;
     public static final int NUMBER_SIXTEEN = 16;
+    public static final int NUMBER_SEVENTEEN = 17;
 }

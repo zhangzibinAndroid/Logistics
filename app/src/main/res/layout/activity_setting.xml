@@ -42,26 +42,29 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView android:id="@+id/tv_modify_login_password"
+            <TextView
+                android:id="@+id/tv_modify_login_password"
                 style="@style/TextViewStyle"
                 android:background="@drawable/btn_sel"
                 android:drawableRight="@drawable/ic_right"
                 android:text="@string/modify_login_password" />
 
-            <View style="@style/ViewStyle"/>
+            <View style="@style/ViewStyle" />
 
-            <TextView android:id="@+id/tv_modify_pay_password"
+            <TextView
+                android:id="@+id/tv_modify_pay_password"
                 style="@style/TextViewStyle"
                 android:background="@drawable/btn_sel"
                 android:drawableRight="@drawable/ic_right"
                 android:text="@string/modify_pay_password" />
 
-            <View style="@style/ViewStyle"/>
+            <View style="@style/ViewStyle" />
 
 
             <com.zhy.autolayout.AutoLinearLayout
@@ -70,21 +73,23 @@
                 android:background="@color/write"
                 android:orientation="horizontal">
 
-                <TextView android:id="@+id/tv_open_voice_broadcast_remind"
+                <TextView
+                    android:id="@+id/tv_open_voice_broadcast_remind"
                     style="@style/TextViewStyle"
                     android:layout_weight="1"
                     android:text="@string/open_voice_broadcast_remind" />
 
-                <CheckBox android:id="@+id/chb_open_voice_broadcast_remind"
+                <CheckBox
+                    android:id="@+id/chb_open_voice_broadcast_remind"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/px40"
                     android:layout_weight="0"
                     android:background="@color/white"
-                    android:button="@drawable/checkbox"
-                    android:layout_marginRight="@dimen/px40"/>
+                    android:button="@drawable/checkbox" />
             </com.zhy.autolayout.AutoLinearLayout>
 
-            <View style="@style/ViewStyle"/>
+            <View style="@style/ViewStyle" />
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:id="@+id/lay_voice_broadcast_time"
@@ -93,32 +98,34 @@
                 android:background="@drawable/btn_sel"
                 android:orientation="horizontal">
 
-                <TextView android:id="@+id/tv_voice_broadcast_time"
+                <TextView
+                    android:id="@+id/tv_voice_broadcast_time"
                     style="@style/TextViewStyle"
                     android:layout_weight="1"
                     android:text="@string/voice_broadcast_time" />
 
-                <TextView android:id="@+id/tv_broadcastTime"
+                <TextView
+                    android:id="@+id/tv_broadcastTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="00:00~23:00"
-                    android:textSize="@dimen/px35"
                     android:layout_marginRight="@dimen/px10"
-                    android:textColor="@color/green" />
+                    android:text="00:00~23:00"
+                    android:textColor="@color/green"
+                    android:textSize="@dimen/px35" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_right"
                     android:layout_gravity="center"
-                    android:layout_marginRight="@dimen/px40"/>
+                    android:layout_marginRight="@dimen/px40"
+                    android:src="@drawable/ic_right" />
 
             </com.zhy.autolayout.AutoLinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/px20"
-                    android:background="#E9EDEE"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px20"
+                android:background="#E9EDEE" />
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:id="@+id/lay_help"
@@ -127,28 +134,30 @@
                 android:background="@drawable/btn_sel"
                 android:orientation="horizontal">
 
-                <TextView android:id="@+id/tv_help"
+                <TextView
+                    android:id="@+id/tv_help"
                     style="@style/TextViewStyle"
                     android:layout_weight="1"
                     android:text="@string/tv_help" />
 
-                <TextView android:id="@+id/tv_helpquestion"
+                <TextView
+                    android:id="@+id/tv_helpquestion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/px10"
                     android:text="@string/tv_question"
-                    android:textSize="@dimen/px25"
-                    android:layout_marginRight="@dimen/px10" />
+                    android:textSize="@dimen/px25" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_right"
                     android:layout_gravity="center"
-                    android:layout_marginRight="@dimen/px40"/>
+                    android:layout_marginRight="@dimen/px40"
+                    android:src="@drawable/ic_right" />
 
             </com.zhy.autolayout.AutoLinearLayout>
 
-            <View style="@style/ViewStyle"/>
+            <View style="@style/ViewStyle" />
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:id="@+id/lay_version"
@@ -157,31 +166,34 @@
                 android:background="@drawable/btn_sel"
                 android:orientation="horizontal">
 
-                <TextView android:id="@+id/tv_version_update"
+                <TextView
+                    android:id="@+id/tv_version_update"
                     style="@style/TextViewStyle"
                     android:layout_weight="1"
                     android:text="@string/version_update" />
 
-                <TextView android:id="@+id/tv_version"
+                <TextView
+                    android:id="@+id/tv_version"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/px10"
                     android:text="@string/version_search"
-                    android:textSize="@dimen/px25"
                     android:textColor="@color/orrange"
-                    android:layout_marginRight="@dimen/px10" />
+                    android:textSize="@dimen/px25" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_right"
                     android:layout_gravity="center"
-                    android:layout_marginRight="@dimen/px40"/>
+                    android:layout_marginRight="@dimen/px40"
+                    android:src="@drawable/ic_right" />
 
             </com.zhy.autolayout.AutoLinearLayout>
 
-            <View style="@style/ViewStyle"/>
+            <View style="@style/ViewStyle" />
 
-            <TextView android:id="@+id/tv_about"
+            <TextView
+                android:id="@+id/tv_about"
                 style="@style/TextViewStyle"
                 android:background="@drawable/btn_sel"
                 android:drawableRight="@drawable/ic_right"
@@ -190,18 +202,19 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/px20"
-                android:background="#E9EDEE"/>
+                android:background="#E9EDEE" />
 
-            <TextView android:id="@+id/tv_exit"
+            <TextView
+                android:id="@+id/tv_exit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/exit"
-                android:gravity="center"
                 android:background="@drawable/btn_sel"
+                android:gravity="center"
                 android:padding="@dimen/px20"
-                android:textSize="@dimen/px35"
-                android:textColor="@color/orrange"/>
+                android:text="@string/exit"
+                android:textColor="@color/orrange"
+                android:textSize="@dimen/px35" />
 
         </com.zhy.autolayout.AutoLinearLayout>
     </ScrollView>

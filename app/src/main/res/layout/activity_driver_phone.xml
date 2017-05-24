@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/px15"
-                android:text="editext"
+                android:text="imageView"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/view"
                 android:textColor="@color/white"
@@ -61,27 +61,23 @@
         </com.zhy.autolayout.AutoRelativeLayout>
     </android.support.v7.widget.Toolbar>
 
-
-    <EditText android:id="@+id/edt_name"
-        style="@style/Editext_style"
-        android:hint="@string/please_enter_name"/>
-
-    <EditText android:id="@+id/edt_id_card"
-        style="@style/Editext_style"
-        android:digits="1234567890Xx"
-        android:hint="@string/please_enter_id_card"/>
-
-    <EditText android:id="@+id/edt_company_name"
-        style="@style/Editext_style"
-        android:hint="@string/please_enter_company_name"/>
-
-    <EditText android:id="@+id/edt_company_address"
-        style="@style/Editext_style"
-        android:hint="@string/please_enter_company_address"/>
+    <ImageView
+        android:id="@+id/img_driver_portrait"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/px120"
+        android:layout_width="@dimen/px320"
+        android:layout_height="@dimen/px320"/>
 
 
-    <EditText android:id="@+id/edt_position"
-        style="@style/Editext_style"
-        android:hint="@string/please_enter_position"/>
+    <ImageView android:id="@+id/img_drive_license"
+        style="@style/ImageViewStyle"/>
+
+    <ImageView android:id="@+id/img_driving_license"
+        style="@style/ImageViewStyle"/>
+
+    <ImageView android:id="@+id/img_headstock_according"
+        style="@style/ImageViewStyle"/>
+
 
 </com.zhy.autolayout.AutoLinearLayout>

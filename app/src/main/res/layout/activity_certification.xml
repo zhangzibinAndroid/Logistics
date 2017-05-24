@@ -45,8 +45,7 @@
         android:padding="@dimen/px25"
         android:textSize="@dimen/px30"
         android:text="@string/information_certification"
-        android:drawableLeft="@drawable/ic_cerfication_warning"
-        android:id="@+id/textView5" />
+        android:drawableLeft="@drawable/ic_cerfication_warning" />
 
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"

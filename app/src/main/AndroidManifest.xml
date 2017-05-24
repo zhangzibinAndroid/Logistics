@@ -69,9 +69,12 @@
         <activity android:name=".activity.HelpCenterActivity" />
         <activity android:name=".activity.DriverCertificationActivity" />
         <activity android:name=".activity.ShipperCertificationActivity" />
-        <activity android:name=".activity.EditextActivity" />
-        <activity android:name=".activity.PhoneActivity" />
-        <activity android:name=".activity.IdCardActivity" />
+        <activity android:name=".activity.ShipperEditextActivity" />
+        <activity android:name=".activity.ShipperPhoneActivity" />
+        <activity android:name=".activity.ShipperIdCardActivity" />
+        <activity android:name=".activity.DriverEditextActivity" />
+        <activity android:name=".activity.DriverPhoneActivity" />
+        <activity android:name=".activity.DriverIdCardActivity" />
     </application>
 
 </manifest>

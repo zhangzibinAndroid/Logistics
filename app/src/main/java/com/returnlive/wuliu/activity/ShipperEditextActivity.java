@@ -20,9 +20,9 @@ import org.xutils.x;
  * 作者： 张梓彬
  * 日期： 2017/5/22 0022
  * 时间： 上午 11:57
- * 描述： 姓名，身份证号码，车牌号等页面集成
+ * 描述： 货主姓名，身份证号码，名片等页面集成
  */
-public class EditextActivity extends AppCompatActivity {
+public class ShipperEditextActivity extends AppCompatActivity {
     @ViewInject(R.id.tv_title)
     TextView tv_title;
     @ViewInject(R.id.edt_name)
@@ -137,6 +137,5 @@ public class EditextActivity extends AppCompatActivity {
         intent.putExtra(key,value);
         setResult(resultCode,intent);
         finish();
-
     }
 }

@@ -11,7 +11,6 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,7 +23,6 @@ import com.returnlive.wuliu.utils.ImageUtils;
 import com.returnlive.wuliu.utils.MyCallBack;
 import com.returnlive.wuliu.utils.XUtil;
 
-import org.xutils.common.Callback;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -97,11 +95,11 @@ public class ShipperCertificationActivity extends AppCompatActivity {
                 break;
             case R.id.lay_yournameship:
                 ConstantNumber.ACTION_PAGE = ConstantNumber.NUMBER_ELEVEN;
-                pageJumpWithData(EditextActivity.class,ConstantNumber.NUMBER_ELEVEN);
+                pageJumpWithData(ShipperEditextActivity.class,ConstantNumber.NUMBER_ELEVEN);
                 break;
             case R.id.lay_yourIDcardship:
                 ConstantNumber.ACTION_PAGE = ConstantNumber.NUMBER_TWELVE;
-                pageJumpWithData(EditextActivity.class,ConstantNumber.NUMBER_TWELVE);
+                pageJumpWithData(ShipperEditextActivity.class,ConstantNumber.NUMBER_TWELVE);
 
                 break;
             case R.id.lay_portraitship:
@@ -110,38 +108,38 @@ public class ShipperCertificationActivity extends AppCompatActivity {
                     showChoosePicDialog("设置头像");
                 }else {
                     head_portrait_bitmap = ((BitmapDrawable) img_portraitship.getDrawable()).getBitmap();
-                    pageJumpWithData(PhoneActivity.class,ConstantNumber.NUMBER_SEVEN);
+                    pageJumpWithData(ShipperPhoneActivity.class,ConstantNumber.NUMBER_SEVEN);
                 }
 
 
                 break;
             case R.id.lay_idship_certification:
                 if (!isSetIdCard){
-                    pageJumpWithData(IdCardActivity.class,ConstantNumber.NUMBER_SIXTEEN);
+                    pageJumpWithData(ShipperIdCardActivity.class,ConstantNumber.NUMBER_SIXTEEN);
                 }else {
                     ConstantNumber.ACTION_PAGE = ConstantNumber.NUMBER_TWO;
-                    IdCardActivity.ID_CARD_POSITIVE = 1;
-                    IdCardActivity.ID_CARD_REVERSE = 1;
+                    ShipperIdCardActivity.ID_CARD_POSITIVE = 1;
+                    ShipperIdCardActivity.ID_CARD_REVERSE = 1;
                     idCard_positive_bitmap = ((BitmapDrawable)idCardship1.getDrawable()).getBitmap();
                     idCard_reverse_bitmap = ((BitmapDrawable)idCardship2.getDrawable()).getBitmap();
-                    pageJumpWithData(IdCardActivity.class,ConstantNumber.NUMBER_SIXTEEN);
+                    pageJumpWithData(ShipperIdCardActivity.class,ConstantNumber.NUMBER_SIXTEEN);
 
                 }
 
                 break;
             case R.id.tv_company_name:
                 ConstantNumber.ACTION_PAGE = ConstantNumber.NUMBER_THIRTEEN;
-                pageJumpWithData(EditextActivity.class,ConstantNumber.NUMBER_THIRTEEN);
+                pageJumpWithData(ShipperEditextActivity.class,ConstantNumber.NUMBER_THIRTEEN);
 
                 break;
             case R.id.tv_company_address:
                 ConstantNumber.ACTION_PAGE = ConstantNumber.NUMBER_FOURTEEN;
-                pageJumpWithData(EditextActivity.class,ConstantNumber.NUMBER_FOURTEEN);
+                pageJumpWithData(ShipperEditextActivity.class,ConstantNumber.NUMBER_FOURTEEN);
 
                 break;
             case R.id.lay_yourposition:
                 ConstantNumber.ACTION_PAGE = ConstantNumber.NUMBER_FIFTEEN;
-                pageJumpWithData(EditextActivity.class,ConstantNumber.NUMBER_FIFTEEN);
+                pageJumpWithData(ShipperEditextActivity.class,ConstantNumber.NUMBER_FIFTEEN);
 
                 break;
             case R.id.lay_business_card:
@@ -150,7 +148,7 @@ public class ShipperCertificationActivity extends AppCompatActivity {
                     showChoosePicDialog("设置名片");
                 }else {
                     businessCardBitmap = ((BitmapDrawable) img_business_card.getDrawable()).getBitmap();
-                    pageJumpWithData(PhoneActivity.class,ConstantNumber.NUMBER_EIGHT);
+                    pageJumpWithData(ShipperPhoneActivity.class,ConstantNumber.NUMBER_EIGHT);
                 }
                 break;
             case R.id.lay_door_head:
@@ -159,7 +157,7 @@ public class ShipperCertificationActivity extends AppCompatActivity {
                     showChoosePicDialog("设置门头照");
                 }else {
                     doorPhoneBitmap = ((BitmapDrawable) img_door_head.getDrawable()).getBitmap();
-                    pageJumpWithData(PhoneActivity.class,ConstantNumber.NUMBER_NINE);
+                    pageJumpWithData(ShipperPhoneActivity.class,ConstantNumber.NUMBER_NINE);
                 }
 
                 break;
@@ -169,7 +167,7 @@ public class ShipperCertificationActivity extends AppCompatActivity {
                     showChoosePicDialog("设置营业执照");
                 }else {
                     businessLicenseBitmap = ((BitmapDrawable) img_business_license.getDrawable()).getBitmap();
-                    pageJumpWithData(PhoneActivity.class,ConstantNumber.NUMBER_TEN);
+                    pageJumpWithData(ShipperPhoneActivity.class,ConstantNumber.NUMBER_TEN);
                 }
 
                 break;
@@ -258,7 +256,8 @@ public class ShipperCertificationActivity extends AppCompatActivity {
         map.put("door", fileDoor);
         map.put("business", fileBusiness);
         map.put("license", fileLicense);
-        XUtil.UpLoadFile(NetworkUrl.SHIPPER_CERTIFICATION_URL, map, new MyCallBack<File>(){
+        NetworkUrl networkUrl = new NetworkUrl();
+        XUtil.UpLoadFile(networkUrl.SHIPPER_CERTIFICATION_URL, map, new MyCallBack<File>(){
             @Override
             public void onSuccess(File result) {
                 super.onSuccess(result);
@@ -403,17 +402,17 @@ public class ShipperCertificationActivity extends AppCompatActivity {
             String position = data.getStringExtra("position");
             tv_yourposition.setText(position);
         }else if (requestCode == ConstantNumber.NUMBER_SEVEN && resultCode == ConstantNumber.NUMBER_SEVEN){
-            img_portraitship.setImageBitmap(PhoneActivity.head_portrait_bitmap);
+            img_portraitship.setImageBitmap(ShipperPhoneActivity.head_portrait_bitmap);
 
         }else if (requestCode == ConstantNumber.NUMBER_EIGHT && resultCode == ConstantNumber.NUMBER_EIGHT){
-            img_business_card.setImageBitmap(PhoneActivity.businessCardBitmap);
+            img_business_card.setImageBitmap(ShipperPhoneActivity.businessCardBitmap);
         }else if (requestCode == ConstantNumber.NUMBER_NINE && resultCode == ConstantNumber.NUMBER_NINE){
-            img_door_head.setImageBitmap(PhoneActivity.doorPhoneBitmap);
+            img_door_head.setImageBitmap(ShipperPhoneActivity.doorPhoneBitmap);
         }else if (requestCode == ConstantNumber.NUMBER_TEN && resultCode == ConstantNumber.NUMBER_TEN){
-            img_business_license.setImageBitmap(PhoneActivity.businessLicenseBitmap);
+            img_business_license.setImageBitmap(ShipperPhoneActivity.businessLicenseBitmap);
         }else if (requestCode == ConstantNumber.NUMBER_SIXTEEN && resultCode == ConstantNumber.NUMBER_SIXTEEN){
-            idCardship1.setImageBitmap(IdCardActivity.idCard_positive_bitmap);
-            idCardship2.setImageBitmap(IdCardActivity.idCard_reverse_bitmap);
+            idCardship1.setImageBitmap(ShipperIdCardActivity.idCard_positive_bitmap);
+            idCardship2.setImageBitmap(ShipperIdCardActivity.idCard_reverse_bitmap);
             isSetIdCard = true;
         }
 

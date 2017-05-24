@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/px15"
-                android:text="editext"
+                android:text="idCard"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/view"
                 android:textColor="@color/white"
@@ -62,26 +62,18 @@
     </android.support.v7.widget.Toolbar>
 
 
-    <EditText android:id="@+id/edt_name"
-        style="@style/Editext_style"
-        android:hint="@string/please_enter_name"/>
+    <ImageView android:id="@+id/img_drive_idCard_positive"
+        android:layout_width="@dimen/px600"
+        android:layout_height="@dimen/px400"
+        android:src="@drawable/defaultpicture"
+        android:layout_marginTop="@dimen/px60"
+        android:layout_gravity="center_horizontal"/>
 
-    <EditText android:id="@+id/edt_id_card"
-        style="@style/Editext_style"
-        android:digits="1234567890Xx"
-        android:hint="@string/please_enter_id_card"/>
-
-    <EditText android:id="@+id/edt_company_name"
-        style="@style/Editext_style"
-        android:hint="@string/please_enter_company_name"/>
-
-    <EditText android:id="@+id/edt_company_address"
-        style="@style/Editext_style"
-        android:hint="@string/please_enter_company_address"/>
-
-
-    <EditText android:id="@+id/edt_position"
-        style="@style/Editext_style"
-        android:hint="@string/please_enter_position"/>
+    <ImageView android:id="@+id/img_drive_idCard_reverse"
+        android:layout_width="@dimen/px600"
+        android:layout_height="@dimen/px400"
+        android:src="@drawable/defaultpicture"
+        android:layout_marginTop="@dimen/px20"
+        android:layout_gravity="center_horizontal"/>
 
 </com.zhy.autolayout.AutoLinearLayout>
