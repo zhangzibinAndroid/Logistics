@@ -1,20 +1,26 @@
 package com.returnlive.wuliu.fragment;
 
 
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.format.DateUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bigkoo.pickerview.TimePickerView;
+import com.bigkoo.pickerview.lib.WheelView;
+import com.bigkoo.pickerview.listener.CustomListener;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.extras.SoundPullEventListener;
@@ -29,7 +35,10 @@ import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * @author 张梓彬
@@ -59,6 +68,8 @@ public class CarGoodsFragment extends Fragment {
     private CityListViewPopWindow cityListViewPopWindow;
     private static final String TAG = "CarGoodsFragment";
     public int WHICH = ConstantNumber.NUMBER_ZERO;
+    private TimePickerView timePickerView;//时间选择器
+
 
     public CarGoodsFragment() {
         // Required empty public constructor
@@ -70,11 +81,14 @@ public class CarGoodsFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_car_goods, container, false);
         x.view().inject(this, view);
+        initCustomTimePicker();
         initView();
         return view;
     }
 
     private void initView() {
+        toobar_goods_car_title_address.setSelected(true);
+        toobar_goods_car_title_nearby.setSelected(false);
         cityListViewPopWindow = new CityListViewPopWindow(getActivity(), mOnCheckChangeListener);
         pull_refresh_list.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
@@ -191,8 +205,12 @@ public class CarGoodsFragment extends Fragment {
     private void onClick(View view) {
         switch (view.getId()) {
             case R.id.toobar_goods_car_title_address:
+                toobar_goods_car_title_address.setSelected(true);
+                toobar_goods_car_title_nearby.setSelected(false);
                 break;
             case R.id.toobar_goods_car_title_nearby:
+                toobar_goods_car_title_address.setSelected(false);
+                toobar_goods_car_title_nearby.setSelected(true);
                 break;
             case R.id.ly_goods_car_start:
                 WHICH = ConstantNumber.NUMBER_ONE;
@@ -203,11 +221,67 @@ public class CarGoodsFragment extends Fragment {
                 showCityPopWindow();
                 break;
             case R.id.ly_goods_car_cartime:
+                if (timePickerView != null) {
+                    timePickerView.show();
+                }
                 break;
             case R.id.layout_goods_car_more:
                 break;
         }
     }
+
+
+    /**
+     * 显示“时间”的初始化
+     */
+    private void initCustomTimePicker() {
+        Calendar selectedDate = Calendar.getInstance();//系统当前时间
+        Calendar startDate = Calendar.getInstance();//开始时间
+        Calendar endDate = Calendar.getInstance();//结束时间
+        startDate.set(2010, 1, 1);
+        endDate.set(2200, 1, 28);
+        timePickerView = new TimePickerView.Builder(getActivity(), new TimePickerView.OnTimeSelectListener() {
+            @Override
+            public void onTimeSelect(Date date, View v) {//选中事件回调
+                //可根据需要自行截取数据显示在控件上  yyyy-MM-dd HH:mm:ss  或yyyy-MM-dd
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                String time = format.format(date);
+                tv_goods_car_car_time.setText(time);
+            }
+        })
+                .setType(TimePickerView.Type.YEAR_MONTH_DAY)
+                .setDate(selectedDate)
+                .setRangDate(startDate, endDate)
+                .setTextColorCenter(Color.parseColor("#FF4081"))//设置选中文字的颜色#64AE4A
+                .setTextColorOut(Color.parseColor("#717171"))//设置选中项以外的颜色#64AE4A
+                .setLineSpacingMultiplier(2.4f)//设置两横线之间的间隔倍数
+                .setDividerColor(Color.parseColor("#24E1E4"))//设置分割线的颜色
+                .setDividerType(WheelView.DividerType.WRAP)//设置分割线的类型
+                .setBgColor(Color.parseColor("#FFFFFF"))//背景颜色(必须是16进制) Night mode#2AA2BC
+                .gravity(Gravity.CENTER)//设置控件显示位置 default is center*/
+                .isDialog(true)//设置显示位置
+                .setLayoutRes(R.layout.pickerview_custom_time, new CustomListener() {
+                    @Override
+                    public void customLayout(View v) {
+                        TextView tvCancel = (TextView) v.findViewById(R.id.iv_cancel);
+                        final TextView tvSubmit = (TextView) v.findViewById(R.id.tv_finish);
+                        tvSubmit.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                timePickerView.returnData();
+                            }
+                        });
+                        tvCancel.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                timePickerView.dismiss();
+                            }
+                        });
+                    }
+                })
+                .build();
+    }
+
 
     private void showCityPopWindow() {
         cityListViewPopWindow.showAsDropDown(ly_goods_car_start);

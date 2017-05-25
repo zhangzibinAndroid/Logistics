@@ -92,5 +92,6 @@
     <color name="dark_six">#666666</color>
     <color name="white_four">#D4D4D4</color>
     <color name="bgitem">#FF8C00</color>
+    <color name="sel">#083731</color>
 
 </resources>
