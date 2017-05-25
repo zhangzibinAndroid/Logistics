@@ -5,18 +5,25 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.extras.SoundPullEventListener;
 import com.returnlive.wuliu.R;
 import com.returnlive.wuliu.adapter.GoodsAdapter;
+import com.returnlive.wuliu.constant.ConstantNumber;
 import com.returnlive.wuliu.entity.GoodsAdapterEntity;
+import com.returnlive.wuliu.view.CityListViewPopWindow;
+import com.zhy.autolayout.AutoRelativeLayout;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -45,9 +52,13 @@ public class CarGoodsFragment extends Fragment {
     TextView tv_goods_car_more;
     @ViewInject(R.id.pull_refresh_list)
     PullToRefreshListView pull_refresh_list;
+    @ViewInject(R.id.ly_goods_car_start)
+    AutoRelativeLayout ly_goods_car_start;
     private View view;
     private GoodsAdapter goodsAdapter;
-
+    private CityListViewPopWindow cityListViewPopWindow;
+    private static final String TAG = "CarGoodsFragment";
+    public int WHICH = ConstantNumber.NUMBER_ZERO;
 
     public CarGoodsFragment() {
         // Required empty public constructor
@@ -64,6 +75,7 @@ public class CarGoodsFragment extends Fragment {
     }
 
     private void initView() {
+        cityListViewPopWindow = new CityListViewPopWindow(getActivity(), mOnCheckChangeListener);
         pull_refresh_list.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
@@ -98,7 +110,7 @@ public class CarGoodsFragment extends Fragment {
         goodsAdapter = new GoodsAdapter(getActivity());
         actualListView.setAdapter(goodsAdapter);
         for (int i = 0; i < 1; i++) {
-            GoodsAdapterEntity goodsAdapterEntity = new GoodsAdapterEntity("司机版_"+(i+1));
+            GoodsAdapterEntity goodsAdapterEntity = new GoodsAdapterEntity("司机版_" + (i + 1));
             goodsAdapter.addDATA(goodsAdapterEntity);
         }
         goodsAdapter.notifyDataSetChanged();
@@ -106,6 +118,34 @@ public class CarGoodsFragment extends Fragment {
 
     }
 
+
+    private CityListViewPopWindow.OnCheckChangeListener mOnCheckChangeListener = new CityListViewPopWindow.OnCheckChangeListener() {
+        @Override
+        public void setProvinceText(String text) {
+
+        }
+
+        @Override
+        public void setCityText(String text) {
+            if (WHICH==ConstantNumber.NUMBER_ONE){
+                tv_goods_car_start_email.setText(text);
+            }else if (WHICH==ConstantNumber.NUMBER_TWO){
+                tv_goods_car_end_email.setText(text);
+            }
+
+        }
+
+        @Override
+        public void setDistrictText(String text) {
+            if (WHICH==ConstantNumber.NUMBER_ONE){
+                tv_goods_car_start_email.setText(text);
+            }else if (WHICH==ConstantNumber.NUMBER_TWO){
+                tv_goods_car_end_email.setText(text);
+
+            }
+
+        }
+    };
 
 
     private class GetDataTask extends AsyncTask<Object, Object, Object> {
@@ -122,7 +162,7 @@ public class CarGoodsFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Object o) {
-            if (pull_refresh_list.isHeaderShown()){
+            if (pull_refresh_list.isHeaderShown()) {
                 ArrayList<GoodsAdapterEntity> newList = new ArrayList<>();
                 GoodsAdapterEntity goodsAdapterEntity = new GoodsAdapterEntity("下拉得到数据");
                 newList.add(goodsAdapterEntity);
@@ -135,7 +175,7 @@ public class CarGoodsFragment extends Fragment {
                 newList.clear();
 
 
-            }else if (pull_refresh_list.isFooterShown()){
+            } else if (pull_refresh_list.isFooterShown()) {
                 GoodsAdapterEntity goodsAdapterEntity = new GoodsAdapterEntity("上拉得到数据");
                 goodsAdapter.addDATA(goodsAdapterEntity);
             }
@@ -155,8 +195,12 @@ public class CarGoodsFragment extends Fragment {
             case R.id.toobar_goods_car_title_nearby:
                 break;
             case R.id.ly_goods_car_start:
+                WHICH = ConstantNumber.NUMBER_ONE;
+                showCityPopWindow();
                 break;
             case R.id.ly_goods_car_end:
+                WHICH = ConstantNumber.NUMBER_TWO;
+                showCityPopWindow();
                 break;
             case R.id.ly_goods_car_cartime:
                 break;
@@ -164,4 +208,24 @@ public class CarGoodsFragment extends Fragment {
                 break;
         }
     }
+
+    private void showCityPopWindow() {
+        cityListViewPopWindow.showAsDropDown(ly_goods_car_start);
+        cityListViewPopWindow.setOutsideTouchable(true);
+        setPopWindowbackgroundAlpha(0.5f);//设置展示对话框背景变暗
+        cityListViewPopWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                setPopWindowbackgroundAlpha(1f);
+            }
+        });
+    }
+
+    private void setPopWindowbackgroundAlpha(float bgAlpha) {
+        WindowManager.LayoutParams params = getActivity().getWindow().getAttributes();
+        params.alpha = bgAlpha;
+        getActivity().getWindow().setAttributes(params);
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+    }
+
 }
