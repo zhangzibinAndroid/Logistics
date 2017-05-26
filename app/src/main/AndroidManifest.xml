@@ -55,15 +55,28 @@
             android:value="1280" />
 
         <activity android:name=".activity.GuideActivity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name=".activity.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.ForgetPassWordActivity" />
-        <activity android:name=".activity.OwnerMainActivity" />
+        <activity android:name=".activity.OwnerMainActivity" >
+           <!-- <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.HelpCenterActivity" />
@@ -75,6 +88,7 @@
         <activity android:name=".activity.DriverEditextActivity" />
         <activity android:name=".activity.DriverPhoneActivity" />
         <activity android:name=".activity.DriverIdCardActivity" />
+        <activity android:name=".activity.GoodsDetailsActivity" />
     </application>
 
 </manifest>

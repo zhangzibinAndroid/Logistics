@@ -1,9 +1,13 @@
 package com.returnlive.wuliu.fragment;
 
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.text.format.DateUtils;
 import android.util.Log;
@@ -12,7 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.ImageView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -25,9 +29,20 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.extras.SoundPullEventListener;
 import com.returnlive.wuliu.R;
+import com.returnlive.wuliu.activity.GoodsDetailsActivity;
+import com.returnlive.wuliu.activity.LoginActivity;
 import com.returnlive.wuliu.adapter.GoodsAdapter;
 import com.returnlive.wuliu.constant.ConstantNumber;
+import com.returnlive.wuliu.constant.NetworkUrl;
+import com.returnlive.wuliu.constant.ReturnCode;
+import com.returnlive.wuliu.entity.CarsourceListEntity;
+import com.returnlive.wuliu.entity.ErrorCodeEntity;
 import com.returnlive.wuliu.entity.GoodsAdapterEntity;
+import com.returnlive.wuliu.gson.GsonParsing;
+import com.returnlive.wuliu.utils.DateUtilsTime;
+import com.returnlive.wuliu.utils.ErrorCode;
+import com.returnlive.wuliu.utils.MyCallBack;
+import com.returnlive.wuliu.utils.XUtil;
 import com.returnlive.wuliu.view.CityListViewPopWindow;
 import com.zhy.autolayout.AutoRelativeLayout;
 
@@ -35,10 +50,14 @@ import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author 张梓彬
@@ -63,17 +82,57 @@ public class CarGoodsFragment extends Fragment {
     PullToRefreshListView pull_refresh_list;
     @ViewInject(R.id.ly_goods_car_start)
     AutoRelativeLayout ly_goods_car_start;
+    @ViewInject(R.id.layout_goods_car_more)
+    AutoRelativeLayout layout_goods_car_more;
     private View view;
     private GoodsAdapter goodsAdapter;
     private CityListViewPopWindow cityListViewPopWindow;
-    private static final String TAG = "CarGoodsFragment";
+    private static final String TAG = "TAG//;";
     public int WHICH = ConstantNumber.NUMBER_ZERO;
     private TimePickerView timePickerView;//时间选择器
-
+    private PopupWindow popMoreWindow;//用来显示popupwindow的parent
+    private int PAGE = ConstantNumber.NUMBER_ONE;
+    private List<CarsourceListEntity.CarsourceBean> list;
+    private ListView actualListView;
+    public static int zPosition = ConstantNumber.NUMBER_ZERO;
+    public static List<CarsourceListEntity.CarsourceBean> positionList;
+    public static int mPosition = ConstantNumber.NUMBER_ONE;//是否是通过其他页面进入的？
 
     public CarGoodsFragment() {
-        // Required empty public constructor
     }
+
+
+
+
+    private Handler carsourceHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            String result = (String) msg.obj;
+            if (result.indexOf(ReturnCode.SUCCESS) > 0) {
+                 list = GsonParsing.gsonCarsource(result);
+                    for (int i = 0; i < list.size(); i++) {
+                        CarsourceListEntity.CarsourceBean carsourceBean = list.get(i);
+                        goodsAdapter.addDATA(carsourceBean);
+                    }
+                goodsAdapter.notifyDataSetChanged();
+                /*positionList = goodsAdapter.getList();
+                positionList.clear();
+                positionList = goodsAdapter.getList();*/
+
+                if (zPosition==ConstantNumber.NUMBER_ZERO){
+
+                }else {
+                    actualListView.setSelection(goodsAdapter.mPosition);
+                }
+
+
+
+            }else {
+                errorCode(result);
+            }
+        }
+    };
 
 
     @Override
@@ -81,9 +140,66 @@ public class CarGoodsFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_car_goods, container, false);
         x.view().inject(this, view);
+        PAGE = ConstantNumber.NUMBER_ONE;
         initCustomTimePicker();
+        showPopMoreWindow();
         initView();
+        Log.e(TAG, "mPosition: "+mPosition );
+        if (mPosition == ConstantNumber.NUMBER_ZERO){
+            addData();
+        }else {
+            addDataFromStaticList();
+        }
         return view;
+    }
+
+    private void addDataFromStaticList() {
+        Log.e(TAG, "addDataFromStaticList: "+positionList.size());
+        for (int i = 0; i < positionList.size(); i++) {
+            CarsourceListEntity.CarsourceBean carsourceBean = positionList.get(i);
+            goodsAdapter.addDATA(carsourceBean);
+        }
+        goodsAdapter.notifyDataSetChanged();
+    }
+
+    private void addData() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                carsourceInterface(ConstantNumber.NUMBER_ONE);
+            }
+        }).start();
+
+    }
+
+
+    //获取车辆列表接口
+    private void carsourceInterface(int page) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("page", page);
+        NetworkUrl networkUrl = new NetworkUrl();
+        XUtil.Post(networkUrl.CAR_SOURCE_URL, map, new MyCallBack<String>() {
+            @Override
+            public void onSuccess(String result) {
+                super.onSuccess(result);
+                Message msg = new Message();
+                msg.obj = result;
+                carsourceHandler.sendMessage(msg);
+
+
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                super.onError(ex, isOnCallback);
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.networ_anomalies), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
     }
 
     private void initView() {
@@ -103,17 +219,12 @@ public class CarGoodsFragment extends Fragment {
             }
         });
 
-        //设置监听最后一条
-        pull_refresh_list.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
-
-            @Override
-            public void onLastItemVisible() {
-                Toast.makeText(getActivity(), "上拉加载更多哦!", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         //得到ListView
-        ListView actualListView = pull_refresh_list.getRefreshableView();
+        actualListView = pull_refresh_list.getRefreshableView();
+        actualListView.setSelected(true);
+
+
         pull_refresh_list.setMode(PullToRefreshBase.Mode.BOTH);//设置可以同时上拉刷新和下拉加载
         //添加刷新事件并且发出声音
         SoundPullEventListener<ListView> soundListener = new SoundPullEventListener<ListView>(getActivity());
@@ -123,13 +234,46 @@ public class CarGoodsFragment extends Fragment {
         pull_refresh_list.setOnPullEventListener(soundListener);
         goodsAdapter = new GoodsAdapter(getActivity());
         actualListView.setAdapter(goodsAdapter);
-        for (int i = 0; i < 1; i++) {
-            GoodsAdapterEntity goodsAdapterEntity = new GoodsAdapterEntity("司机版_" + (i + 1));
-            goodsAdapter.addDATA(goodsAdapterEntity);
-        }
-        goodsAdapter.notifyDataSetChanged();
+
+        actualListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getActivity(), "点击了第"+(position)+"个", Toast.LENGTH_SHORT).show();
+//                pageJump(GoodsDetailsActivity.class);
+            }
+        });
 
 
+
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        zPosition = 2;
+        Log.e(TAG, "onPause: zPosition="+zPosition );
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.e(TAG, "onDestroy: " );
+        positionList.clear();
+    }
+
+    public void pageJump(Class<?> cls) {
+        Intent intent = new Intent(getActivity(), cls);
+        startActivity(intent);
+    }
+
+    //错误码返回值解析并判断
+    private void errorCode(String result) {
+        ErrorCodeEntity errorCodeEntity = GsonParsing.sendCodeError(result);
+        String errorCode = errorCodeEntity.getCode();
+        ErrorCode code = new ErrorCode(getActivity());
+        code.judge(errorCode);
     }
 
 
@@ -141,9 +285,9 @@ public class CarGoodsFragment extends Fragment {
 
         @Override
         public void setCityText(String text) {
-            if (WHICH==ConstantNumber.NUMBER_ONE){
+            if (WHICH == ConstantNumber.NUMBER_ONE) {
                 tv_goods_car_start_email.setText(text);
-            }else if (WHICH==ConstantNumber.NUMBER_TWO){
+            } else if (WHICH == ConstantNumber.NUMBER_TWO) {
                 tv_goods_car_end_email.setText(text);
             }
 
@@ -151,9 +295,9 @@ public class CarGoodsFragment extends Fragment {
 
         @Override
         public void setDistrictText(String text) {
-            if (WHICH==ConstantNumber.NUMBER_ONE){
+            if (WHICH == ConstantNumber.NUMBER_ONE) {
                 tv_goods_car_start_email.setText(text);
-            }else if (WHICH==ConstantNumber.NUMBER_TWO){
+            } else if (WHICH == ConstantNumber.NUMBER_TWO) {
                 tv_goods_car_end_email.setText(text);
 
             }
@@ -177,21 +321,21 @@ public class CarGoodsFragment extends Fragment {
         @Override
         protected void onPostExecute(Object o) {
             if (pull_refresh_list.isHeaderShown()) {
-                ArrayList<GoodsAdapterEntity> newList = new ArrayList<>();
-                GoodsAdapterEntity goodsAdapterEntity = new GoodsAdapterEntity("下拉得到数据");
-                newList.add(goodsAdapterEntity);
-
-                for (int i = 0; i < goodsAdapter.getList().size(); i++) {
-                    newList.add(goodsAdapter.getList().get(i));
-                }
                 goodsAdapter.removeAllDATA();
-                goodsAdapter.addAllDataToMyadapter(newList);
-                newList.clear();
-
-
+                addData();
+                LoginActivity.isLogin = ConstantNumber.NUMBER_TWO;
+                positionList.clear();
             } else if (pull_refresh_list.isFooterShown()) {
-                GoodsAdapterEntity goodsAdapterEntity = new GoodsAdapterEntity("上拉得到数据");
-                goodsAdapter.addDATA(goodsAdapterEntity);
+                LoginActivity.isLogin = ConstantNumber.NUMBER_TWO;
+                positionList.clear();
+                if (list.size()<5){
+                    Toast.makeText(getActivity(), "没有更多数据了哦！", Toast.LENGTH_SHORT).show();
+
+                }else {
+                    PAGE = PAGE+ConstantNumber.NUMBER_ONE;
+                    carsourceInterface(PAGE);
+                }
+
             }
 
             goodsAdapter.notifyDataSetChanged();
@@ -226,6 +370,9 @@ public class CarGoodsFragment extends Fragment {
                 }
                 break;
             case R.id.layout_goods_car_more:
+                //点击弹出pop对话框(用来显示popupwindow的parent  ID，以该位置为参照物设置具体位置)
+                popMoreWindow.showAsDropDown(layout_goods_car_more, 0, 5);
+                setPopWindowbackgroundAlpha(0.5f);//设置背景变暗
                 break;
         }
     }
@@ -280,6 +427,32 @@ public class CarGoodsFragment extends Fragment {
                     }
                 })
                 .build();
+    }
+
+
+    /**
+     * 显示"更多"对话框
+     */
+    private void showPopMoreWindow() {
+        View popview = LayoutInflater.from(getActivity()).inflate(R.layout.goods_scrollview_more, null);
+        //WRAP_CONTENT:是.xml中的布局宽、高，wrap_content包裹
+        popMoreWindow = new PopupWindow(popview, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        popMoreWindow.setBackgroundDrawable(new BitmapDrawable());
+        popMoreWindow.getContentView().setFocusable(true);//为是否可以获得焦点
+        //设置可触摸PopupWindow之外的地方关闭
+        popMoreWindow.setOutsideTouchable(true);
+        setPopWindowbackgroundAlpha(1f);
+        //点击其它地方对话框关闭的时候，将背景还原
+        popMoreWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+
+            @Override
+            public void onDismiss() {
+                setPopWindowbackgroundAlpha(1f);
+            }
+        });
+
+        popMoreWindow.setAnimationStyle(R.style.dialogWindowAnim_style);//设置动画
+        // TODO: 2017/3/28 控件点击待完成
     }
 
 

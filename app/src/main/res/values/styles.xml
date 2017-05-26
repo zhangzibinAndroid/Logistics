@@ -51,4 +51,12 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:visibility">gone</item>
     </style>
+
+
+
+    <!--popWindow弹出动画-->
+    <style name="dialogWindowAnim_style">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter_anim_top_bottom</item>
+        <item name="android:windowExitAnimation">@anim/dialog_exit_anim_top_bottom</item>
+    </style>
 </resources>

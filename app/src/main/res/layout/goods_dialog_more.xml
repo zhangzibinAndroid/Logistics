@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F2F2F2">
+
+
+
+<!--是否整车-->
+    <TextView
+        android:text="是否整车"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="28px"
+        android:textColor="#EB6100"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="20px" />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="80px">
+
+        <TextView
+            android:text="整车"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginTop="15px"
+            android:layout_marginLeft="30px"
+            android:id="@+id/tv_goods_more_carload" />
+
+        <TextView
+            android:text="拼车"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="15px"
+            android:id="@+id/tv_goods_more_carlsharing" />
+    </com.zhy.autolayout.AutoLinearLayout>
+    <!--车型-->
+    <TextView
+        android:text="车型"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="28px"
+        android:textColor="#EB6100"
+        android:layout_marginLeft="30px"/>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="面包车"
+            android:layout_width="180px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginTop="15px"
+            android:layout_marginLeft="30px"
+            android:layout_weight="1"
+            android:id="@+id/tv_goods_more_minibus" />
+
+        <TextView
+            android:text="平板车"
+            android:layout_width="180px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="15px"
+            android:layout_weight="1"
+            android:id="@+id/tv_goods_more_flatcar" />
+
+        <TextView
+            android:text="高栏"
+            android:layout_width="180px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginTop="15px"
+            android:layout_marginLeft="30px"
+            android:layout_weight="1"
+            android:id="@+id/tv_goods_more_highhurdles" />
+
+        <TextView
+            android:text="厢式车"
+            android:layout_width="180px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="15px"
+            android:layout_weight="1"
+            android:layout_marginRight="30px"
+            android:id="@+id/tv_goods_more_var" />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="集装箱"
+            android:layout_width="180px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginTop="15px"
+            android:layout_marginLeft="30px"
+            android:layout_weight="1"
+            android:id="@+id/tv_goods_more_container" />
+
+        <TextView
+            android:text="危险品"
+            android:layout_width="180px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="15px"
+            android:layout_weight="1"
+            android:id="@+id/tv_goods_more_danger" />
+
+        <TextView
+            android:text="冷藏"
+            android:layout_width="180px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginTop="15px"
+            android:layout_marginLeft="30px"
+            android:layout_weight="1"
+            android:id="@+id/tv_goods_more_coldstorage" />
+
+        <TextView
+            android:text="保温"
+            android:layout_width="180px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="15px"
+            android:layout_weight="1"
+            android:layout_marginRight="30px"
+            android:id="@+id/tv_goods_more_heat" />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="80px">
+
+        <TextView
+            android:text="其它"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginTop="15px"
+            android:layout_marginLeft="30px"
+            android:id="@+id/tv_goods_more_other" />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+<!--载重-->
+    <TextView
+        android:text="载重"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="28px"
+        android:textColor="#EB6100"
+        android:layout_marginLeft="30px"/>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="0-5吨"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_weight="1"
+            android:layout_marginTop="15px"
+            android:layout_marginLeft="30px"
+            android:id="@+id/tv_goods_more_meal1" />
+
+        <TextView
+            android:text="5-10吨"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="15px"
+            android:layout_weight="1"
+            android:id="@+id/tv_goods_more_meal2" />
+
+        <TextView
+            android:text="10-20吨"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_weight="1"
+            android:layout_marginTop="15px"
+            android:layout_marginLeft="30px"
+            android:id="@+id/tv_goods_more_meal3" />
+
+        <TextView
+            android:text="20-30吨"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="15px"
+            android:layout_weight="1"
+            android:id="@+id/tv_goods_more_meal4" />
+    </com.zhy.autolayout.AutoLinearLayout>
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="80px">
+
+        <TextView
+            android:text="30-40吨"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_weight="1"
+            android:layout_marginTop="15px"
+            android:layout_marginLeft="30px"
+            android:id="@+id/tv_goods_more_meal5" />
+
+        <TextView
+            android:text="40-50吨"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="15px"
+            android:layout_weight="1"
+            android:id="@+id/tv_goods_more_meal6" />
+
+        <TextView
+            android:text="50吨以上"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_weight="1"
+            android:layout_marginTop="15px"
+            android:layout_marginLeft="30px"
+            android:id="@+id/tv_goods_more_meal7" />
+
+        <TextView
+            android:text="其它"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="15px"
+            android:layout_weight="1"
+            android:id="@+id/tv_goods_more_meal_other" />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <!--车长-->
+    <TextView
+        android:text="车长"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="28px"
+        android:textColor="#EB6100"
+        android:layout_marginLeft="30px"/>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="0-2米"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_weight="1"
+            android:layout_marginTop="15px"
+            android:layout_marginLeft="30px"
+            android:id="@+id/tv_goods_more_carlength1" />
+
+        <TextView
+            android:text="2-4米"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="15px"
+            android:layout_weight="1"
+            android:id="@+id/tv_goods_more_carlength2" />
+
+        <TextView
+            android:text="4-6米"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_weight="1"
+            android:layout_marginTop="15px"
+            android:layout_marginLeft="30px"
+            android:id="@+id/tv_goods_more_carlength3" />
+
+        <TextView
+            android:text="6-8米"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="15px"
+            android:layout_weight="1"
+            android:id="@+id/tv_goods_more_carlength4" />
+    </com.zhy.autolayout.AutoLinearLayout>
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="80px">
+
+        <TextView
+            android:text="8-10米"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_weight="1"
+            android:layout_marginTop="15px"
+            android:layout_marginLeft="30px"
+            android:id="@+id/tv_goods_more_carlength5" />
+
+        <TextView
+            android:text="10-12米"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="15px"
+            android:layout_weight="1"
+            android:id="@+id/tv_goods_more_carlength6" />
+
+        <TextView
+            android:text="12米以上"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_weight="1"
+            android:layout_marginTop="15px"
+            android:layout_marginLeft="30px"
+            android:id="@+id/tv_goods_more_carlength7" />
+
+        <TextView
+            android:text="其它"
+            android:layout_width="160px"
+            android:layout_height="80px"
+            android:textSize="30px"
+            android:gravity="center"
+            android:background="#D4D4D4"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="15px"
+            android:layout_weight="1"
+            android:id="@+id/tv_goods_more_carlength_other" />
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

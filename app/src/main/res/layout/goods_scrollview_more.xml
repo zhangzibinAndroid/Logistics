@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--上下滑动-->
+    <ScrollView
+        android:id="@+id/scroll_goods_more"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <!--引用布局-->
+        <include layout="@layout/goods_dialog_more">
+        </include>
+    </ScrollView>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="15px"
+        android:background="#F5FFFA"
+        android:layout_gravity="center_vertical">
+
+        <Button
+            android:text="清空"
+            android:textSize="35px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_goods_more_delect"
+            android:background="#D4D4D4"
+            android:layout_marginLeft="40px"
+            android:layout_marginRight="30px"
+            android:layout_weight="1"/>
+        <Button
+            android:text="确定"
+            android:textSize="35px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_goods_more_oK"
+            android:layout_weight="1"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="40px"
+            android:background="@drawable/sel_btn_color"/>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

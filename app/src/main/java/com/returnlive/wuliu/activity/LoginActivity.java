@@ -18,10 +18,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.returnlive.wuliu.R;
+import com.returnlive.wuliu.constant.ConstantNumber;
 import com.returnlive.wuliu.constant.NetworkUrl;
 import com.returnlive.wuliu.constant.ReturnCode;
 import com.returnlive.wuliu.entity.ErrorCodeEntity;
 import com.returnlive.wuliu.entity.LoginSuccessEntity;
+import com.returnlive.wuliu.fragment.CarGoodsFragment;
 import com.returnlive.wuliu.gson.GsonParsing;
 import com.returnlive.wuliu.utils.ErrorCode;
 import com.returnlive.wuliu.utils.MyCallBack;
@@ -73,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final long COUNTER_TIME = 120;
     private ProgressDialog pro;
     private SharedPreferencesUtils sharedPreferencesUtils;
+    public static int isLogin = ConstantNumber.NUMBER_ONE;
 
 
     @Override
@@ -87,6 +90,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void initView() {
+        CarGoodsFragment.mPosition = ConstantNumber.NUMBER_ZERO;//判断是登录
         edt_username.setHintTextColor(Color.argb(125, 255, 255, 255));
         edt_password.setHintTextColor(Color.argb(125, 255, 255, 255));
         edt_username.setTextColor(Color.argb(125, 255, 255, 255));

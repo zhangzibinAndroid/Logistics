@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/ftoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/title_bg"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:background="@drawable/sel_backbg"
+                android:src="@drawable/ic_back" />
+
+            <View android:id="@+id/view"
+                android:layout_width="@dimen/px02"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/px15"
+                android:layout_toRightOf="@+id/img_back"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/px60"
+                android:background="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/px15"
+                android:text="@string/goods_detail"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/view"
+                android:textColor="@color/white"
+                android:textSize="@dimen/px35" />
+
+
+            <ImageView android:id="@+id/img_share"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/px20"
+                android:background="@drawable/sel_backbg"
+                android:src="@drawable/ic_share" />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <!--引用布局-->
+    <include
+        android:id="@+id/include"
+        layout="@layout/goods_details_scrollview"></include>
+
+    <!--头像部分  查看评论部分-->
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/include"
+        android:layout_marginTop="15px"
+
+        android:background="#ffffff">
+        <!--引用自定义RoundImageView类包名   实现圆形图框-->
+        <com.returnlive.wuliu.view.RoundImageView
+            android:id="@+id/img_goods_details_icon"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20px"
+            android:layout_marginTop="30px"
+            android:src="@mipmap/portrait" />
+
+        <TextView
+            android:id="@+id/tv_goods_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/img_goods_details_icon"
+            android:layout_marginLeft="20px"
+            android:layout_toRightOf="@+id/img_goods_details_icon"
+            android:gravity="center_vertical"
+            android:text="18888888888"
+            android:textColor="#444444"
+            android:textSize="38px" />
+
+        <!--五星评分-->
+        <ImageView
+            android:id="@+id/img_score1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15px"
+            android:layout_marginTop="30px"
+            android:layout_toRightOf="@+id/tv_goods_phone"
+            android:src="@drawable/ic_me_pentagram" />
+
+        <ImageView
+            android:id="@+id/img_score2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30px"
+            android:layout_toRightOf="@+id/img_score1"
+            android:src="@drawable/ic_me_pentagram" />
+
+        <ImageView
+            android:id="@+id/img_score3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30px"
+            android:layout_toRightOf="@+id/img_score2"
+            android:src="@drawable/ic_me_pentagram" />
+
+        <ImageView
+            android:id="@+id/img_score4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30px"
+            android:layout_toRightOf="@+id/img_score3"
+            android:src="@drawable/ic_me_pentagram" />
+
+        <ImageView
+            android:id="@+id/img_score5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30px"
+            android:layout_toRightOf="@+id/img_score4"
+            android:src="@drawable/ic_me_pentagram" />
+
+        <TextView
+            android:id="@+id/tv_goods_details_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_goods_phone"
+            android:layout_below="@+id/tv_goods_phone"
+            android:layout_marginRight="190px"
+            android:layout_marginTop="10px"
+            android:gravity="center_vertical"
+            android:paddingBottom="25px"
+            android:text="加入65天 下单666次 接单666次 违约666次"
+            android:textSize="32px" />
+
+
+        <Button
+            android:id="@+id/img_goods_callphone"
+            android:layout_width="150px"
+            android:layout_height="60px"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tv_goods_phone"
+            android:layout_marginRight="20px"
+            android:background="@drawable/shape_border"
+            android:text="查看评价"
+            android:layout_marginTop="10px"
+            android:textColor="#00A84B" />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_details_pay_deposit"
+            android:layout_width="wrap_content"
+            android:layout_height="110px"
+            android:layout_weight="1"
+            android:background="#F9BC01"
+            android:text="支付定金"
+            android:textColor="#ffffff"
+            android:textSize="40px" />
+
+        <Button
+            android:id="@+id/btn_details_Contact_owner"
+            android:layout_width="wrap_content"
+            android:layout_height="110px"
+            android:layout_weight="1"
+            android:background="#2BC17A"
+            android:text="联系货主"
+            android:textColor="#ffffff"
+            android:textSize="40px" />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+
+
+
+
+
+</com.zhy.autolayout.AutoLinearLayout>

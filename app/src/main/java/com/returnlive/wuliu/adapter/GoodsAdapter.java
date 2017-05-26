@@ -2,6 +2,7 @@ package com.returnlive.wuliu.adapter;
 
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -9,7 +10,8 @@ import android.widget.TextView;
 
 import com.returnlive.wuliu.R;
 import com.returnlive.wuliu.base.MyBaseAdapter;
-import com.returnlive.wuliu.entity.GoodsAdapterEntity;
+import com.returnlive.wuliu.entity.CarsourceListEntity;
+import com.returnlive.wuliu.utils.DateUtilsTime;
 import com.returnlive.wuliu.view.RoundImageView;
 
 import org.xutils.view.annotation.ViewInject;
@@ -21,7 +23,8 @@ import org.xutils.x;
  * 时间： 下午 5:12
  * 描述： 货源适配器
  */
-public class GoodsAdapter extends MyBaseAdapter<GoodsAdapterEntity> {
+public class GoodsAdapter extends MyBaseAdapter<CarsourceListEntity.CarsourceBean> {
+    public static int mPosition;
     Context context;
 
     public GoodsAdapter(Context context) {
@@ -31,6 +34,8 @@ public class GoodsAdapter extends MyBaseAdapter<GoodsAdapterEntity> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        mPosition = position;
+        Log.e("TAG", "position: ="+position );
         ViewHolder viewHolder = null;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_goods_listview, null);
@@ -39,9 +44,24 @@ public class GoodsAdapter extends MyBaseAdapter<GoodsAdapterEntity> {
         }else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
+
+        DateUtilsTime dateUtilsTime = new DateUtilsTime();
         //此处设置控件
-        GoodsAdapterEntity goodsAdapterEntity = getItem(position);
-        viewHolder.tv_goods_name.setText(goodsAdapterEntity.getName());
+        CarsourceListEntity.CarsourceBean carsourceListEntity = getItem(position);
+        viewHolder.tv_goods_release_time.setText("发布时间："+dateUtilsTime.getDate(carsourceListEntity.getCreate_time()));
+        viewHolder.tv_goods_send_number.setText("发货：xxx单");
+        viewHolder.tv_deal_number.setText("交易：xxx单");
+        viewHolder.tv_goods_name.setText("司机姓名");
+        viewHolder.tv_goods_start.setText(carsourceListEntity.getStart());
+        viewHolder.tv_goods_end.setText(carsourceListEntity.getEnd());
+        viewHolder.tv_goods_remark.setText("备注说明");
+        viewHolder.tv_goods_cartype.setText("车型");
+        viewHolder.tv_goods_carlength.setText("车长");
+        viewHolder.tv_goods_weight.setText(carsourceListEntity.getWeight()+"吨/"+carsourceListEntity.getVolume()+"方");
+        viewHolder.tv_goods_traveltime.setText(dateUtilsTime.getDate(carsourceListEntity.getCar_time()));
+
+
+
         return convertView;
     }
 

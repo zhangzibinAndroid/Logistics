@@ -1,6 +1,8 @@
 package com.returnlive.wuliu.gson;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.returnlive.wuliu.entity.CarsourceListEntity;
 import com.returnlive.wuliu.entity.ErrorCodeEntity;
 import com.returnlive.wuliu.entity.LoginSuccessEntity;
 import com.returnlive.wuliu.entity.UserMessageEntity;
@@ -45,6 +47,14 @@ public class GsonParsing {
     public static UserMessageEntity.UserBean gsonUserMessage(String json){
         UserMessageEntity userMessage = GsonUtils.parseJsonWithGson(json,UserMessageEntity.class);
         return userMessage.getCode();
+    }
+
+
+    public static List<CarsourceListEntity.CarsourceBean> gsonCarsource(String json){
+        Gson gson = new Gson();
+        CarsourceListEntity carsourceListEntity = gson.fromJson(json,new TypeToken<CarsourceListEntity>(){}.getType());
+//        CarsourceListEntity carsourceListEntity = GsonUtils.parseJsonWithGson(json,CarsourceListEntity.class);
+        return carsourceListEntity.getDate();
     }
 
 
