@@ -4,6 +4,7 @@ package com.returnlive.wuliu.fragment;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
@@ -21,6 +22,9 @@ import com.bigkoo.pickerview.lib.WheelView;
 import com.bigkoo.pickerview.listener.CustomListener;
 import com.returnlive.wuliu.R;
 import com.returnlive.wuliu.constant.ConstantNumber;
+import com.returnlive.wuliu.constant.NetworkUrl;
+import com.returnlive.wuliu.utils.MyCallBack;
+import com.returnlive.wuliu.utils.XUtil;
 import com.returnlive.wuliu.view.CityListViewPopWindow;
 import com.zhy.autolayout.AutoRelativeLayout;
 import org.xutils.view.annotation.Event;
@@ -29,6 +33,8 @@ import org.xutils.x;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 作者： 张梓彬
@@ -147,7 +153,46 @@ public class OptionShipperFragment extends Fragment {
 
     //发布接口
     private void releaseInterface() {
+        String startArea = tv_start_area.getText().toString();
+        String endArea = tv_end_area.getText().toString();
+        String carStyle = tv_car_style.getText().toString();
+        float wgt = Float.valueOf(tv_wgt.getText().toString());
+        float volume = Float.valueOf(tv_enter_volume.getText().toString());
+        String carStartTime = tv_sel_start_time.getText().toString();
+        //转型处理
 
+
+        Map<String, Object> map = new HashMap<>();
+        /*map.put("start", userName);
+        map.put("end", userPwds);
+        map.put("car_type", userPwds);
+        map.put("weight", userPwds);
+        map.put("volume", userPwds);
+        map.put("car_time", userPwds);
+        map.put("remarks", userPwds);*/
+        NetworkUrl networkUrl = new NetworkUrl();
+        XUtil.Post(networkUrl.CAR_SOURCE_ADD_URL, map, new MyCallBack<String>() {
+
+            @Override
+            public void onSuccess(String result) {
+                super.onSuccess(result);
+                Message msg = new Message();
+                msg.obj = result;
+
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                super.onError(ex, isOnCallback);
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.networ_anomalies), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }
+        });
 
 
     }

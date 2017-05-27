@@ -25,5 +25,5 @@ public class NetworkUrl {
     public String DRIVER_CERTIFICATION_URL = WULIU_URL+"Carsource/auth/uid/"+UID_SESSON_URL;
     public String USER_MESSAGE_URL = WULIU_URL+"Info/index/uid/"+UID_SESSON_URL;
     public String CAR_SOURCE_URL = WULIU_URL+"Carsource/carlist/uid/"+UID_SESSON_URL;
-
+    public String CAR_SOURCE_ADD_URL = WULIU_URL+"Carsource/add/uid/"+UID_SESSON_URL;
 }
