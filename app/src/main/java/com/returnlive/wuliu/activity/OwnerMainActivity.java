@@ -13,6 +13,7 @@ import com.returnlive.wuliu.R;
 import com.returnlive.wuliu.application.LogisticsApplication;
 import com.returnlive.wuliu.constant.ConstantNumber;
 import com.returnlive.wuliu.constant.NetworkUrl;
+import com.returnlive.wuliu.entity.MessageEventBus;
 import com.returnlive.wuliu.fragment.CarGoodsFragment;
 import com.returnlive.wuliu.fragment.GoodsFragment;
 import com.returnlive.wuliu.fragment.MineFragment;
@@ -20,10 +21,12 @@ import com.returnlive.wuliu.fragment.OptionOwnerFragment;
 import com.returnlive.wuliu.fragment.OptionShipperFragment;
 import com.returnlive.wuliu.fragment.RouteOwnerFragment;
 import com.returnlive.wuliu.fragment.RouteShipperFragment;
+import com.returnlive.wuliu.utils.CarsourceList;
 import com.returnlive.wuliu.utils.MyCallBack;
 import com.returnlive.wuliu.utils.XUtil;
 import com.zhy.autolayout.AutoLinearLayout;
 
+import org.greenrobot.eventbus.EventBus;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -65,11 +68,13 @@ public class OwnerMainActivity extends AppCompatActivity {
     private long exitTime = 0;//点击2次返回，退出程序
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_main);
         x.view().inject(this);
+
         LogisticsApplication.addActivity(this);
         initView();
     }
@@ -85,11 +90,7 @@ public class OwnerMainActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
 
-    }
 
     private void initView() {
         goodsFragment = new GoodsFragment();
@@ -153,6 +154,13 @@ public class OwnerMainActivity extends AppCompatActivity {
                 tv_main_cars.setSelected(true);
                 tv_main_cars.setTextColor(getResources().getColor(R.color.textselsecond));
                 setReplaceFragment(carGoodsFragment);
+
+                if (CarsourceList.cacheCarList != null){
+                    EventBus.getDefault().post(new MessageEventBus("refresh"));
+                }
+
+
+
                 break;
             case R.id.tv_main_route2:
                 tv_main_route2.setSelected(true);

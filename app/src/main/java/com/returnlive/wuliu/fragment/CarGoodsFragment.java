@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -38,6 +39,7 @@ import com.returnlive.wuliu.constant.ReturnCode;
 import com.returnlive.wuliu.entity.CarsourceListEntity;
 import com.returnlive.wuliu.entity.ErrorCodeEntity;
 import com.returnlive.wuliu.entity.GoodsAdapterEntity;
+import com.returnlive.wuliu.entity.MessageEventBus;
 import com.returnlive.wuliu.gson.GsonParsing;
 import com.returnlive.wuliu.utils.CarsourceList;
 import com.returnlive.wuliu.utils.DateUtilsTime;
@@ -47,6 +49,9 @@ import com.returnlive.wuliu.utils.XUtil;
 import com.returnlive.wuliu.view.CityListViewPopWindow;
 import com.zhy.autolayout.AutoRelativeLayout;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -88,51 +93,33 @@ public class CarGoodsFragment extends Fragment {
     private View view;
     private GoodsAdapter goodsAdapter;
     private CityListViewPopWindow cityListViewPopWindow;
-    private static final String TAG = "CarGoodsFragment";
     public int WHICH = ConstantNumber.NUMBER_ZERO;
     private TimePickerView timePickerView;//时间选择器
     private PopupWindow popMoreWindow;//用来显示popupwindow的parent
     private int PAGE = ConstantNumber.NUMBER_ONE;
     private List<CarsourceListEntity.CarsourceBean> list;
     private ListView actualListView;
-    public static int zPosition = ConstantNumber.NUMBER_ZERO;
-
+    private static final String TAG = "CarGoodsFragment";
     public CarGoodsFragment() {
     }
 
 
-    private Handler carsourceHandler = new Handler(){
+    private Handler carsourceHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             String result = (String) msg.obj;
             if (result.indexOf(ReturnCode.SUCCESS) > 0) {
-                 list = GsonParsing.gsonCarsource(result);
-                Log.e(TAG, "list长度: "+list.size() );
-                    for (int i = 0; i < list.size(); i++) {
-                        CarsourceListEntity.CarsourceBean carsourceBean = list.get(i);
-                        goodsAdapter.addDATA(carsourceBean);
-                    }
-                Log.e(TAG, "goodsAdapter.getList(): "+goodsAdapter.getList().size() );
-
-                if (CarsourceList.cacheCarList==null){
-                    CarsourceList.cacheCarList = goodsAdapter.getList();
-                }else {
-                    Log.e(TAG, "CarsourceList.cacheCarList长度: "+CarsourceList.cacheCarList.size() );
-                    CarsourceList.cacheCarList = goodsAdapter.getList();
-                    Log.e(TAG, "CarsourceList.cacheCarList长度: "+CarsourceList.cacheCarList.size() );
-
+                list = GsonParsing.gsonCarsource(result);
+                Log.e(TAG, "list: "+list );
+                for (int i = 0; i < list.size(); i++) {
+                    CarsourceListEntity.CarsourceBean carsourceBean = list.get(i);
+                    goodsAdapter.addDATA(carsourceBean);
                 }
-
-
+                CarsourceList.cacheCarList = goodsAdapter.getList();
                 goodsAdapter.notifyDataSetChanged();
-                if (zPosition==ConstantNumber.NUMBER_ZERO){
 
-                }else {
-                    actualListView.setSelection(goodsAdapter.mPosition);
-                }
-
-            }else {
+            } else {
                 errorCode(result);
             }
         }
@@ -144,14 +131,13 @@ public class CarGoodsFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_car_goods, container, false);
         x.view().inject(this, view);
-        PAGE = ConstantNumber.NUMBER_ONE;
+        EventBus.getDefault().register(this);
         initCustomTimePicker();
         showPopMoreWindow();
         initView();
-        Log.e(TAG, "onCreateView: " );
-        if (CarsourceList.cacheCarList==null){
+        if (CarsourceList.cacheCarList == null) {
             addData();
-        }else {
+        } else {
             addDataFromCache();
         }
 
@@ -159,7 +145,6 @@ public class CarGoodsFragment extends Fragment {
     }
 
     private void addDataFromCache() {
-        Log.e(TAG, "加载缓存中的数据" );
         for (int i = 0; i < CarsourceList.cacheCarList.size(); i++) {
             CarsourceListEntity.CarsourceBean carsourceBean = CarsourceList.cacheCarList.get(i);
             goodsAdapter.addDATA(carsourceBean);
@@ -174,6 +159,7 @@ public class CarGoodsFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                PAGE = ConstantNumber.NUMBER_ONE;
                 carsourceInterface(ConstantNumber.NUMBER_ONE);
             }
         }).start();
@@ -183,7 +169,6 @@ public class CarGoodsFragment extends Fragment {
 
     //获取车辆列表接口
     private void carsourceInterface(int page) {
-        Log.e(TAG, "重新联网获取的数据" );
         Map<String, Object> map = new HashMap<>();
         map.put("page", page);
         NetworkUrl networkUrl = new NetworkUrl();
@@ -242,21 +227,14 @@ public class CarGoodsFragment extends Fragment {
         actualListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), "点击了第"+(position)+"个", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "点击了第" + (position) + "个", Toast.LENGTH_SHORT).show();
 //                pageJump(GoodsDetailsActivity.class);
             }
         });
 
 
-
     }
 
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        zPosition = 2;
-    }
 
 
 
@@ -323,11 +301,12 @@ public class CarGoodsFragment extends Fragment {
                 goodsAdapter.removeAllDATA();
                 addData();
             } else if (pull_refresh_list.isFooterShown()) {
-                if (list.size()<5){
+                if (list.size() < 5) {
                     CarsourceList.cacheCarList = goodsAdapter.getList();
                     Toast.makeText(getActivity(), "没有更多数据了哦！", Toast.LENGTH_SHORT).show();
-                }else {
-                    PAGE = PAGE+ConstantNumber.NUMBER_ONE;
+                } else {
+                    Log.e(TAG, "PAGE: "+PAGE);
+                    PAGE = PAGE + ConstantNumber.NUMBER_ONE;
                     carsourceInterface(PAGE);
                 }
 
@@ -350,6 +329,7 @@ public class CarGoodsFragment extends Fragment {
             case R.id.toobar_goods_car_title_nearby:
                 toobar_goods_car_title_address.setSelected(false);
                 toobar_goods_car_title_nearby.setSelected(true);
+
                 break;
             case R.id.ly_goods_car_start:
                 WHICH = ConstantNumber.NUMBER_ONE;
@@ -372,6 +352,58 @@ public class CarGoodsFragment extends Fragment {
         }
     }
 
+
+    //滑动到最顶端刷新
+    private void scrollToRefresh() {
+        actualListView.smoothScrollToPosition(0);//listView返回顶部
+        actualListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            boolean isNeedToRefresh = true;
+
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                switch (scrollState) {
+                    // 当不滚动时
+                    case AbsListView.OnScrollListener.SCROLL_STATE_IDLE:
+                        // 判断滚动到底部
+                        if (actualListView.getLastVisiblePosition() == (actualListView.getCount() - 1)) {
+                        }
+                        // 判断滚动到顶部
+                        if (actualListView.getFirstVisiblePosition() == 0) {
+                            if (isNeedToRefresh) {
+                                pull_refresh_list.onRefreshComplete();
+                                pull_refresh_list.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
+                                pull_refresh_list.setRefreshing(true);
+                                CarsourceList.cacheCarList.clear();
+                                goodsAdapter.removeAllDATA();
+                                addData();
+                                pull_refresh_list.setMode(PullToRefreshBase.Mode.BOTH);
+                                isNeedToRefresh = false;
+                            }
+                        }
+                        break;
+                }
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+            }
+        });
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void getMessage(MessageEventBus event){
+        if (event.msg.equals("refresh")){
+            scrollToRefresh();
+        }
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 
     /**
      * 显示“时间”的初始化
