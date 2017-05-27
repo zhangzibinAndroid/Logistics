@@ -39,6 +39,7 @@ import com.returnlive.wuliu.entity.CarsourceListEntity;
 import com.returnlive.wuliu.entity.ErrorCodeEntity;
 import com.returnlive.wuliu.entity.GoodsAdapterEntity;
 import com.returnlive.wuliu.gson.GsonParsing;
+import com.returnlive.wuliu.utils.CarsourceList;
 import com.returnlive.wuliu.utils.DateUtilsTime;
 import com.returnlive.wuliu.utils.ErrorCode;
 import com.returnlive.wuliu.utils.MyCallBack;
@@ -87,7 +88,7 @@ public class CarGoodsFragment extends Fragment {
     private View view;
     private GoodsAdapter goodsAdapter;
     private CityListViewPopWindow cityListViewPopWindow;
-    private static final String TAG = "TAG//;";
+    private static final String TAG = "CarGoodsFragment";
     public int WHICH = ConstantNumber.NUMBER_ZERO;
     private TimePickerView timePickerView;//时间选择器
     private PopupWindow popMoreWindow;//用来显示popupwindow的parent
@@ -100,8 +101,6 @@ public class CarGoodsFragment extends Fragment {
     }
 
 
-
-
     private Handler carsourceHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -109,10 +108,23 @@ public class CarGoodsFragment extends Fragment {
             String result = (String) msg.obj;
             if (result.indexOf(ReturnCode.SUCCESS) > 0) {
                  list = GsonParsing.gsonCarsource(result);
+                Log.e(TAG, "list长度: "+list.size() );
                     for (int i = 0; i < list.size(); i++) {
                         CarsourceListEntity.CarsourceBean carsourceBean = list.get(i);
                         goodsAdapter.addDATA(carsourceBean);
                     }
+                Log.e(TAG, "goodsAdapter.getList(): "+goodsAdapter.getList().size() );
+
+                if (CarsourceList.cacheCarList==null){
+                    CarsourceList.cacheCarList = goodsAdapter.getList();
+                }else {
+                    Log.e(TAG, "CarsourceList.cacheCarList长度: "+CarsourceList.cacheCarList.size() );
+                    CarsourceList.cacheCarList = goodsAdapter.getList();
+                    Log.e(TAG, "CarsourceList.cacheCarList长度: "+CarsourceList.cacheCarList.size() );
+
+                }
+
+
                 goodsAdapter.notifyDataSetChanged();
                 if (zPosition==ConstantNumber.NUMBER_ZERO){
 
@@ -136,13 +148,29 @@ public class CarGoodsFragment extends Fragment {
         initCustomTimePicker();
         showPopMoreWindow();
         initView();
-        addData();
+        Log.e(TAG, "onCreateView: " );
+        if (CarsourceList.cacheCarList==null){
+            addData();
+        }else {
+            addDataFromCache();
+        }
+
         return view;
     }
 
+    private void addDataFromCache() {
+        Log.e(TAG, "加载缓存中的数据" );
+        for (int i = 0; i < CarsourceList.cacheCarList.size(); i++) {
+            CarsourceListEntity.CarsourceBean carsourceBean = CarsourceList.cacheCarList.get(i);
+            goodsAdapter.addDATA(carsourceBean);
+        }
+        goodsAdapter.notifyDataSetChanged();
+
+    }
 
 
     private void addData() {
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -155,6 +183,7 @@ public class CarGoodsFragment extends Fragment {
 
     //获取车辆列表接口
     private void carsourceInterface(int page) {
+        Log.e(TAG, "重新联网获取的数据" );
         Map<String, Object> map = new HashMap<>();
         map.put("page", page);
         NetworkUrl networkUrl = new NetworkUrl();
@@ -295,12 +324,13 @@ public class CarGoodsFragment extends Fragment {
         @Override
         protected void onPostExecute(Object o) {
             if (pull_refresh_list.isHeaderShown()) {
+                CarsourceList.cacheCarList.clear();
                 goodsAdapter.removeAllDATA();
                 addData();
             } else if (pull_refresh_list.isFooterShown()) {
                 if (list.size()<5){
+                    CarsourceList.cacheCarList = goodsAdapter.getList();
                     Toast.makeText(getActivity(), "没有更多数据了哦！", Toast.LENGTH_SHORT).show();
-
                 }else {
                     PAGE = PAGE+ConstantNumber.NUMBER_ONE;
                     carsourceInterface(PAGE);
