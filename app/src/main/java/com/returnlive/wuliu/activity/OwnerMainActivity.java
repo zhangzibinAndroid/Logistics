@@ -132,29 +132,22 @@ public class OwnerMainActivity extends AppCompatActivity {
                 setReplaceFragment(goodsFragment);
                 tv_main_goods.setSelected(true);
                 tv_main_goods.setTextColor(getResources().getColor(R.color.textselsecond));
-                CarGoodsFragment.mPosition = ConstantNumber.NUMBER_TWO;
                 break;
             case R.id.tv_main_route:
                 setReplaceFragment(routeOwnerFragment);
                 tv_main_route.setSelected(true);
                 tv_main_route.setTextColor(getResources().getColor(R.color.textselsecond));
-                CarGoodsFragment.mPosition = ConstantNumber.NUMBER_TWO;
                 break;
             case R.id.tv_main_release_options:
                 setReplaceFragment(optionOwnerFragment);
                 tv_main_release_options.setSelected(true);
                 tv_main_release_options.setTextColor(getResources().getColor(R.color.textselsecond));
-                CarGoodsFragment.mPosition = ConstantNumber.NUMBER_TWO;
                 break;
             case R.id.tv_main_me:
                 setReplaceFragment(mineFragment);
                 tv_main_me.setSelected(true);
                 tv_main_me.setTextColor(getResources().getColor(R.color.textselsecond));
-                if (LoginActivity.isLogin == ConstantNumber.NUMBER_ONE){
-                    CarGoodsFragment.mPosition = ConstantNumber.NUMBER_ONE;
-                }else {
-                    CarGoodsFragment.mPosition = ConstantNumber.NUMBER_TWO;
-                }
+
                 break;
             case R.id.tv_main_cars:
                 tv_main_cars.setSelected(true);
@@ -165,20 +158,17 @@ public class OwnerMainActivity extends AppCompatActivity {
                 tv_main_route2.setSelected(true);
                 tv_main_route2.setTextColor(getResources().getColor(R.color.textselsecond));
                 setReplaceFragment(routeShipperFragment);
-                CarGoodsFragment.mPosition = ConstantNumber.NUMBER_TWO;
 
                 break;
             case R.id.tv_main_release_goods:
                 tv_main_release_goods.setSelected(true);
                 tv_main_release_goods.setTextColor(getResources().getColor(R.color.textselsecond));
                 setReplaceFragment(optionShipperFragment);
-                CarGoodsFragment.mPosition = ConstantNumber.NUMBER_TWO;
                 break;
             case R.id.tv_main_me2:
                 tv_main_me2.setSelected(true);
                 tv_main_me2.setTextColor(getResources().getColor(R.color.textselsecond));
                 setReplaceFragment(mineFragment);
-                CarGoodsFragment.mPosition = ConstantNumber.NUMBER_TWO;
                 break;
         }
     }

@@ -95,8 +95,6 @@ public class CarGoodsFragment extends Fragment {
     private List<CarsourceListEntity.CarsourceBean> list;
     private ListView actualListView;
     public static int zPosition = ConstantNumber.NUMBER_ZERO;
-    public static List<CarsourceListEntity.CarsourceBean> positionList;
-    public static int mPosition = ConstantNumber.NUMBER_ONE;//是否是通过其他页面进入的？
 
     public CarGoodsFragment() {
     }
@@ -116,17 +114,11 @@ public class CarGoodsFragment extends Fragment {
                         goodsAdapter.addDATA(carsourceBean);
                     }
                 goodsAdapter.notifyDataSetChanged();
-                /*positionList = goodsAdapter.getList();
-                positionList.clear();
-                positionList = goodsAdapter.getList();*/
-
                 if (zPosition==ConstantNumber.NUMBER_ZERO){
 
                 }else {
                     actualListView.setSelection(goodsAdapter.mPosition);
                 }
-
-
 
             }else {
                 errorCode(result);
@@ -144,23 +136,11 @@ public class CarGoodsFragment extends Fragment {
         initCustomTimePicker();
         showPopMoreWindow();
         initView();
-        Log.e(TAG, "mPosition: "+mPosition );
-        if (mPosition == ConstantNumber.NUMBER_ZERO){
-            addData();
-        }else {
-            addDataFromStaticList();
-        }
+        addData();
         return view;
     }
 
-    private void addDataFromStaticList() {
-        Log.e(TAG, "addDataFromStaticList: "+positionList.size());
-        for (int i = 0; i < positionList.size(); i++) {
-            CarsourceListEntity.CarsourceBean carsourceBean = positionList.get(i);
-            goodsAdapter.addDATA(carsourceBean);
-        }
-        goodsAdapter.notifyDataSetChanged();
-    }
+
 
     private void addData() {
         new Thread(new Runnable() {
@@ -252,16 +232,10 @@ public class CarGoodsFragment extends Fragment {
     public void onPause() {
         super.onPause();
         zPosition = 2;
-        Log.e(TAG, "onPause: zPosition="+zPosition );
     }
 
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.e(TAG, "onDestroy: " );
-        positionList.clear();
-    }
+
 
     public void pageJump(Class<?> cls) {
         Intent intent = new Intent(getActivity(), cls);
@@ -323,11 +297,7 @@ public class CarGoodsFragment extends Fragment {
             if (pull_refresh_list.isHeaderShown()) {
                 goodsAdapter.removeAllDATA();
                 addData();
-                LoginActivity.isLogin = ConstantNumber.NUMBER_TWO;
-                positionList.clear();
             } else if (pull_refresh_list.isFooterShown()) {
-                LoginActivity.isLogin = ConstantNumber.NUMBER_TWO;
-                positionList.clear();
                 if (list.size()<5){
                     Toast.makeText(getActivity(), "没有更多数据了哦！", Toast.LENGTH_SHORT).show();
 

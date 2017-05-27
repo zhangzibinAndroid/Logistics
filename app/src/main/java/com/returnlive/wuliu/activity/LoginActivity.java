@@ -75,7 +75,6 @@ public class LoginActivity extends AppCompatActivity {
     private static final long COUNTER_TIME = 120;
     private ProgressDialog pro;
     private SharedPreferencesUtils sharedPreferencesUtils;
-    public static int isLogin = ConstantNumber.NUMBER_ONE;
 
 
     @Override
@@ -90,7 +89,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void initView() {
-        CarGoodsFragment.mPosition = ConstantNumber.NUMBER_ZERO;//判断是登录
         edt_username.setHintTextColor(Color.argb(125, 255, 255, 255));
         edt_password.setHintTextColor(Color.argb(125, 255, 255, 255));
         edt_username.setTextColor(Color.argb(125, 255, 255, 255));
