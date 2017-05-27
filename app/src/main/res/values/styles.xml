@@ -59,4 +59,22 @@
         <item name="android:windowEnterAnimation">@anim/dialog_enter_anim_top_bottom</item>
         <item name="android:windowExitAnimation">@anim/dialog_exit_anim_top_bottom</item>
     </style>
+
+    <style name="style_view">
+        <item name="android:layout_marginLeft">@dimen/px30</item>
+        <item name="android:layout_marginRight">@dimen/px30</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/px01</item>
+        <item name="android:background">@color/line_view</item>
+    </style>
+
+    <style name="style_textview">
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:paddingLeft">@dimen/px20</item>
+        <item name="android:textSize">@dimen/px30</item>
+        <item name="android:layout_marginLeft">@dimen/px240</item>
+        <item name="android:layout_width">@dimen/px380</item>
+        <item name="android:layout_height">@dimen/px80</item>
+    </style>
 </resources>

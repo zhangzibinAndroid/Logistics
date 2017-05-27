@@ -140,17 +140,17 @@ public class OwnerMainActivity extends AppCompatActivity {
                 tv_main_route.setTextColor(getResources().getColor(R.color.textselsecond));
                 break;
             case R.id.tv_main_release_options:
-                setReplaceFragment(optionOwnerFragment);
+                setReplaceFragment(optionShipperFragment);
                 tv_main_release_options.setSelected(true);
                 tv_main_release_options.setTextColor(getResources().getColor(R.color.textselsecond));
                 break;
-            case R.id.tv_main_me:
+            case R.id.tv_main_me://我的
                 setReplaceFragment(mineFragment);
                 tv_main_me.setSelected(true);
                 tv_main_me.setTextColor(getResources().getColor(R.color.textselsecond));
 
                 break;
-            case R.id.tv_main_cars:
+            case R.id.tv_main_cars://车源
                 tv_main_cars.setSelected(true);
                 tv_main_cars.setTextColor(getResources().getColor(R.color.textselsecond));
                 setReplaceFragment(carGoodsFragment);
@@ -171,7 +171,7 @@ public class OwnerMainActivity extends AppCompatActivity {
             case R.id.tv_main_release_goods:
                 tv_main_release_goods.setSelected(true);
                 tv_main_release_goods.setTextColor(getResources().getColor(R.color.textselsecond));
-                setReplaceFragment(optionShipperFragment);
+                setReplaceFragment(optionOwnerFragment);
                 break;
             case R.id.tv_main_me2:
                 tv_main_me2.setSelected(true);

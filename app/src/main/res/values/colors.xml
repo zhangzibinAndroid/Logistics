@@ -93,5 +93,6 @@
     <color name="white_four">#D4D4D4</color>
     <color name="bgitem">#FF8C00</color>
     <color name="sel">#083731</color>
+    <color name="line_view">#DBDBDB</color>
 
 </resources>

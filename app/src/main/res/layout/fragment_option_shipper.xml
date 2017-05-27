@@ -1,13 +1,304 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.returnlive.wuliu.fragment.OptionShipperFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/ftoolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="@dimen/px90"
+        android:background="@color/title_bg"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/option_shipper"
+            android:textSize="@dimen/px40"
+            android:layout_gravity="center"
+            android:textColor="@color/white"/>
+    </android.support.v7.widget.Toolbar>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px01"
+        android:background="@color/title_bg">
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/lay_start_area"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:background="@drawable/btn_sel"
+        android:layout_height="@dimen/px100">
+
+        <ImageView
+            android:layout_marginLeft="@dimen/px40"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_position_start"
+            android:layout_width="@dimen/px40"
+            android:layout_height="wrap_content"
+            android:id="@+id/img_area_start" />
+
+        <TextView
+            android:textSize="@dimen/px32"
+            android:text="@string/start_area"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/px50"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/px25"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/img_area_start"
+            />
+        <TextView
+            android:hint="@string/please_sel_start_area"
+            style="@style/style_textview"
+            android:id="@+id/tv_start_area" />
+
+        <ImageView
+            android:src="@drawable/ic_down_green"
+            android:layout_width="@dimen/px55"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/px30"
+            android:layout_centerVertical="true" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View style="@style/style_view"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/lay_end_area"
+        android:layout_width="match_parent"
+        android:background="@drawable/btn_sel"
+        android:layout_height="@dimen/px100">
+
+        <ImageView
+            android:layout_marginLeft="@dimen/px40"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_position_end"
+            android:layout_width="@dimen/px40"
+            android:layout_height="@dimen/px40"
+            android:id="@+id/img_area_end" />
+
+        <TextView
+            android:textSize="@dimen/px32"
+            android:text="@string/destination"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/px50"
+            android:layout_marginLeft="@dimen/px25"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@+id/img_area_end"/>
+
+        <TextView
+            android:hint="@string/please_sel_end_area"
+            style="@style/style_textview"
+            android:id="@+id/tv_end_area" />
+
+        <ImageView
+            android:src="@drawable/ic_down_green"
+            android:layout_width="@dimen/px55"
+            android:layout_marginRight="@dimen/px30"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View
+        android:background="@color/line_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px40"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/lay_sel_car_style"
+        android:layout_width="match_parent"
+        android:background="@drawable/btn_sel"
+        android:layout_height="@dimen/px100">
+
+        <ImageView
+            android:layout_marginLeft="@dimen/px45"
+            android:src="@drawable/ic_star"
+            android:layout_width="@dimen/px30"
+            android:layout_height="@dimen/px50"
+            android:id="@+id/img_star"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:textSize="@dimen/px32"
+            android:text="@string/car_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/px25"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@+id/img_star" />
+
+        <TextView
+            style="@style/style_textview"
+            android:hint="@string/please_sel_car_style"
+            android:id="@+id/tv_car_style" />
+
+        <ImageView
+            android:src="@drawable/ic_down_green"
+            android:layout_width="@dimen/px55"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/px30"
+            android:layout_alignParentRight="true" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View style="@style/style_view"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="@dimen/px100">
+
+        <TextView
+            android:textSize="@dimen/px32"
+            android:text="@string/get_wgt"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/px50"
+            android:layout_marginLeft="@dimen/px100"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:id="@+id/tv_get_wgt" />
+
+        <EditText
+            android:background="@null"
+            style="@style/style_textview"
+            android:hint="@string/please_sel_get_wgt"
+            android:digits="0123456789."
+            android:singleLine="true"
+            android:id="@+id/tv_wgt" />
+
+        <TextView
+            android:layout_marginTop="@dimen/px10"
+            android:text="@string/tons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_wgt"
+            android:layout_centerVertical="true"
+            android:layout_alignBottom="@+id/tv_get_wgt"
+            android:layout_alignTop="@+id/tv_get_wgt" />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View style="@style/style_view"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="@dimen/px100">
+
+        <TextView
+            android:id="@+id/tv_volume"
+            android:textSize="@dimen/px32"
+            android:text="@string/carrier_volume"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/px50"
+            android:layout_marginLeft="@dimen/px100"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true" />
+        <EditText
+            android:background="@null"
+            style="@style/style_textview"
+            android:singleLine="true"
+            android:hint="@string/please_enter_carrier_volume"
+            android:digits="0123456789."
+            android:id="@+id/tv_enter_volume" />
+
+        <TextView
+            android:layout_marginTop="@dimen/px10"
+            android:text="@string/volume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_enter_volume"
+            android:layout_alignBottom="@+id/tv_volume"
+            android:layout_alignTop="@+id/tv_volume" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View style="@style/style_view"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/lay_sel_start_time"
+        android:layout_width="match_parent"
+        android:background="@drawable/btn_sel"
+        android:layout_height="@dimen/px100">
+
+        <TextView
+            style="@style/style_textview"
+            android:hint="@string/please_sel_time"
+            android:id="@+id/tv_sel_start_time" />
+
+        <TextView
+            android:textSize="@dimen/px32"
+            android:text="@string/start_car_time"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/px50"
+            android:layout_marginLeft="@dimen/px25"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@+id/img_star_two"
+            android:id="@+id/tv_car_start_time" />
+
+        <ImageView
+            android:src="@drawable/ic_down_green"
+            android:layout_width="@dimen/px55"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/px30"
+            android:layout_centerVertical="true" />
+
+        <ImageView android:id="@+id/img_star_two"
+            android:layout_marginLeft="@dimen/px45"
+            android:src="@drawable/ic_star"
+            android:layout_width="@dimen/px30"
+            android:layout_height="@dimen/px50"
+            android:layout_alignTop="@+id/tv_car_start_time"
+            android:layout_marginStart="20dp" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View style="@style/style_view"/>
+
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="@dimen/px100">
+        <TextView
+            android:textSize="@dimen/px32"
+            android:text="@string/note"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/px50"
+            android:layout_marginLeft="@dimen/px100"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"/>
+
+        <EditText
+            android:background="@null"
+            android:hint="@string/please_enter_note"
+            style="@style/style_textview"
+            android:singleLine="true"
+            android:id="@+id/tv_note" />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <Button
+        android:layout_marginTop="@dimen/px20"
+        android:layout_centerVertical="true"
+        android:textColor="@color/white"
+        android:background="@drawable/sel_btn_color"
+        android:layout_marginLeft="@dimen/px40"
+        android:layout_marginRight="@dimen/px40"
+        android:id="@+id/btn_release"
+        android:textSize="@dimen/px40"
+        android:text="@string/release"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</com.zhy.autolayout.AutoLinearLayout>
