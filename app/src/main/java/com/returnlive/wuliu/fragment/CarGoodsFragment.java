@@ -235,12 +235,7 @@ public class CarGoodsFragment extends Fragment {
 
 
         pull_refresh_list.setMode(PullToRefreshBase.Mode.BOTH);//设置可以同时上拉刷新和下拉加载
-        //添加刷新事件并且发出声音
-        SoundPullEventListener<ListView> soundListener = new SoundPullEventListener<ListView>(getActivity());
-        soundListener.addSoundEvent(PullToRefreshBase.State.PULL_TO_REFRESH, R.raw.pull_event);
-        soundListener.addSoundEvent(PullToRefreshBase.State.RESET, R.raw.reset_sound);
-        soundListener.addSoundEvent(PullToRefreshBase.State.REFRESHING, R.raw.refreshing_sound);
-        pull_refresh_list.setOnPullEventListener(soundListener);
+
         goodsAdapter = new GoodsAdapter(getActivity());
         actualListView.setAdapter(goodsAdapter);
 
