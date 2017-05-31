@@ -152,6 +152,8 @@
     <string name="note">备注</string>
     <string name="please_enter_note">请输入备注</string>
     <string name="release">发布</string>
+    <string name="release_success">发布成功</string>
+    <string name="wrong_change_time">时间戳转义错误</string>
 
 
 </resources>

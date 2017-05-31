@@ -1,13 +1,190 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.returnlive.wuliu.fragment.GoodsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/goods_goods_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="@dimen/px95"
+        android:background="@color/snow"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-</FrameLayout>
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/toobar_goods_title_address"
+                android:layout_width="@dimen/px150"
+                android:layout_height="@dimen/px70"
+                android:background="@drawable/sel_goods_title"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="@string/address"
+                android:textColor="@color/dark_six"
+                android:textSize="@dimen/px28"
+                android:textStyle="bold"
+                android:translationX="@dimen/px04" />
+
+            <TextView
+                android:id="@+id/toobar_goods_title_nearby"
+                android:layout_width="@dimen/px150"
+                android:layout_height="@dimen/px70"
+                android:background="@drawable/sel_goods_title"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="@string/near"
+                android:textColor="@color/dark_six"
+                android:textSize="@dimen/px28"
+                android:textStyle="bold" />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+
+    <!--出发点和目的地布局-->
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--出发地-->
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/ly_goods_start"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px80"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_goods_start_email"
+                android:layout_width="@dimen/px150"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/img_goods_icon"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/px10"
+                android:layout_toRightOf="@+id/img_goods_icon"
+                android:gravity="center"
+                android:text="@string/start_area"
+                android:textSize="@dimen/px28" />
+
+            <ImageView
+                android:layout_width="@dimen/px50"
+                android:layout_height="@dimen/px80"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/px03"
+                android:layout_toRightOf="@id/tv_goods_start_email"
+                android:src="@drawable/ic_goods_down" />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+        <!--目的地-->
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/ly_goods_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/px01"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_goods_end_email"
+                android:layout_width="@dimen/px150"
+                android:layout_height="@dimen/px80"
+                android:layout_alignParentTop="true"
+                android:gravity="center"
+                android:text="@string/destination"
+                android:textSize="@dimen/px28" />
+
+            <ImageView
+                android:layout_width="@dimen/px50"
+                android:layout_height="@dimen/px80"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/px03"
+                android:layout_toRightOf="@id/tv_goods_end_email"
+                android:src="@drawable/ic_goods_down" />
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <!--车长布局-->
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/ly_goods_cartime"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px80"
+            android:layout_marginLeft="@dimen/px01"
+            android:layout_marginRight="@dimen/px01"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_goods_car_time"
+                android:layout_width="@dimen/px160"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="@string/Loading_car_time"
+                android:textSize="@dimen/px28" />
+
+            <ImageView
+                android:layout_width="@dimen/px50"
+                android:layout_height="@dimen/px80"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/px03"
+                android:layout_toRightOf="@id/tv_goods_car_time"
+                android:src="@drawable/ic_goods_down" />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/layout_goods_more"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px80"
+            android:layout_weight="1.15"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_goods_more"
+                android:layout_width="@dimen/px70"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/img_goods_icon"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/img_goods_icon"
+                android:gravity="center"
+                android:text="@string/more"
+                android:textSize="@dimen/px28" />
+
+            <ImageView
+                android:layout_width="@dimen/px50"
+                android:layout_height="@dimen/px80"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_goods_more"
+                android:src="@drawable/ic_goods_down" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px01"
+        android:background="@color/white_four" />
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/pull_refresh_goods_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="#00000000"
+        android:divider="#19000000"
+        android:dividerHeight="2dp"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:smoothScrollbar="true" />
+
+</com.zhy.autolayout.AutoLinearLayout>

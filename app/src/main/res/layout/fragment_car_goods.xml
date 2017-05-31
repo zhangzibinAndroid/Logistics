@@ -170,7 +170,7 @@
         </com.zhy.autolayout.AutoRelativeLayout>
     </com.zhy.autolayout.AutoLinearLayout>
 
-    <TextView
+    <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/px01"
         android:background="@color/white_four" />

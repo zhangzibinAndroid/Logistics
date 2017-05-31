@@ -10,7 +10,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,15 +27,15 @@ import com.bigkoo.pickerview.listener.CustomListener;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.returnlive.wuliu.R;
-import com.returnlive.wuliu.adapter.GoodsAdapter;
+import com.returnlive.wuliu.adapter.CarSourceAdapter;
 import com.returnlive.wuliu.constant.ConstantNumber;
 import com.returnlive.wuliu.constant.NetworkUrl;
 import com.returnlive.wuliu.constant.ReturnCode;
 import com.returnlive.wuliu.entity.CarsourceListEntity;
 import com.returnlive.wuliu.entity.ErrorCodeEntity;
-import com.returnlive.wuliu.entity.MessageEventBus;
+import com.returnlive.wuliu.entity.CarMessageEventBus;
 import com.returnlive.wuliu.gson.GsonParsing;
-import com.returnlive.wuliu.utils.CarsourceList;
+import com.returnlive.wuliu.utils.SourceList;
 import com.returnlive.wuliu.utils.ErrorCode;
 import com.returnlive.wuliu.utils.MyCallBack;
 import com.returnlive.wuliu.utils.XUtil;
@@ -81,7 +80,7 @@ public class CarGoodsFragment extends Fragment {
     @ViewInject(R.id.layout_goods_car_more)
     AutoRelativeLayout layout_goods_car_more;
     private View view;
-    private GoodsAdapter goodsAdapter;
+    private CarSourceAdapter carSourceAdapter;
     private CityListViewPopWindow cityListViewPopWindow;
     public int WHICH = ConstantNumber.NUMBER_ZERO;
     private TimePickerView timePickerView;//时间选择器
@@ -89,7 +88,6 @@ public class CarGoodsFragment extends Fragment {
     private int PAGE = ConstantNumber.NUMBER_ONE;
     private List<CarsourceListEntity.CarsourceBean> list;
     private ListView actualListView;
-    private static final String TAG = "CarGoodsFragment";
     public CarGoodsFragment() {
     }
 
@@ -101,13 +99,17 @@ public class CarGoodsFragment extends Fragment {
             String result = (String) msg.obj;
             if (result.indexOf(ReturnCode.SUCCESS) > 0) {
                 list = GsonParsing.gsonCarsource(result);
-                Log.e(TAG, "list: "+list );
+                if (list==null){
+                    Toast.makeText(getActivity(), "没有更多数据了哦！", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 for (int i = 0; i < list.size(); i++) {
                     CarsourceListEntity.CarsourceBean carsourceBean = list.get(i);
-                    goodsAdapter.addDATA(carsourceBean);
+                    carSourceAdapter.addDATA(carsourceBean);
                 }
-                CarsourceList.cacheCarList = goodsAdapter.getList();
-                goodsAdapter.notifyDataSetChanged();
+                SourceList.cacheCarList = carSourceAdapter.getList();
+                carSourceAdapter.notifyDataSetChanged();
 
             } else {
                 errorCode(result);
@@ -125,7 +127,7 @@ public class CarGoodsFragment extends Fragment {
         initCustomTimePicker();
         showPopMoreWindow();
         initView();
-        if (CarsourceList.cacheCarList == null) {
+        if (SourceList.cacheCarList == null) {
             addData();
         } else {
             addDataFromCache();
@@ -135,11 +137,11 @@ public class CarGoodsFragment extends Fragment {
     }
 
     private void addDataFromCache() {
-        for (int i = 0; i < CarsourceList.cacheCarList.size(); i++) {
-            CarsourceListEntity.CarsourceBean carsourceBean = CarsourceList.cacheCarList.get(i);
-            goodsAdapter.addDATA(carsourceBean);
+        for (int i = 0; i < SourceList.cacheCarList.size(); i++) {
+            CarsourceListEntity.CarsourceBean carsourceBean = SourceList.cacheCarList.get(i);
+            carSourceAdapter.addDATA(carsourceBean);
         }
-        goodsAdapter.notifyDataSetChanged();
+        carSourceAdapter.notifyDataSetChanged();
 
     }
 
@@ -211,8 +213,8 @@ public class CarGoodsFragment extends Fragment {
 
         pull_refresh_list.setMode(PullToRefreshBase.Mode.BOTH);//设置可以同时上拉刷新和下拉加载
 
-        goodsAdapter = new GoodsAdapter(getActivity());
-        actualListView.setAdapter(goodsAdapter);
+        carSourceAdapter = new CarSourceAdapter(getActivity());
+        actualListView.setAdapter(carSourceAdapter);
 
         actualListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -277,7 +279,7 @@ public class CarGoodsFragment extends Fragment {
         @Override
         protected Object doInBackground(Object... params) {
             try {
-                Thread.sleep(1500);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -287,22 +289,21 @@ public class CarGoodsFragment extends Fragment {
         @Override
         protected void onPostExecute(Object o) {
             if (pull_refresh_list.isHeaderShown()) {
-                CarsourceList.cacheCarList.clear();
-                goodsAdapter.removeAllDATA();
+                SourceList.cacheCarList.clear();
+                carSourceAdapter.removeAllDATA();
                 addData();
             } else if (pull_refresh_list.isFooterShown()) {
-                if (list.size() < 5) {
-                    CarsourceList.cacheCarList = goodsAdapter.getList();
+                if (list==null) {
+                    SourceList.cacheCarList = carSourceAdapter.getList();
                     Toast.makeText(getActivity(), "没有更多数据了哦！", Toast.LENGTH_SHORT).show();
                 } else {
-                    Log.e(TAG, "PAGE: "+PAGE);
                     PAGE = PAGE + ConstantNumber.NUMBER_ONE;
                     carsourceInterface(PAGE);
                 }
 
             }
 
-            goodsAdapter.notifyDataSetChanged();
+            carSourceAdapter.notifyDataSetChanged();
             pull_refresh_list.onRefreshComplete();
             super.onPostExecute(o);
         }
@@ -363,8 +364,8 @@ public class CarGoodsFragment extends Fragment {
                                 pull_refresh_list.onRefreshComplete();
                                 pull_refresh_list.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
                                 pull_refresh_list.setRefreshing(true);
-                                CarsourceList.cacheCarList.clear();
-                                goodsAdapter.removeAllDATA();
+                                SourceList.cacheCarList.clear();
+                                carSourceAdapter.removeAllDATA();
                                 addData();
                                 pull_refresh_list.setMode(PullToRefreshBase.Mode.BOTH);
                                 isNeedToRefresh = false;
@@ -382,11 +383,10 @@ public class CarGoodsFragment extends Fragment {
 
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void getMessage(MessageEventBus event){
+    public void getMessage(CarMessageEventBus event){
         if (event.msg.equals("refresh")){
             scrollToRefresh();
         }
-
     }
 
     @Override

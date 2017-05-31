@@ -1,6 +1,7 @@
 package com.returnlive.wuliu.fragment;
 
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +25,7 @@ import com.bigkoo.pickerview.listener.CustomListener;
 import com.returnlive.wuliu.R;
 import com.returnlive.wuliu.constant.ConstantNumber;
 import com.returnlive.wuliu.constant.NetworkUrl;
+import com.returnlive.wuliu.utils.DateUtilsTime;
 import com.returnlive.wuliu.utils.MyCallBack;
 import com.returnlive.wuliu.utils.XUtil;
 import com.returnlive.wuliu.view.CityListViewPopWindow;
@@ -30,6 +33,8 @@ import com.zhy.autolayout.AutoRelativeLayout;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
+
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -71,6 +76,7 @@ public class OptionShipperFragment extends Fragment {
     private static final String TAG = "OptionShipperFragment";
     private String[] models = {"平板", "高栏", "厢式", "保温", "冷藏", "集装箱", "面包车", "危险品", "其他"};
     private AlertDialog.Builder dialog;
+    private ProgressDialog pro;
     public OptionShipperFragment() {
     }
 
@@ -81,6 +87,11 @@ public class OptionShipperFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_option_shipper, container, false);
         x.view().inject(this, view);
         ftoolbar.setTitle("");//防止标题冲突
+        pro = new ProgressDialog(getActivity());
+        pro.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        pro.setMessage("正在发布车源信息...");
+        pro.setCanceledOnTouchOutside(false);
+        pro.setCancelable(false);
         cityListViewPopWindow = new CityListViewPopWindow(getActivity(), mOnCheckChangeListener);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);//软键盘覆盖布局
         initCustomTimePicker();
@@ -124,10 +135,16 @@ public class OptionShipperFragment extends Fragment {
                     Toast.makeText(getActivity(), "发车时间不能为空", Toast.LENGTH_SHORT).show();
                     return;
                 }else {
+                    pro.show();
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            releaseInterface();
+                            try {
+                                Thread.sleep(1000);
+                                releaseInterface();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }).start();
                 }
@@ -159,25 +176,49 @@ public class OptionShipperFragment extends Fragment {
         float wgt = Float.valueOf(tv_wgt.getText().toString());
         float volume = Float.valueOf(tv_enter_volume.getText().toString());
         String carStartTime = tv_sel_start_time.getText().toString();
+        String note = tv_note.getText().toString();
         //转型处理
-
+        int CAR_STYLE = 0;
+        String time = "";
+        for (int i = 0; i < models.length; i++) {
+            if (models[i].equals(carStyle)){
+                CAR_STYLE = i;
+            }
+        }
+        
+        DateUtilsTime dateUtilsTime = new DateUtilsTime();
+        try {
+            time = dateUtilsTime.getTimestamp(carStartTime);
+        } catch (ParseException e) {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(getActivity(), getResources().getString(R.string.wrong_change_time), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
         Map<String, Object> map = new HashMap<>();
-        /*map.put("start", userName);
-        map.put("end", userPwds);
-        map.put("car_type", userPwds);
-        map.put("weight", userPwds);
-        map.put("volume", userPwds);
-        map.put("car_time", userPwds);
-        map.put("remarks", userPwds);*/
+        map.put("start", startArea);
+        map.put("end", endArea);
+        map.put("car_type", CAR_STYLE);
+        map.put("weight", wgt);
+        map.put("volume", volume);
+        map.put("car_time", time);
+        map.put("remarks", note);
         NetworkUrl networkUrl = new NetworkUrl();
         XUtil.Post(networkUrl.CAR_SOURCE_ADD_URL, map, new MyCallBack<String>() {
 
             @Override
             public void onSuccess(String result) {
                 super.onSuccess(result);
-                Message msg = new Message();
-                msg.obj = result;
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getActivity(), getResources().getString(R.string.release_success), Toast.LENGTH_SHORT).show();
+                        pro.dismiss();
+                    }
+                });
 
             }
 
@@ -188,6 +229,7 @@ public class OptionShipperFragment extends Fragment {
                     @Override
                     public void run() {
                         Toast.makeText(getActivity(), getResources().getString(R.string.networ_anomalies), Toast.LENGTH_SHORT).show();
+                        pro.dismiss();
                     }
                 });
 

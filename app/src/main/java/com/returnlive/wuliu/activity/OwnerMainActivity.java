@@ -1,6 +1,5 @@
 package com.returnlive.wuliu.activity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -11,9 +10,9 @@ import android.widget.Toast;
 
 import com.returnlive.wuliu.R;
 import com.returnlive.wuliu.application.LogisticsApplication;
-import com.returnlive.wuliu.constant.ConstantNumber;
 import com.returnlive.wuliu.constant.NetworkUrl;
-import com.returnlive.wuliu.entity.MessageEventBus;
+import com.returnlive.wuliu.entity.CarMessageEventBus;
+import com.returnlive.wuliu.entity.GoodsMessageEventBus;
 import com.returnlive.wuliu.fragment.CarGoodsFragment;
 import com.returnlive.wuliu.fragment.GoodsFragment;
 import com.returnlive.wuliu.fragment.MineFragment;
@@ -21,7 +20,7 @@ import com.returnlive.wuliu.fragment.OptionOwnerFragment;
 import com.returnlive.wuliu.fragment.OptionShipperFragment;
 import com.returnlive.wuliu.fragment.RouteOwnerFragment;
 import com.returnlive.wuliu.fragment.RouteShipperFragment;
-import com.returnlive.wuliu.utils.CarsourceList;
+import com.returnlive.wuliu.utils.SourceList;
 import com.returnlive.wuliu.utils.MyCallBack;
 import com.returnlive.wuliu.utils.XUtil;
 import com.zhy.autolayout.AutoLinearLayout;
@@ -133,6 +132,9 @@ public class OwnerMainActivity extends AppCompatActivity {
                 setReplaceFragment(goodsFragment);
                 tv_main_goods.setSelected(true);
                 tv_main_goods.setTextColor(getResources().getColor(R.color.textselsecond));
+                if (SourceList.goodsList != null){
+                    EventBus.getDefault().post(new GoodsMessageEventBus("refresh"));
+                }
                 break;
             case R.id.tv_main_route:
                 setReplaceFragment(routeOwnerFragment);
@@ -155,8 +157,8 @@ public class OwnerMainActivity extends AppCompatActivity {
                 tv_main_cars.setTextColor(getResources().getColor(R.color.textselsecond));
                 setReplaceFragment(carGoodsFragment);
 
-                if (CarsourceList.cacheCarList != null){
-                    EventBus.getDefault().post(new MessageEventBus("refresh"));
+                if (SourceList.cacheCarList != null){
+                    EventBus.getDefault().post(new CarMessageEventBus("refresh"));
                 }
 
 

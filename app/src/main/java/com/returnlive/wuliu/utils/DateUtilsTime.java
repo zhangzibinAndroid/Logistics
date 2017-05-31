@@ -17,11 +17,14 @@ public class DateUtilsTime {
         return date;
     }
 
-    public String getTimestamp(String date) throws ParseException {
+    public String getDay(String timestamp){
+        String date = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date(Long.valueOf(timestamp+"000")));
+        return date;
+    }
 
+    public String getTimestamp(String date) throws ParseException {
         Date epoch = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date);
         long timestamp = (epoch.getTime()/1000);
         return timestamp+"";
     }
-
 }
