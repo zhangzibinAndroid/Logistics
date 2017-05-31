@@ -221,6 +221,8 @@ public class OwnerMainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(String result) {
                 super.onSuccess(result);
+                SourceList.goodsList.clear();
+                SourceList.cacheCarList.clear();
                 System.exit(0);
 
             }
@@ -228,6 +230,8 @@ public class OwnerMainActivity extends AppCompatActivity {
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
                 super.onError(ex, isOnCallback);
+                SourceList.goodsList.clear();
+                SourceList.cacheCarList.clear();
                 System.exit(0);
 
             }

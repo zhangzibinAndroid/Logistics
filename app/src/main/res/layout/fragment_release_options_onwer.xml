@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/lay_goods_start_area"
+                android:layout_width="match_parent"
+                android:background="@drawable/btn_sel"
+                android:layout_height="@dimen/px100">
+
+                <ImageView
+                    android:id="@+id/img_area_start"
+                    android:layout_width="@dimen/px50"
+                    android:layout_height="@dimen/px50"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/px30"
+                    android:src="@drawable/ic_position_start" />
+
+                <TextView
+                    android:id="@+id/tv_goods_start_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/px50"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/px20"
+                    android:layout_toRightOf="@+id/img_area_start"
+                    android:gravity="center_vertical"
+                    android:text="@string/start_area"
+                    android:textSize="@dimen/px35" />
+
+                <TextView
+                    android:id="@+id/tv_start"
+                    style="@style/style_textview"
+                    android:hint="@string/please_sel_start_area" />
+
+                <CheckBox
+                    android:id="@+id/cb_need_get_goods"
+                    android:layout_width="@dimen/px100"
+                    android:layout_height="@dimen/px50"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/px10"
+                    android:layout_marginTop="@dimen/px10"
+                    android:background="@null"
+                    android:button="@drawable/checkbox" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/px20"
+                    android:text="@string/need_get_goods"
+                    android:textColor="@color/textselsecond" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <View style="@style/style_view" />
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px100"
+                android:background="@drawable/btn_sel"
+                android:id="@+id/lay_goods_end_area">
+
+                <ImageView
+                    android:id="@+id/img_goods_area_end"
+                    android:layout_width="@dimen/px50"
+                    android:layout_height="@dimen/px50"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/px30"
+                    android:src="@drawable/ic_position_end" />
+
+                <TextView
+                    android:id="@+id/tv_end_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/px50"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/px20"
+                    android:layout_toRightOf="@+id/img_goods_area_end"
+                    android:gravity="center_vertical"
+                    android:text="@string/destination"
+                    android:textSize="@dimen/px35" />
+
+
+                <TextView
+                    android:id="@+id/tv_goods_end_area"
+                    style="@style/style_textview"
+                    android:hint="@string/please_sel_end_area" />
+
+                <CheckBox
+                    android:id="@+id/cb_need_send_goods"
+                    android:layout_width="@dimen/px100"
+                    android:layout_height="@dimen/px50"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/px10"
+                    android:layout_marginTop="@dimen/px10"
+                    android:background="@null"
+                    android:button="@drawable/checkbox" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/px20"
+                    android:text="@string/need_send_goods"
+                    android:textColor="@color/textselsecond" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px40"
+                android:background="@color/line_view" />
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px100"
+                android:id="@+id/lay_star_style"
+                android:background="@drawable/btn_sel">
+
+                <ImageView
+                    android:id="@+id/img_star_style"
+                    android:layout_width="@dimen/px30"
+                    android:layout_height="@dimen/px35"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/px40"
+                    android:src="@drawable/ic_star" />
+
+                <TextView
+                    android:id="@+id/tv_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/px50"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/px30"
+                    android:layout_toRightOf="@+id/img_star_style"
+                    android:gravity="center_vertical"
+                    android:text="@string/goods_style"
+                    android:textSize="@dimen/px35" />
+
+                <TextView
+                    android:id="@+id/tv_goods_style"
+                    style="@style/style_textview"
+                    android:hint="@string/please_sel_goods_style" />
+
+                <ImageView
+                    android:layout_width="@dimen/px120"
+                    android:layout_height="@dimen/px65"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/px20"
+                    android:src="@drawable/ic_down_green" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <View style="@style/style_view" />
+
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px100">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/px50"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/px100"
+                    android:gravity="center_vertical"
+                    android:text="@string/goods_name"
+                    android:textSize="@dimen/px35" />
+
+                <EditText
+                    android:id="@+id/edt_goods_name"
+                    style="@style/style_textview"
+                    android:background="@null"
+                    android:hint="@string/please_enter_goods_name" />
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <View style="@style/style_view" />
+
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px100">
+
+                <ImageView
+                    android:id="@+id/img_star_wgt"
+                    android:layout_width="@dimen/px30"
+                    android:layout_height="@dimen/px50"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/px40"
+                    android:src="@drawable/ic_star" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/px50"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/px30"
+                    android:layout_toRightOf="@+id/img_star_wgt"
+                    android:gravity="center_vertical"
+                    android:text="@string/goods_wgt"
+                    android:textSize="@dimen/px35" />
+
+                <EditText
+                    android:id="@+id/edt_goods_wgt"
+                    style="@style/style_textview"
+                    android:background="@null"
+                    android:hint="@string/please_enter_goods_wgt" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/edt_goods_wgt"
+                    android:text="@string/tons" />
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <View style="@style/style_view" />
+
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px100">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/px50"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/px100"
+                    android:gravity="center_vertical"
+                    android:text="@string/goods_volume"
+                    android:textSize="@dimen/px35" />
+
+                <EditText
+                    android:id="@+id/edt_goods_volume"
+                    style="@style/style_textview"
+                    android:background="@null"
+                    android:hint="@string/please_enter_goods_volume" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/edt_goods_volume"
+                    android:text="@string/volume" />
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <View style="@style/style_view" />
+
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/lay_cars_needs"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px100"
+                android:background="@drawable/btn_sel">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/px50"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/px100"
+                    android:gravity="center_vertical"
+                    android:text="@string/cars_needs"
+                    android:textSize="@dimen/px35" />
+
+                <TextView
+                    android:id="@+id/tv_cars_needs"
+                    style="@style/style_textview"
+                    android:hint="@string/please_sel_cars_needs" />
+
+                <ImageView
+                    android:layout_width="@dimen/px120"
+                    android:layout_height="@dimen/px65"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/px20"
+                    android:src="@drawable/ic_down_green" />
+
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <View style="@style/style_view" />
+
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px100"
+                android:background="@drawable/btn_sel"
+                android:id="@+id/lay_loading_car_time">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/px50"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/px100"
+                    android:gravity="center_vertical"
+                    android:text="@string/loading_car_time"
+                    android:textSize="@dimen/px35" />
+
+                <TextView
+                    android:id="@+id/tv_loading_car_time"
+                    style="@style/style_textview"
+                    android:hint="@string/please_enter_loading_car_time" />
+
+                <ImageView
+                    android:layout_width="@dimen/px120"
+                    android:layout_height="@dimen/px65"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/px20"
+                    android:src="@drawable/ic_down_green" />
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <View style="@style/style_view" />
+
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px100">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/px50"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/px100"
+                    android:gravity="center_vertical"
+                    android:text="@string/indicative_price"
+                    android:textSize="@dimen/px35" />
+
+                <EditText
+                    android:id="@+id/edt_indicative_price"
+                    style="@style/style_textview"
+                    android:background="@null"
+                    android:hint="@string/please_enter_indicative_price" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/px60"
+                    android:text="@string/yuan_car" />
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <View style="@style/style_view" />
+
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px100">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/px50"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/px100"
+                    android:gravity="center_vertical"
+                    android:text="@string/receiver_phone"
+                    android:textSize="@dimen/px35" />
+
+                <EditText
+                    android:id="@+id/edt_receiver_phone"
+                    style="@style/style_textview"
+                    android:background="@null"
+                    android:hint="@string/please_enter_receiver_phone" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <View style="@style/style_view" />
+
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px100">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/px50"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/px100"
+                    android:gravity="center_vertical"
+                    android:text="@string/message_note"
+                    android:textSize="@dimen/px35" />
+
+                <EditText
+                    android:id="@+id/edt_goods_note"
+                    style="@style/style_textview"
+                    android:background="@null"
+                    android:hint="@string/please_enter_message_note" />
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <View style="@style/style_view" />
+
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px100">
+
+                <TextView
+                    android:id="@+id/tv_contact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/px50"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/px100"
+                    android:gravity="center_vertical"
+                    android:text="@string/contact"
+                    android:textSize="@dimen/px35" />
+
+                <CheckBox
+                    android:id="@+id/cb_contact"
+                    android:layout_width="@dimen/px50"
+                    android:layout_height="@dimen/px50"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/px80"
+                    android:layout_marginRight="@dimen/px60"
+                    android:layout_toRightOf="@+id/tv_contact"
+                    android:gravity="center"/>
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <Button
+                android:id="@+id/btn_publish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/px40"
+                android:layout_marginRight="@dimen/px40"
+                android:layout_marginTop="@dimen/px20"
+                android:background="@drawable/sel_btn_color"
+                android:text="@string/release"
+                android:textColor="@color/white"
+                android:textSize="@dimen/px40" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px50" />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+    </ScrollView>
+</com.zhy.autolayout.AutoLinearLayout>

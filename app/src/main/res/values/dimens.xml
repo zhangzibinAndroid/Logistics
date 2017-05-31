@@ -49,6 +49,7 @@
     <dimen name="px50">50px</dimen>
     <dimen name="px55">55px</dimen>
     <dimen name="px60">60px</dimen>
+    <dimen name="px65">65px</dimen>
     <dimen name="px70">70px</dimen>
     <dimen name="px80">80px</dimen>
     <dimen name="px85">85px</dimen>

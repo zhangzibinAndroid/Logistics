@@ -154,6 +154,28 @@
     <string name="release">发布</string>
     <string name="release_success">发布成功</string>
     <string name="wrong_change_time">时间戳转义错误</string>
+    <string name="need_get_goods">需要取货</string>
+    <string name="need_send_goods">需要送货</string>
+    <string name="goods_style">货物类型</string>
+    <string name="please_sel_goods_style">请选择货物类型</string>
+    <string name="goods_name">货物名称</string>
+    <string name="please_enter_goods_name">请输入货物名称</string>
+    <string name="goods_wgt">货物重量</string>
+    <string name="please_enter_goods_wgt">请输入货物重量</string>
+    <string name="goods_volume">货物体积</string>
+    <string name="please_enter_goods_volume">请输入货物体积</string>
+    <string name="cars_needs">车辆需求</string>
+    <string name="please_sel_cars_needs">请选择车辆需求</string>
+    <string name="loading_car_time">装车时间</string>
+    <string name="please_enter_loading_car_time">请输入装车时间</string>
+    <string name="indicative_price">意向价格</string>
+    <string name="please_enter_indicative_price">请输入意向价格</string>
+    <string name="yuan_car">元/车</string>
+    <string name="receiver_phone">收货电话</string>
+    <string name="please_enter_receiver_phone">请输入收货电话</string>
+    <string name="message_note">备注信息</string>
+    <string name="please_enter_message_note">请输入备注信息</string>
+    <string name="contact">只允许实名车主联系我</string>
 
 
 </resources>
