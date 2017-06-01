@@ -40,4 +40,8 @@ dependencies {
     compile project(':pullToRefreshLibrary')
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.youth.banner:banner:1.4.9'
+    compile 'com.google.zxing:core:3.2.1'
+    compile 'cn.bingoogolapple:bga-qrcodecore:1.1.7@aar'
+    compile 'cn.bingoogolapple:bga-zxing:1.1.7@aar'
+    compile 'pub.devrel:easypermissions:0.1.7'
 }

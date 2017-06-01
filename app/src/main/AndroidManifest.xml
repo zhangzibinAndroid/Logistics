@@ -90,6 +90,7 @@
         <activity android:name=".activity.DriverIdCardActivity" />
         <activity android:name=".activity.GoodsDetailsActivity" />
         <activity android:name=".activity.RouteShowActivity" />
+        <activity android:name=".activity.QCodeActivity" />
     </application>
 
 </manifest>

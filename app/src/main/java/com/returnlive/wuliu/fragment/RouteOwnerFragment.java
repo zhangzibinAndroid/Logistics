@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.returnlive.wuliu.R;
+import com.returnlive.wuliu.activity.QCodeActivity;
 import com.returnlive.wuliu.activity.RouteShowActivity;
 import com.returnlive.wuliu.utils.GlideImageLoader;
 import com.youth.banner.Banner;
@@ -97,7 +98,7 @@ public class RouteOwnerFragment extends Fragment {
             case R.id.tvimg_route_carout://出车
                 break;
             case R.id.tvimg_route_qcoad://二维码
-
+                pageJump(QCodeActivity.class);
                 break;
         }
     }

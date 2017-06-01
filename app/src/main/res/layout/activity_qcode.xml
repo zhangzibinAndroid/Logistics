@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/qcode_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false">
+
+    <cn.bingoogolapple.qrcode.zxing.ZXingView
+        android:id="@+id/qc_code_zxingview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:qrcv_animTime="1000"
+        app:qrcv_barCodeTipText="将条码放入取景框内，即可自动扫描"
+        app:qrcv_barcodeRectHeight="220px"
+        app:qrcv_borderColor="#fff"
+        app:qrcv_borderSize="4px"
+        app:qrcv_cornerColor="#303F9F"
+        app:qrcv_cornerLength="60px"
+        app:qrcv_cornerSize="6px"
+        app:qrcv_customScanLineDrawable="@mipmap/custom_scan_line"
+        app:qrcv_isBarcode="false"
+        app:qrcv_isCenterVertical="false"
+        app:qrcv_isOnlyDecodeScanBoxArea="false"
+        app:qrcv_isScanLineReverse="true"
+        app:qrcv_isShowDefaultGridScanLineDrawable="true"
+        app:qrcv_isShowDefaultScanLineDrawable="true"
+        app:qrcv_isShowTipBackground="true"
+        app:qrcv_isShowTipTextAsSingleLine="false"
+        app:qrcv_isTipTextBelowRect="true"
+        app:qrcv_maskColor="#33FFFFFF"
+        app:qrcv_qrCodeTipText="将二维码/条码放入取景框内，即可自动扫描"
+        app:qrcv_rectWidth="420px"
+        app:qrcv_scanLineColor="#e66"
+        app:qrcv_scanLineMargin="0px"
+        app:qrcv_scanLineSize="22px"
+        app:qrcv_tipTextColor="@android:color/white"
+        app:qrcv_tipTextSize="24px"
+        app:qrcv_toolbarHeight="100px"
+        app:qrcv_topOffset="200px" >
+    </cn.bingoogolapple.qrcode.zxing.ZXingView>
+
+
+    <!--引用布局-->
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200px"
+        android:layout_gravity="bottom">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/close_flashlight"
+            android:drawableTop="@drawable/sel_qc_light"
+            android:textColor="#fff"
+            android:gravity="center"
+            android:textSize="20px"
+            android:layout_toRightOf="@+id/view"
+            android:layout_marginLeft="70px"
+            android:text="开灯" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scan_barcode"
+            android:drawableTop="@drawable/ic_qc_code2"
+            android:textColor="#fff"
+            android:gravity="center"
+            android:textSize="20px"
+            android:onClick="onClick"
+            android:text="切换条形码"
+            android:layout_marginRight="70px"
+            android:layout_toLeftOf="@+id/view"/>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        android:background="@null"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="40px"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:weightSum="1">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="90px"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="wrap_content"
+                android:layout_height="100px"
+                android:src="@drawable/ic_back"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/tvs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:text="二维码/条形码"
+                android:gravity="center"
+                android:textSize="32px"
+                android:textStyle="bold" />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </android.support.v7.widget.Toolbar>
+</com.zhy.autolayout.AutoFrameLayout>
