@@ -39,5 +39,5 @@ dependencies {
     compile 'com.contrarywind:Android-PickerView:3.2.1'
     compile project(':pullToRefreshLibrary')
     compile 'org.greenrobot:eventbus:3.0.0'
-
+    compile 'com.youth.banner:banner:1.4.9'
 }

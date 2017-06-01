@@ -177,6 +177,7 @@
     <string name="message_note">备注信息</string>
     <string name="please_enter_message_note">请输入备注信息</string>
     <string name="contact">只允许实名车主联系我</string>
+    <string name="add_route">增加订阅路线</string>
 
 
 </resources>

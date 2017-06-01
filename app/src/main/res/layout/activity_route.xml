@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/ftoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px100"
+        android:background="@color/title_bg"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView android:id="@+id/img_back"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/sel_backbg"
+                android:src="@drawable/ic_back"/>
+
+            <View android:layout_marginLeft="@dimen/px15"
+                android:layout_width="@dimen/px02"
+                android:layout_height="match_parent"
+                android:background="@color/white"/>
+
+            <TextView android:id="@+id/tv_title"
+                android:layout_marginLeft="@dimen/px15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="@string/add_route"
+                android:textSize="@dimen/px40"/>
+
+        </com.zhy.autolayout.AutoLinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/px280">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="@dimen/px60"
+                android:layout_height="@dimen/px60"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/px50"
+                android:src="@drawable/ic_position_start" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px60"
+                android:layout_alignTop="@+id/imageView"
+                android:layout_marginLeft="@dimen/px20"
+                android:layout_toRightOf="@+id/imageView"
+                android:gravity="center_vertical"
+                android:text="@string/start_area"
+                android:textSize="@dimen/px35"
+                android:textStyle="bold" />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <Button
+            android:id="@+id/edt_route_start"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px88"
+            android:layout_marginLeft="@dimen/px50"
+            android:layout_marginRight="@dimen/px40"
+            android:layout_marginTop="@dimen/px20"
+            android:background="@drawable/shape_border"
+            android:gravity="center_vertical"
+            android:drawableRight="@drawable/ic_down_green"
+            android:paddingRight="@dimen/px10"
+            android:hint="@string/please_sel_start_area"
+
+            android:paddingLeft="@dimen/px10"
+            android:textSize="@dimen/px32" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/px50">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/px60"
+                android:layout_alignTop="@+id/imageView2"
+                android:layout_marginLeft="@dimen/px20"
+                android:layout_toRightOf="@+id/imageView2"
+                android:gravity="center_vertical"
+                android:text="@string/destination"
+                android:textSize="@dimen/px35"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="@dimen/px60"
+                android:layout_height="@dimen/px60"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/px50"
+                android:src="@drawable/ic_position_end" />
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+        <Button
+            android:id="@+id/edt_route_end"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px88"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/px50"
+            android:layout_marginRight="@dimen/px40"
+            android:layout_marginTop="@dimen/px20"
+            android:background="@drawable/shape_border"
+            android:gravity="center_vertical"
+            android:drawableRight="@drawable/ic_down_green"
+            android:paddingRight="@dimen/px10"
+            android:hint="@string/please_sel_end_area"
+            android:paddingLeft="@dimen/px10"
+            android:textSize="@dimen/px32" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/px30"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_route_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/px50"
+            android:layout_marginRight="@dimen/px20"
+            android:layout_weight="1"
+            android:background="@drawable/btn_green_sel"
+            android:text="清空"
+            android:textSize="@dimen/px35" />
+
+        <Button
+            android:id="@+id/btn_route_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/px20"
+            android:layout_marginRight="@dimen/px50"
+            android:layout_weight="1"
+            android:background="@drawable/btn_green_sel"
+            android:text="完成"
+            android:textSize="@dimen/px35" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+</com.zhy.autolayout.AutoRelativeLayout>

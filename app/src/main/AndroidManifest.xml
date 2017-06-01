@@ -89,6 +89,7 @@
         <activity android:name=".activity.DriverPhoneActivity" />
         <activity android:name=".activity.DriverIdCardActivity" />
         <activity android:name=".activity.GoodsDetailsActivity" />
+        <activity android:name=".activity.RouteShowActivity" />
     </application>
 
 </manifest>

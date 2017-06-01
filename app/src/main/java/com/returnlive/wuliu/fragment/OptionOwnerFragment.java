@@ -110,13 +110,14 @@ public class OptionOwnerFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_option, container, false);
         x.view().inject(this, view);
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);//软键盘覆盖布局
         pro = new ProgressDialog(getActivity());
         pro.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         pro.setMessage("正在发布货源信息...");
         pro.setCanceledOnTouchOutside(false);
         pro.setCancelable(false);
         initCustomTimePicker();
-        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);//软键盘覆盖布局
+
         cityListViewPopWindow = new CityListViewPopWindow(getActivity(), mOnCheckChangeListener);
         initViewCarNeedsDialog();
         return view;
