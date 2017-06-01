@@ -107,6 +107,7 @@
     <string name="registering">正在注册...</string>
     <string name="login_success">登录成功</string>
     <string name="determine">确定</string>
+    <string name="dismiss">取消</string>
     <string name="enter_new_pwds">请输入新密码</string>
     <string name="enter_new_pwds_again">请确认密码</string>
     <string name="get_send_code">获取验证码</string>

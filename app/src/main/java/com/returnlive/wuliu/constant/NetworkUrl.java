@@ -27,6 +27,6 @@ public class NetworkUrl {
     public String CAR_SOURCE_URL = WULIU_URL+"Carsource/carlist/uid/"+UID_SESSON_URL;
     public String CAR_SOURCE_ADD_URL = WULIU_URL+"Carsource/add/uid/"+UID_SESSON_URL;
     public String GOODS_SOURCE_URL = WULIU_URL+"Goods/listing/uid/"+UID_SESSON_URL;
-
+    public String GOODS_SOURCE_ADD_URL = WULIU_URL+"Goods/add/uid/"+UID_SESSON_URL;
 
 }

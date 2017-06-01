@@ -82,7 +82,6 @@ public class GoodsFragment extends Fragment {
     AutoRelativeLayout ly_goods_start;
     private View view;
     private int PAGE = ConstantNumber.NUMBER_ONE;
-    private static final String TAG = "GoodsFragment";
     private ListView actualListView;
     private GoodsSourceAdapter goodsSourceAdapter;
     private List<GoodsSourceListEntity.GoosdsBean> list;
@@ -278,16 +277,15 @@ public class GoodsFragment extends Fragment {
 
     }
 
-    //获取车辆列表接口
+    //获取货源列表接口
     private void goodsSourceInterface(int page) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("page", page);
+        Map<String, String> map = new HashMap<>();
+        map.put("page", page+"");
         NetworkUrl networkUrl = new NetworkUrl();
-        XUtil.Post(networkUrl.GOODS_SOURCE_URL, map, new MyCallBack<String>() {
+        XUtil.Get(networkUrl.GOODS_SOURCE_URL, map, new MyCallBack<String>() {
             @Override
             public void onSuccess(String result) {
                 super.onSuccess(result);
-                Log.e(TAG, "onSuccess: " + result);
                 Message msg = new Message();
                 msg.obj = result;
                 goodsSourceHandler.sendMessage(msg);
@@ -474,7 +472,6 @@ public class GoodsFragment extends Fragment {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             String result = (String) msg.obj;
-            Log.e(TAG, "handleMessage: " + result);
             if (result.indexOf(ReturnCode.SUCCESS) > 0) {
                 list = GsonParsing.gsonGoodsSource(result);
                 if (list == null) {

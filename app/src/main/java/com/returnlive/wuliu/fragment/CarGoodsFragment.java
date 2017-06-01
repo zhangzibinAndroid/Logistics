@@ -161,10 +161,10 @@ public class CarGoodsFragment extends Fragment {
 
     //获取车辆列表接口
     private void carsourceInterface(int page) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("page", page);
+        Map<String, String> map = new HashMap<>();
+        map.put("page", page+"");
         NetworkUrl networkUrl = new NetworkUrl();
-        XUtil.Post(networkUrl.CAR_SOURCE_URL, map, new MyCallBack<String>() {
+        XUtil.Get(networkUrl.CAR_SOURCE_URL, map, new MyCallBack<String>() {
             @Override
             public void onSuccess(String result) {
                 super.onSuccess(result);

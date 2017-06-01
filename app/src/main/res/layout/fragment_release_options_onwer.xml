@@ -214,6 +214,7 @@
                     android:id="@+id/edt_goods_wgt"
                     style="@style/style_textview"
                     android:background="@null"
+                    android:digits="0123456789."
                     android:hint="@string/please_enter_goods_wgt" />
 
                 <TextView
@@ -245,6 +246,7 @@
                     android:id="@+id/edt_goods_volume"
                     style="@style/style_textview"
                     android:background="@null"
+                    android:digits="1234567890."
                     android:hint="@string/please_enter_goods_volume" />
 
                 <TextView
@@ -343,6 +345,7 @@
                     android:id="@+id/edt_indicative_price"
                     style="@style/style_textview"
                     android:background="@null"
+                    android:digits="1234567890."
                     android:hint="@string/please_enter_indicative_price" />
 
                 <TextView
@@ -375,6 +378,7 @@
                     android:id="@+id/edt_receiver_phone"
                     style="@style/style_textview"
                     android:background="@null"
+                    android:digits="1234567890"
                     android:hint="@string/please_enter_receiver_phone" />
             </com.zhy.autolayout.AutoRelativeLayout>
 

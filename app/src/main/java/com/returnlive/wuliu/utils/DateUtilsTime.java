@@ -27,4 +27,10 @@ public class DateUtilsTime {
         long timestamp = (epoch.getTime()/1000);
         return timestamp+"";
     }
+
+    public String getGoodsTimeStamp(String date) throws ParseException {
+        Date epoch = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(date);
+        long timestamp = (epoch.getTime()/1000);
+        return timestamp+"";
+    }
 }

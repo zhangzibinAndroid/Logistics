@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/goods_style"
+        android:gravity="center"
+        android:layout_margin="@dimen/px20"
+        android:textColor="@color/black"
+        android:textSize="@dimen/px45"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px01"
+        android:background="@color/line_view"/>
+    <RadioGroup
+        android:id="@+id/rb_tracking_goods_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/px05"
+        android:paddingBottom="@dimen/px20">
+
+        <RadioButton
+            android:id="@+id/rb_ordinary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/px20"
+            android:textSize="@dimen/px35"
+            android:checked="true"
+            android:text="普通货物" />
+
+
+        <RadioButton
+            android:id="@+id/rb_special"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/px20"
+            android:textSize="@dimen/px35"
+            android:checked="false"
+            android:layout_marginTop="@dimen/px15"
+            android:text="特殊货物" />
+
+        <RadioButton
+            android:id="@+id/rb_dangerous"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/px20"
+            android:textSize="@dimen/px35"
+            android:checked="false"
+            android:layout_marginTop="15px"
+            android:text="危险货物" />
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px01"
+        android:background="@color/line_view"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_footer_no"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px100"
+            android:layout_toLeftOf="@+id/view_f"
+            android:background="@drawable/sel_color_btn"
+            android:gravity="center"
+            android:text="@string/dismiss"
+            android:textColor="#0c7fe0"
+            android:textSize="@dimen/px40" />
+
+        <View
+            android:id="@+id/view_f"
+            android:layout_width="@dimen/px01"
+            android:layout_height="@dimen/px100"
+            android:layout_centerHorizontal="true"
+            android:background="@color/line_view" />
+
+        <TextView
+            android:id="@+id/tv_footer_yes"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px100"
+            android:layout_toRightOf="@+id/view_f"
+            android:background="@drawable/sel_color_btn2"
+            android:gravity="center"
+            android:text="@string/determine"
+            android:textColor="#e3280f"
+            android:textSize="@dimen/px40" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoLinearLayout>
