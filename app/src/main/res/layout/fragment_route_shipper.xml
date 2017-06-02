@@ -1,13 +1,74 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.returnlive.wuliu.fragment.RouteShipperFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px80"
+        android:background="@color/ivory"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/show_route"
+            android:textColor="@color/white"
+            android:textSize="@dimen/px35"/>
+    </android.support.v7.widget.Toolbar>
+
+
+    <!--轮播图-->
+    <com.youth.banner.Banner
+        android:id="@+id/owner_banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px420" />
+
+
     <TextView
+        android:id="@+id/tv_route_unmber"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px60"
+        android:background="@color/ivory"
+        android:drawableLeft="@drawable/ic_route_add"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/px12"
+        android:text="订阅路线 (0)"
+        android:textSize="@dimen/px28"
+        android:textStyle="bold" />
+
+    <ListView android:id="@+id/lv_route"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:visibility="gone"
+        android:layout_weight="1"/>
 
-</FrameLayout>
+    <TextView android:id="@+id/tv_none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="还没有数据哦！"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/tv_rout_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/px02"
+        android:background="@drawable/sel_route_color">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/px80"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@drawable/ic_action_add"
+            android:gravity="center"
+            android:text="添加路线"
+            android:textSize="@dimen/px28"
+            android:textStyle="bold" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoLinearLayout>

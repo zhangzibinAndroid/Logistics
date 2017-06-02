@@ -130,7 +130,6 @@ public class MineFragment extends Fragment {
     public static boolean isChecked = false;//默认司机版
     private String CERTIFICATION_CODE = "1";
 
-
     public MineFragment() {
     }
 
@@ -322,10 +321,17 @@ public class MineFragment extends Fragment {
 
         switch (view.getId()) {
             case R.id.img_driver:
-                setShowVersionsDialogPlus("货主版","司机版",true);
+                if (tv_version_up.getText().toString().equals(getResources().getString(R.string.tv_version_shipper))){
+                    setShowVersionsDialogPlus("货主版","司机版",true);
+                }
+
                 break;
             case R.id.img_shipper:
-                setShowVersionsDialogPlus("司机版","货主版",false);
+                if (tv_version_up.getText().toString().equals(getResources().getString(R.string.tv_version_owner))){
+
+                    setShowVersionsDialogPlus("司机版","货主版",false);
+                }
+
                 break;
             case R.id.lay_balance:
                 break;
