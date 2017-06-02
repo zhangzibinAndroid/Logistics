@@ -94,5 +94,6 @@
     <color name="bgitem">#FF8C00</color>
     <color name="sel">#083731</color>
     <color name="line_view">#DBDBDB</color>
+    <color name="textcolor">#444444</color>
 
 </resources>

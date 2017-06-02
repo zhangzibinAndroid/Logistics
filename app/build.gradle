@@ -44,4 +44,5 @@ dependencies {
     compile 'cn.bingoogolapple:bga-qrcodecore:1.1.7@aar'
     compile 'cn.bingoogolapple:bga-zxing:1.1.7@aar'
     compile 'pub.devrel:easypermissions:0.1.7'
+
 }

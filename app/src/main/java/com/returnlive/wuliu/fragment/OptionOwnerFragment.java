@@ -93,6 +93,7 @@ public class OptionOwnerFragment extends Fragment {
     private AlertDialog.Builder builder,dialogSize,carStyleDialog;
     private String[] models = {"平板", "高栏", "厢式", "保温", "冷藏", "集装箱", "面包车", "危险品", "其他"};
     private String[] carLength = {"4.2米", "5.0米", "6.2米", "6.8米", "7.2米", "7.7米", "7.8米", "8.2米", "8.7米", "9.6米", "12.5米","13.0米", "15.0米", "16.0米", "17.5米", "自定义"};
+
     private String carModels, carSize;
     private String[] carStyle = {"普通货物","特殊货物","危险货物"};
     private AlertDialog dialogCarStyle;

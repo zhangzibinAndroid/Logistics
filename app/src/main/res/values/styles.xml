@@ -77,4 +77,5 @@
         <item name="android:layout_width">@dimen/px380</item>
         <item name="android:layout_height">@dimen/px80</item>
     </style>
+
 </resources>

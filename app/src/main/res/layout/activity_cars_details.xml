@@ -51,7 +51,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/px15"
                         android:layout_toRightOf="@+id/view"
-                        android:text="@string/goods_detail"
+                        android:text="@string/cars_detail"
                         android:textColor="@color/white"
                         android:textSize="@dimen/px35" />
 

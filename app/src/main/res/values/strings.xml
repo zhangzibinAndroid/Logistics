@@ -137,6 +137,7 @@
     <string name="Loading_car_time">装车时间</string>
     <string name="more">更多</string>
     <string name="goods_detail">货源详情</string>
+    <string name="cars_detail">车源详情</string>
     <string name="option_shipper">发布车源</string>
     <string name="please_sel_start_area">请选择出发地</string>
     <string name="please_sel_end_area">请选择目的地</string>

@@ -20,8 +20,8 @@ import android.widget.Toast;
 import com.returnlive.wuliu.R;
 import com.returnlive.wuliu.constant.NetworkUrl;
 import com.returnlive.wuliu.constant.ReturnCode;
+import com.returnlive.wuliu.entity.CarsDetailsEntity;
 import com.returnlive.wuliu.entity.ErrorCodeEntity;
-import com.returnlive.wuliu.entity.GoodsDetailsEntity;
 import com.returnlive.wuliu.gson.GsonParsing;
 import com.returnlive.wuliu.utils.DateUtilsTime;
 import com.returnlive.wuliu.utils.ErrorCode;
@@ -29,6 +29,7 @@ import com.returnlive.wuliu.utils.MyCallBack;
 import com.returnlive.wuliu.utils.XUtil;
 import com.returnlive.wuliu.view.RoundImageView;
 import com.zhy.autolayout.AutoLinearLayout;
+import com.zhy.autolayout.AutoRelativeLayout;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -39,11 +40,12 @@ import java.util.Map;
 
 /**
  * 作者： 张梓彬
- * 日期： 2017/5/26 0026
- * 时间： 上午 11:43
- * 描述： 货源详情页面
+ * 日期： 2017/6/2 0002
+ * 时间： 下午 3:51
+ * 描述： 车源详情页面
  */
-public class GoodsDetailsActivity extends AppCompatActivity {
+
+public class CarDetailsActivity extends AppCompatActivity {
     @ViewInject(R.id.evaluation)
     RatingBar evaluation;
     @ViewInject(R.id.tv_goods_details_start)
@@ -54,8 +56,7 @@ public class GoodsDetailsActivity extends AppCompatActivity {
     TextView tv_goods_details_end;
     @ViewInject(R.id.tv_goods_details_time)
     TextView tv_goods_details_time;
-    @ViewInject(R.id.tv_goods_details_goods)
-    TextView tv_goods_details_goods;
+
     @ViewInject(R.id.tv_goods_details_specifications)
     TextView tv_goods_details_specifications;
     @ViewInject(R.id.tv_goods_details_cartype)
@@ -72,26 +73,29 @@ public class GoodsDetailsActivity extends AppCompatActivity {
     ScrollView lay_context;
     @ViewInject(R.id.tv_wrong)
     TextView tv_wrong;
-    @ViewInject(R.id.btn_show_navigation)
-    Button btn_show_navigation;
     @ViewInject(R.id.lay_pay)
     AutoLinearLayout lay_pay;
-
-    private String id;
-    private GoodsDetailsEntity.GoodsDetailsBean goodsDetailsBean;
+    @ViewInject(R.id.btn_show_navigation)
+    Button btn_show_navigation;
+    @ViewInject(R.id.lay_goods)
+    AutoRelativeLayout lay_goods;
     private String[] models = {"平板", "高栏", "厢式", "保温", "冷藏", "集装箱", "面包车", "危险品", "其他"};
     private ProgressDialog pro;
-
+    private String id;
+    private static final String TAG = "CarDetailsActivity";
+    private CarsDetailsEntity.CarsDetailsBean carsDetailsBean;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_goods_details);
+        setContentView(R.layout.activity_cars_details);
         x.view().inject(this);
-        initView();
 
+        initView();
     }
 
     private void initView() {
+        lay_goods.setVisibility(View.GONE);
+        btn_show_navigation.setVisibility(View.GONE);
         LayerDrawable ld_stars = (LayerDrawable) evaluation.getProgressDrawable();
         ld_stars.getDrawable(2).setColorFilter(getResources().getColor(R.color.orange), PorterDuff.Mode.SRC_ATOP);
         Intent intent = getIntent();
@@ -110,26 +114,26 @@ public class GoodsDetailsActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                goodsDetailsInterface();
+                carsDetailsInterface();
 
             }
         }).start();
 
     }
 
-    //货源详情列表接口
-    private void goodsDetailsInterface() {
-        Map<String, String> map = new HashMap<>();
-        map.put("id", id);
+    private void carsDetailsInterface() {
+        Log.e(TAG, "id: "+id );
+        Map<String,String> map = new HashMap<>();
+        map.put("id",id);
         NetworkUrl networkUrl = new NetworkUrl();
-        XUtil.Get(networkUrl.GOODS_DETAIL_SOURCE_ADD_URL, map, new MyCallBack<String>() {
-
+        Log.e(TAG, "url: "+networkUrl.CARS_DETAIL_SOURCE_ADD_URL );
+        XUtil.Get(networkUrl.CARS_DETAIL_SOURCE_ADD_URL,map, new  MyCallBack<String>(){
             @Override
             public void onSuccess(String result) {
                 super.onSuccess(result);
                 Message msg = new Message();
                 msg.obj = result;
-                goodsDetailsHandler.sendMessage(msg);
+                carsDetailsHandler.sendMessage(msg);
             }
 
             @Override
@@ -142,26 +146,23 @@ public class GoodsDetailsActivity extends AppCompatActivity {
                         lay_context.setVisibility(View.GONE);
                         lay_pay.setVisibility(View.GONE);
                         tv_wrong.setVisibility(View.VISIBLE);
-                        Toast.makeText(GoodsDetailsActivity.this, getResources().getString(R.string.networ_anomalies), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CarDetailsActivity.this, getResources().getString(R.string.networ_anomalies), Toast.LENGTH_SHORT).show();
                     }
                 });
             }
         });
+
     }
 
-    @Event(value = {R.id.img_back, R.id.btn_show_navigation, R.id.btn_goods_callphone, R.id.btn_details_pay_deposit, R.id.btn_details_Contact_owner})
+    @Event(value = {R.id.img_back, R.id.btn_details_pay_deposit, R.id.btn_details_Contact_owner})
     private void onClick(View view) {
         switch (view.getId()) {
             case R.id.img_back:
                 finish();
                 break;
-            case R.id.btn_show_navigation://导航
+            case R.id.btn_details_pay_deposit:
                 break;
-            case R.id.btn_goods_callphone://查看评价
-                break;
-            case R.id.btn_details_pay_deposit://支付定金
-                break;
-            case R.id.btn_details_Contact_owner://联系货主
+            case R.id.btn_details_Contact_owner:
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse("tel:"+tv_goods_phone.getText().toString()));
                 startActivity(intent);
@@ -169,31 +170,32 @@ public class GoodsDetailsActivity extends AppCompatActivity {
         }
     }
 
-    private Handler goodsDetailsHandler = new Handler() {
+    private Handler carsDetailsHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             String result = (String) msg.obj;
             if (result.indexOf(ReturnCode.SUCCESS) > 0) {
-                goodsDetailsBean = GsonParsing.gsonGoodsDetails(result);
-                tv_goods_details_start.setText(goodsDetailsBean.getStart());//出发地
-                tv_goods_details_end.setText(goodsDetailsBean.getEnd());//目的地
+                carsDetailsBean = GsonParsing.gsonCarsDetails(result);
+                tv_goods_details_start.setText(carsDetailsBean.getStart());
+                tv_goods_details_end.setText(carsDetailsBean.getEnd());
                 DateUtilsTime timeUtils = new DateUtilsTime();
-                String time = timeUtils.getDay(goodsDetailsBean.getCar_time());
-                tv_goods_details_time.setText(time);//装车时间
-                tv_goods_details_goods.setText(goodsDetailsBean.getGoods_name());//货品名称
-                tv_goods_details_specifications.setText(goodsDetailsBean.getWeight() + "吨/" + goodsDetailsBean.getVolume() + "方");//规格
-                String carType = models[goodsDetailsBean.getCar_type()];
-                tv_goods_details_cartype.setText(carType + " 车长");//车型
-                tv_goods_details_message.setText(goodsDetailsBean.getRemarks());
-                tv_goods_phone.setText(goodsDetailsBean.getPhone());
+                String time = timeUtils.getDay(carsDetailsBean.getCar_time());
+                tv_goods_details_time.setText(time);
+                tv_goods_details_specifications.setText(carsDetailsBean.getWeight() + "吨/" + carsDetailsBean.getVolume() + "方");
+                String carType = models[carsDetailsBean.getCar_type()];
+                tv_goods_details_cartype.setText(carType + " 车长");
+                tv_goods_details_message.setText("备注");
+                tv_goods_phone.setText(carsDetailsBean.getPhone());
 
-            } else {
+            }else {
                 errorCode(result);
             }
             pro.dismiss();
+
         }
     };
+
 
     //错误码返回值解析并判断
     private void errorCode(String result) {

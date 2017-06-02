@@ -27,6 +27,8 @@ import com.bigkoo.pickerview.listener.CustomListener;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.returnlive.wuliu.R;
+import com.returnlive.wuliu.activity.CarDetailsActivity;
+import com.returnlive.wuliu.activity.GoodsDetailsActivity;
 import com.returnlive.wuliu.adapter.CarSourceAdapter;
 import com.returnlive.wuliu.constant.ConstantNumber;
 import com.returnlive.wuliu.constant.NetworkUrl;
@@ -55,10 +57,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author 张梓彬
- *         Data : 2017/5/19 0019
- *         Time : 上午 10:43
- *         Describe : 货主车源页面
+ * 作者： 张梓彬
+ * 日期： 2017/6/2 0002
+ * 时间： 上午 10:17
+ * 描述： 货主车源页面
  */
 public class CarGoodsFragment extends Fragment {
     @ViewInject(R.id.toobar_goods_car_title_address)
@@ -219,8 +221,9 @@ public class CarGoodsFragment extends Fragment {
         actualListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), "点击了第" + (position) + "个", Toast.LENGTH_SHORT).show();
-//                pageJump(GoodsDetailsActivity.class);
+                CarsourceListEntity.CarsourceBean bean = SourceList.cacheCarList.get(position-1);
+                String _id = bean.getId()+"";
+                pageJump(CarDetailsActivity.class,_id);
             }
         });
 
@@ -231,8 +234,9 @@ public class CarGoodsFragment extends Fragment {
 
 
 
-    public void pageJump(Class<?> cls) {
+    public void pageJump(Class<?> cls,String _id) {
         Intent intent = new Intent(getActivity(), cls);
+        intent.putExtra("id",_id);
         startActivity(intent);
     }
 

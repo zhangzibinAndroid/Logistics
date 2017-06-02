@@ -4,39 +4,36 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
-
-
     <com.zhy.autolayout.AutoLinearLayout
-        android:id="@+id/line_ay"
+        android:id="@+id/line_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
-        android:background="#ffffff"
+        android:background="@color/white"
         android:orientation="vertical"
-        android:paddingTop="25px">
+        android:paddingTop="@dimen/px25">
 
         <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/img"
+                android:id="@+id/img_green"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="20px"
+                android:layout_marginLeft="@dimen/px20"
                 android:src="@drawable/ic_goods_details_start" />
 
             <TextView
                 android:id="@+id/tv_goods_details_start"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30px"
-                android:layout_toRightOf="@+id/img"
+                android:layout_marginLeft="@dimen/px30"
+                android:layout_toRightOf="@+id/img_green"
                 android:gravity="center_vertical"
-                android:text="安徽省宿州市泗县丁湖镇"
-                android:textColor="#000"
+                android:text="出发地"
+                android:textColor="@color/black"
                 android:textSize="@dimen/px40" />
 
         </com.zhy.autolayout.AutoRelativeLayout>
@@ -46,18 +43,18 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/img3"
+                android:id="@+id/img_gray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20px"
+                android:layout_marginLeft="@dimen/px20"
                 android:layout_marginTop="-5px"
                 android:src="@drawable/ic_yuandian" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/img3"
-                android:layout_marginLeft="20px"
+                android:layout_below="@+id/img_gray"
+                android:layout_marginLeft="@dimen/px20"
                 android:layout_marginTop="-10px"
                 android:src="@drawable/ic_yuandian" />
 
@@ -66,9 +63,9 @@
                 android:id="@+id/tv_goods_details_start_context"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="32px"
-                android:layout_marginTop="15px"
-                android:layout_toRightOf="@+id/img3"
+                android:layout_marginLeft="@dimen/px32"
+                android:layout_marginTop="@dimen/px15"
+                android:layout_toRightOf="@+id/img_gray"
                 android:gravity="center_vertical"
                 android:text="距离装货地约2449.08公里"
                 android:textSize="@dimen/px34" />
@@ -81,24 +78,27 @@
             <!--分割线-->
             <View
                 android:layout_width="match_parent"
-                android:layout_height="2px"
-                android:layout_marginLeft="30px"
+                android:layout_height="@dimen/px02"
+                android:layout_marginLeft="@dimen/px30"
                 android:layout_toRightOf="@+id/im"
-                android:layout_marginTop="7px"
-                android:background="#D4D4D4">
+                android:layout_marginRight="@dimen/px30"
+                android:layout_marginTop="@dimen/px07"
+                android:background="@color/lightyellow">
             </View>
 
             <ImageView
                 android:id="@+id/im"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/img4"
-                android:layout_marginLeft="20px"
+                android:layout_below="@+id/img_gray"
+                android:layout_marginLeft="@dimen/px20"
                 android:layout_marginTop="-10px"
                 android:src="@drawable/ic_yuandian" />
 
 
         </com.zhy.autolayout.AutoRelativeLayout>
+
+
 
         <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="match_parent"
@@ -113,34 +113,22 @@
                     android:id="@+id/img5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20px"
+                    android:layout_marginLeft="@dimen/px20"
                     android:src="@drawable/ic_goods_details_end" />
 
                 <TextView
                     android:id="@+id/tv_goods_details_end"
-                    android:layout_width="490px"
+                    android:layout_width="@dimen/px490"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30px"
+                    android:layout_marginLeft="@dimen/px30"
                     android:layout_toRightOf="@+id/img5"
                     android:ellipsize="end"
                     android:gravity="center_vertical"
                     android:singleLine="true"
-                    android:text="江苏省南京浦口区路况慰问慰问慰问慰问"
-                    android:textColor="#000"
+                    android:text="目的地"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/px40" />
-                <!--导航-->
-                <Button
-                    android:id="@+id/btn_show_navigation"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="15px"
-                    android:layout_marginTop="-15px"
-                    android:background="@drawable/sel_shape_navigation"
-                    android:text="导航"
-                    android:textColor="#FFBA02"
-                    android:textSize="30px"
-                    android:textStyle="bold" />
+
 
                 <com.zhy.autolayout.AutoRelativeLayout
                     android:layout_width="wrap_content"
@@ -152,14 +140,14 @@
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="20px" />
+                        android:layout_marginLeft="@dimen/px20" />
 
                     <TextView
                         android:id="@+id/tv_goods_details_end_context"
-                        android:layout_width="480px"
+                        android:layout_width="@dimen/px480"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="32px"
-                        android:layout_marginTop="15px"
+                        android:layout_marginLeft="@dimen/px32"
+                        android:layout_marginTop="@dimen/px15"
                         android:layout_toRightOf="@+id/img6"
                         android:text="运货里程约2449.08公里"
                         android:textSize="@dimen/px34" />
@@ -168,62 +156,68 @@
             </com.zhy.autolayout.AutoRelativeLayout>
 
 
+
         </com.zhy.autolayout.AutoRelativeLayout>
     </com.zhy.autolayout.AutoLinearLayout>
+    <!--导航-->
+    <Button
+        android:id="@+id/btn_show_navigation"
+        android:layout_width="@dimen/px170"
+        android:layout_height="@dimen/px160"
+        android:background="@drawable/sel_shape_navigation"
+        android:text="导航"
+        android:textColor="#FFBA02"
+        android:textSize="@dimen/px30"
+        android:textStyle="bold"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/px60"/>
+
     <!--详细信息-->
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/line_ay"
-        android:layout_marginTop="15px"
-        android:background="#ffffff"
+        android:layout_below="@+id/line_area"
+        android:layout_marginTop="@dimen/px15"
+        android:background="@color/white"
         android:orientation="vertical"
-        android:paddingBottom="25px">
+        android:paddingBottom="@dimen/px25"
+        android:id="@+id/autoLinearLayout">
 
         <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20px">
+            android:layout_marginTop="@dimen/px20">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="60px"
-                android:layout_marginLeft="20px"
+                android:layout_height="@dimen/px60"
+                android:layout_marginLeft="@dimen/px20"
                 android:gravity="center_vertical"
                 android:text="详细信息"
-                android:textColor="#222222"
+                android:textColor="@color/black"
                 android:textSize="@dimen/px38" />
 
-            <TextView
-                android:id="@+id/tv_complaints"
-                android:layout_width="150px"
-                android:layout_height="60px"
-                android:layout_alignParentRight="true"
-                android:gravity="center"
-                android:text="投诉"
-                android:textColor="#303F9F"
-                android:textSize="@dimen/px32" />
         </com.zhy.autolayout.AutoRelativeLayout>
 
         <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10px">
+            android:layout_marginTop="@dimen/px10">
 
             <ImageView
                 android:id="@+id/img8"
-                android:layout_width="80px"
-                android:layout_height="60px"
+                android:layout_width="@dimen/px80"
+                android:layout_height="@dimen/px60"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="20px"
+                android:layout_marginLeft="@dimen/px20"
                 android:background="@drawable/shape_left_time"
-                android:padding="5px"
+                android:padding="@dimen/px05"
                 android:src="@mipmap/ic_goods_traveltime" />
 
             <TextView
                 android:id="@+id/tv1"
-                android:layout_width="120px"
-                android:layout_height="60px"
+                android:layout_width="@dimen/px120"
+                android:layout_height="@dimen/px60"
                 android:layout_toRightOf="@+id/img8"
                 android:background="@drawable/shape_left_time2"
                 android:gravity="center"
@@ -234,34 +228,35 @@
             <TextView
                 android:id="@+id/tv_goods_details_time"
                 android:layout_width="wrap_content"
-                android:layout_height="60px"
-                android:layout_marginLeft="30px"
+                android:layout_height="@dimen/px60"
+                android:layout_marginLeft="@dimen/px30"
                 android:layout_toRightOf="@+id/tv1"
                 android:gravity="center_vertical"
                 android:text="2017-08-28 全天均可装"
-                android:textColor="#444444"
+                android:textColor="@color/textcolor"
                 android:textSize="@dimen/px35" />
         </com.zhy.autolayout.AutoRelativeLayout>
 
         <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/lay_goods"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10px">
 
             <ImageView
                 android:id="@+id/img9"
-                android:layout_width="80px"
-                android:layout_height="60px"
+                android:layout_width="@dimen/px80"
+                android:layout_height="@dimen/px60"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="20px"
+                android:layout_marginLeft="@dimen/px20"
                 android:background="@drawable/shape_left_goods"
                 android:padding="5px"
                 android:src="@mipmap/ic_goods_remark" />
 
             <TextView
                 android:id="@+id/tv2"
-                android:layout_width="120px"
-                android:layout_height="60px"
+                android:layout_width="@dimen/px120"
+                android:layout_height="@dimen/px60"
                 android:layout_toRightOf="@+id/img9"
                 android:background="@drawable/shape_left_time2"
                 android:gravity="center"
@@ -272,34 +267,34 @@
             <TextView
                 android:id="@+id/tv_goods_details_goods"
                 android:layout_width="wrap_content"
-                android:layout_height="60px"
-                android:layout_marginLeft="30px"
+                android:layout_height="@dimen/px60"
+                android:layout_marginLeft="@dimen/px30"
                 android:layout_toRightOf="@+id/tv2"
                 android:gravity="center_vertical"
                 android:text="长背螺旋"
-                android:textColor="#444444"
+                android:textColor="@color/textcolor"
                 android:textSize="@dimen/px35" />
         </com.zhy.autolayout.AutoRelativeLayout>
 
         <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10px">
+            android:layout_marginTop="@dimen/px10">
 
             <ImageView
                 android:id="@+id/img10"
-                android:layout_width="80px"
-                android:layout_height="60px"
+                android:layout_width="@dimen/px80"
+                android:layout_height="@dimen/px60"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="20px"
+                android:layout_marginLeft="@dimen/px20"
                 android:background="@drawable/shape_left_specificons"
-                android:padding="5px"
+                android:padding="@dimen/px05"
                 android:src="@drawable/ic_goods_weight" />
 
             <TextView
                 android:id="@+id/tv3"
-                android:layout_width="120px"
-                android:layout_height="60px"
+                android:layout_width="@dimen/px120"
+                android:layout_height="@dimen/px60"
                 android:layout_toRightOf="@+id/img10"
                 android:background="@drawable/shape_left_time2"
                 android:gravity="center"
@@ -310,34 +305,34 @@
             <TextView
                 android:id="@+id/tv_goods_details_specifications"
                 android:layout_width="wrap_content"
-                android:layout_height="60px"
-                android:layout_marginLeft="30px"
+                android:layout_height="@dimen/px60"
+                android:layout_marginLeft="@dimen/px30"
                 android:layout_toRightOf="@+id/tv3"
                 android:gravity="center_vertical"
                 android:text="333.3吨/100方"
-                android:textColor="#444444"
+                android:textColor="@color/textcolor"
                 android:textSize="@dimen/px35" />
         </com.zhy.autolayout.AutoRelativeLayout>
 
         <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10px">
+            android:layout_marginTop="@dimen/px10">
 
             <ImageView
                 android:id="@+id/img11"
-                android:layout_width="80px"
-                android:layout_height="60px"
+                android:layout_width="@dimen/px80"
+                android:layout_height="@dimen/px60"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="20px"
+                android:layout_marginLeft="@dimen/px20"
                 android:background="@drawable/shape_left_cartype"
-                android:padding="5px"
+                android:padding="@dimen/px05"
                 android:src="@drawable/ic_goods_cartype" />
 
             <TextView
                 android:id="@+id/tv4"
-                android:layout_width="120px"
-                android:layout_height="60px"
+                android:layout_width="@dimen/px120"
+                android:layout_height="@dimen/px60"
                 android:layout_toRightOf="@+id/img11"
                 android:background="@drawable/shape_left_time2"
                 android:gravity="center"
@@ -348,12 +343,12 @@
             <TextView
                 android:id="@+id/tv_goods_details_cartype"
                 android:layout_width="wrap_content"
-                android:layout_height="60px"
-                android:layout_marginLeft="30px"
+                android:layout_height="@dimen/px60"
+                android:layout_marginLeft="@dimen/px30"
                 android:layout_toRightOf="@+id/tv4"
                 android:gravity="center_vertical"
                 android:text="高低板车 13米"
-                android:textColor="#444444"
+                android:textColor="@color/textcolor"
                 android:textSize="@dimen/px35" />
         </com.zhy.autolayout.AutoRelativeLayout>
 
@@ -361,7 +356,7 @@
         <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10px">
+            android:layout_marginTop="@dimen/px10">
 
             <com.zhy.autolayout.AutoRelativeLayout
                 android:id="@+id/real_y"
@@ -370,23 +365,23 @@
 
                 <ImageView
                     android:id="@+id/img12"
-                    android:layout_width="80px"
-                    android:layout_height="60px"
+                    android:layout_width="@dimen/px80"
+                    android:layout_height="@dimen/px60"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="20px"
+                    android:layout_marginLeft="@dimen/px20"
                     android:background="@drawable/shape_left_message"
-                    android:padding="5px"
+                    android:padding="@dimen/px05"
                     android:src="@drawable/ic_leave_message" />
 
                 <TextView
                     android:id="@+id/tv5"
-                    android:layout_width="120px"
-                    android:layout_height="60px"
+                    android:layout_width="@dimen/px120"
+                    android:layout_height="@dimen/px60"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/img12"
                     android:background="@drawable/shape_left_time2"
                     android:gravity="center"
-                    android:text="留言"
+                    android:text="备注"
                     android:textColor="#638202"
                     android:textSize="@dimen/px32" />
             </com.zhy.autolayout.AutoRelativeLayout>
@@ -395,11 +390,12 @@
                 android:id="@+id/tv_goods_details_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30px"
-                android:layout_marginRight="10px"
+                android:layout_marginLeft="@dimen/px30"
+                android:layout_marginRight="@dimen/px10"
                 android:layout_toRightOf="@+id/real_y"
                 android:text="联系我时，请说明你是某省回头车的哪个司机，谢谢！祝你出车愉快！！！"
-                android:textColor="#444444"
+                android:layout_marginTop="@dimen/px07"
+                android:textColor="@color/textcolor"
                 android:textSize="@dimen/px35" />
         </com.zhy.autolayout.AutoRelativeLayout>
     </com.zhy.autolayout.AutoLinearLayout>

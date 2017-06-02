@@ -1,6 +1,7 @@
 package com.returnlive.wuliu.fragment;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
@@ -28,6 +29,7 @@ import com.bigkoo.pickerview.listener.CustomListener;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.returnlive.wuliu.R;
+import com.returnlive.wuliu.activity.GoodsDetailsActivity;
 import com.returnlive.wuliu.adapter.GoodsSourceAdapter;
 import com.returnlive.wuliu.constant.ConstantNumber;
 import com.returnlive.wuliu.constant.NetworkUrl;
@@ -152,12 +154,19 @@ public class GoodsFragment extends Fragment {
         actualListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), "点击了第" + (position) + "个", Toast.LENGTH_SHORT).show();
-//                pageJump(GoodsDetailsActivity.class);
+                GoodsSourceListEntity.GoosdsBean bean = SourceList.goodsList.get(position-1);
+                String _id = bean.getId()+"";
+                pageJump(GoodsDetailsActivity.class,_id);
             }
         });
 
 
+    }
+
+    public void pageJump(Class<?> cls,String _id) {
+        Intent intent = new Intent(getActivity(), cls);
+        intent.putExtra("id",_id);
+        startActivity(intent);
     }
 
     /**
