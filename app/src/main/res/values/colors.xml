@@ -29,7 +29,11 @@
     <color name="textselfirst">#667171</color>
     <color name="textselsecond">#00A84B</color>
 
-
+    <color name="map_bg_color">#4287FF</color>
+    <color name="tv_press">#DDDDDD</color>
+    <color name="text_color">#686868</color>
+    <color name="hint_text_color">#BEBEBE</color>
+    <color name="view_color">#DFDFDF</color>
     <color name="toolbar_title">#666666</color>
     <color name="color_yes">#89BC51</color>
     <color name="color_ok">#e32333</color>
@@ -56,7 +60,6 @@
     <color name="papayawhip">#E84849</color><!--番木色 -->
     <color name="blanchedalmond">#FFEBCD</color><!--白杏色 -->
     <color name="mistyrose">#303F9F</color><!--浅玫瑰色 -->
-    <color name="text_color">#717171</color><!--浅玫瑰色 -->
     <color name="bisque">#FFE4C4</color><!--桔黄色 -->
     <color name="moccasin">#30302E</color><!--鹿皮色 -->
     <color name="navajowhite">#FFDEAD</color><!--纳瓦白 -->

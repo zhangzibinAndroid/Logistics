@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="310px"
+        android:background="@color/map_bg_color"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70px"
+            android:layout_marginLeft="24px"
+            android:layout_marginTop="24px"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/lay_start_place"
+                android:layout_width="520px"
+                android:layout_height="70px"
+                android:clickable="true"
+                android:background="@drawable/text_bg_white"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingLeft="24px"
+                    android:text="从  "
+                    android:textColor="@color/hint_text_color"
+                    android:textSize="32px" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/tv_start_place"
+                    android:layout_width="match_parent"
+                    android:layout_height="95px"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text="我的位置"
+                    android:textColor="@color/text_color"
+                    android:textSize="32px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/lay_my_place"
+                android:layout_width="match_parent"
+                android:layout_height="70px"
+                android:layout_marginLeft="24px"
+                android:layout_marginRight="24px"
+                android:background="@drawable/tv_select"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingRight="12px">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_place" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="当前位置"
+                    android:textSize="24px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/lay_end_place"
+            android:layout_width="520px"
+            android:layout_height="70px"
+            android:layout_marginLeft="24px"
+            android:layout_marginTop="24px"
+            android:clickable="true"
+            android:background="@drawable/text_bg_white"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="24px"
+                android:text="到  "
+                android:textColor="@color/hint_text_color"
+                android:textSize="32px" />
+
+            <AutoCompleteTextView
+                android:id="@+id/tv_end_place"
+                android:layout_width="match_parent"
+                android:layout_height="95px"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入目的地"
+                android:singleLine="true"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_text_color"
+                android:textSize="32px" />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70px"
+            android:layout_marginLeft="24px"
+            android:layout_marginRight="24px"
+            android:layout_marginTop="24px"
+            android:background="@drawable/text_bg_white"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:paddingLeft="24px"
+                android:text="货车避开限行、限高、限重"
+                android:textColor="@color/black"
+                android:textSize="28px" />
+
+            <com.suke.widget.SwitchButton
+                android:id="@+id/switch_button"
+                android:layout_width="100px"
+                android:layout_height="60px"
+                android:layout_marginRight="40px"
+                app:sb_checked_color="@color/map_bg_color" />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+    <com.amap.api.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</com.zhy.autolayout.AutoLinearLayout>

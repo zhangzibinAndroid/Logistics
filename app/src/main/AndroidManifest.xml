@@ -48,6 +48,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="51596e0b0692aa8de92f8d6146218513" />
+
+        <meta-data
             android:name="design_width"
             android:value="768" />
         <meta-data
@@ -92,6 +96,12 @@
         <activity android:name=".activity.RouteShowActivity" />
         <activity android:name=".activity.QCodeActivity" />
         <activity android:name=".activity.CarDetailsActivity" />
+        <activity android:name=".map.RouteActivity" />
+        <activity android:name=".map.DaoHangActivity" />
+
+
+        <service android:name="com.amap.api.location.APSService"/>
+
     </application>
 
 </manifest>

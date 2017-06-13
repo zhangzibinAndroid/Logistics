@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="3460px"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/view_color" />
+
+    <View
+        android:layout_width="80px"
+        android:layout_height="10px"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15px"
+        android:background="@drawable/view_conner_bg" />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10px"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_message"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <TextView android:id="@+id/tv_light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="20px"
+        android:text="收费约100元，红绿灯25个"
+        android:textSize="20px" />
+
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginBottom="20px"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_open_gaodeMap"
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:layout_marginRight="5px"
+            android:layout_weight="1"
+            android:background="@drawable/btn_white_select"
+            android:text="打开地图" />
+
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/lay_start_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:layout_weight="1"
+            android:layout_marginLeft="5px"
+            android:gravity="center"
+            android:clickable="true"
+            android:background="@drawable/btn_blue_select"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_function"
+                android:clickable="false"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:text="开始导航" />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+
+
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+</com.zhy.autolayout.AutoLinearLayout>

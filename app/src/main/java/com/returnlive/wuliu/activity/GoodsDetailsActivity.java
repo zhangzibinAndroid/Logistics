@@ -23,6 +23,7 @@ import com.returnlive.wuliu.constant.ReturnCode;
 import com.returnlive.wuliu.entity.ErrorCodeEntity;
 import com.returnlive.wuliu.entity.GoodsDetailsEntity;
 import com.returnlive.wuliu.gson.GsonParsing;
+import com.returnlive.wuliu.map.RouteActivity;
 import com.returnlive.wuliu.utils.DateUtilsTime;
 import com.returnlive.wuliu.utils.ErrorCode;
 import com.returnlive.wuliu.utils.MyCallBack;
@@ -156,15 +157,17 @@ public class GoodsDetailsActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.btn_show_navigation://导航
+                Intent intent = new Intent(this, RouteActivity.class);
+                startActivity(intent);
                 break;
             case R.id.btn_goods_callphone://查看评价
                 break;
             case R.id.btn_details_pay_deposit://支付定金
                 break;
             case R.id.btn_details_Contact_owner://联系货主
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:"+tv_goods_phone.getText().toString()));
-                startActivity(intent);
+                Intent intentphone = new Intent(Intent.ACTION_DIAL);
+                intentphone.setData(Uri.parse("tel:"+tv_goods_phone.getText().toString()));
+                startActivity(intentphone);
                 break;
         }
     }

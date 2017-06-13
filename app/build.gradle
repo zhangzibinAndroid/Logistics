@@ -44,5 +44,15 @@ dependencies {
     compile 'cn.bingoogolapple:bga-qrcodecore:1.1.7@aar'
     compile 'cn.bingoogolapple:bga-zxing:1.1.7@aar'
     compile 'pub.devrel:easypermissions:0.1.7'
+    compile files('libs/Msc.jar')
+    compile files('libs/Sunflower.jar')
+    compile 'com.amap.api:map2d:latest.integration'
+    compile 'com.amap.api:search:latest.integration'
+    compile 'com.amap.api:location:latest.integration'
+    compile 'com.amap.api:navi-3dmap:latest.integration'
+    compile 'com.github.zcweng:switch-button:0.0.3@aar'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'jp.wasabeef:recyclerview-animators:2.2.3'
+
 
 }

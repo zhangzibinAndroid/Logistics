@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="240px"
+    android:layout_weight="1"
+    android:layout_margin="5px"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/function_title_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tv_top_conner"
+        android:gravity="center"
+        android:padding="8px"
+        android:singleLine="true"
+        android:text="时间最短"
+        android:textSize="25px" />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/lay_message"
+        android:paddingTop="10px"
+        android:background="@drawable/tv_bottom_conner"
+        android:orientation="vertical">
+        <TextView android:id="@+id/tv_time_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2小时49分"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textSize="30px"/>
+
+        <TextView android:id="@+id/tv_mileage_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10px"
+            android:textSize="25px"
+            android:singleLine="true"
+            android:text="226.4公里"/>
+    </com.zhy.autolayout.AutoLinearLayout>
+</LinearLayout>
