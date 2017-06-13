@@ -1,4 +1,4 @@
-package com.returnlive.wuliu.map.adapter;
+package com.returnlive.wuliu.map.entity;
 
 /**
  * Created by 张梓彬 on 2017/6/9 0009.

@@ -65,6 +65,7 @@ import com.amap.api.services.help.InputtipsQuery;
 import com.amap.api.services.help.Tip;
 import com.autonavi.tbt.TrafficFacilityInfo;
 import com.returnlive.wuliu.R;
+import com.returnlive.wuliu.map.adapter.MapMessageAdapter;
 import com.returnlive.wuliu.map.utils.AMapUtil;
 import com.returnlive.wuliu.map.utils.Utils;
 import com.suke.widget.SwitchButton;

@@ -18,9 +18,9 @@ import java.util.List;
  */
 
 public class MapMessageAdapter extends RecyclerView.Adapter<MapMessageAdapter.ViewHolder> implements View.OnClickListener {
-    private List<MapMessageEntity> list;
+    private List<com.returnlive.wuliu.map.MapMessageEntity> list;
     private OnItemClickListener mOnItemClickListener = null;
-    public MapMessageAdapter(List<MapMessageEntity> list) {
+    public MapMessageAdapter(List<com.returnlive.wuliu.map.MapMessageEntity> list) {
         this.list = list;
     }
     int mSelect = 0;
@@ -36,7 +36,7 @@ public class MapMessageAdapter extends RecyclerView.Adapter<MapMessageAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        MapMessageEntity mapMessageEntity = list.get(position);
+        com.returnlive.wuliu.map.MapMessageEntity mapMessageEntity = list.get(position);
         holder.title.setText(mapMessageEntity.getTitle());
         holder.tvTimeOne.setText(MapMessageUtils.getTime(mapMessageEntity.getTime()));
         holder.tvMileageOne.setText(MapMessageUtils.getLength(mapMessageEntity.getLength()));
