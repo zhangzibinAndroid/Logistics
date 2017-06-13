@@ -98,8 +98,6 @@
         <activity android:name=".activity.CarDetailsActivity" />
         <activity android:name=".map.RouteActivity" />
         <activity android:name=".map.DaoHangActivity" />
-
-
         <service android:name="com.amap.api.location.APSService"/>
 
     </application>
