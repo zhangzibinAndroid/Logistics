@@ -178,6 +178,8 @@ public class RouteActivity extends AppCompatActivity implements AMapNaviListener
                 break;
 
             case R.id.lay_my_place:
+                startPoint = myplacePoint;
+                tvStartPlace.setText("我的位置");
 
                 break;
             case R.id.tv_end_place:

@@ -120,9 +120,7 @@ public class SettingActivity extends AppCompatActivity {
             if (isNeedUpdate()) {
                 showUpdateDialog();
             }
-        }
-
-        ;
+        };
     };
 
 

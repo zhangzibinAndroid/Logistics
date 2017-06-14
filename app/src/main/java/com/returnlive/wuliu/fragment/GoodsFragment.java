@@ -4,6 +4,7 @@ package com.returnlive.wuliu.fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -159,7 +160,14 @@ public class GoodsFragment extends Fragment {
                 pageJump(GoodsDetailsActivity.class,_id);
             }
         });
-
+        goodsSourceAdapter.setOnImgClickListener(new GoodsSourceAdapter.OnImgClickListener() {
+            @Override
+            public void onImgClickListener(View view, int position) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:13771853364"));
+                startActivity(intent);
+            }
+        });
 
     }
 

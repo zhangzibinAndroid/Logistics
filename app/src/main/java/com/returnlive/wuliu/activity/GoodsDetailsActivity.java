@@ -81,7 +81,6 @@ public class GoodsDetailsActivity extends AppCompatActivity {
     private String id;
     private GoodsDetailsEntity.GoodsDetailsBean goodsDetailsBean;
     private String[] models = {"平板", "高栏", "厢式", "保温", "冷藏", "集装箱", "面包车", "危险品", "其他"};
-    private ProgressDialog pro;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -97,20 +96,9 @@ public class GoodsDetailsActivity extends AppCompatActivity {
         ld_stars.getDrawable(2).setColorFilter(getResources().getColor(R.color.orange), PorterDuff.Mode.SRC_ATOP);
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
-        pro = new ProgressDialog(this);
-        pro.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        pro.setMessage("信息加载中...");
-        pro.setCanceledOnTouchOutside(false);
-        pro.setCancelable(false);
-        pro.show();
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 goodsDetailsInterface();
 
             }
@@ -139,7 +127,6 @@ public class GoodsDetailsActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        pro.dismiss();
                         lay_context.setVisibility(View.GONE);
                         lay_pay.setVisibility(View.GONE);
                         tv_wrong.setVisibility(View.VISIBLE);
@@ -194,7 +181,6 @@ public class GoodsDetailsActivity extends AppCompatActivity {
             } else {
                 errorCode(result);
             }
-            pro.dismiss();
         }
     };
 

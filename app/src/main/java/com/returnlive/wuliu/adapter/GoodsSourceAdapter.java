@@ -5,13 +5,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.returnlive.wuliu.R;
 import com.returnlive.wuliu.base.MyBaseAdapter;
 import com.returnlive.wuliu.entity.GoodsSourceListEntity;
 import com.returnlive.wuliu.utils.DateUtilsTime;
 import com.returnlive.wuliu.view.RoundImageView;
-
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -19,11 +17,12 @@ import org.xutils.x;
  * 作者： 张梓彬
  * 日期： 2017/5/31 0031
  * 时间： 下午 2:35
- * 描述：
+ * 描述： 货源适配器
  */
 
 public class GoodsSourceAdapter extends MyBaseAdapter<GoodsSourceListEntity.GoosdsBean>{
     Context context;
+    private OnImgClickListener onImgClickListener = null;
     public GoodsSourceAdapter(Context context) {
         super(context);
         this.context = context;
@@ -36,10 +35,10 @@ public class GoodsSourceAdapter extends MyBaseAdapter<GoodsSourceListEntity.Goos
             convertView = inflater.inflate(R.layout.item_goods_listview, null);
             viewHolder = new CarSourceAdapter.ViewHolder(convertView);
             convertView.setTag(viewHolder);
+            viewHolder.img_goods_callphone.setTag(position);
         }else {
             viewHolder = (CarSourceAdapter.ViewHolder) convertView.getTag();
         }
-
         DateUtilsTime dateUtilsTime = new DateUtilsTime();
         //此处设置控件
         GoodsSourceListEntity.GoosdsBean goodsSourceListEntity = getItem(position);
@@ -55,7 +54,24 @@ public class GoodsSourceAdapter extends MyBaseAdapter<GoodsSourceListEntity.Goos
         viewHolder.tv_goods_carlength.setText("车长");
         viewHolder.tv_goods_weight.setText(goodsSourceListEntity.getWeight()+"吨/"+goodsSourceListEntity.getVolume()+"方");
         viewHolder.tv_goods_traveltime.setText(dateUtilsTime.getDay(goodsSourceListEntity.getCar_time())+" 全天可装货");
+        viewHolder.img_goods_callphone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onImgClickListener != null) {
+                    //注意这里使用getTag方法获取position
+                    onImgClickListener.onImgClickListener(v,(int)v.getTag());
+                }
+            }
+        });
         return convertView;
+    }
+
+    public void setOnImgClickListener(OnImgClickListener listener) {
+        this.onImgClickListener = listener;
+    }
+
+    public static interface OnImgClickListener{
+        void onImgClickListener(View view, int position);
     }
 
     static class ViewHolder {
@@ -85,6 +101,7 @@ public class GoodsSourceAdapter extends MyBaseAdapter<GoodsSourceListEntity.Goos
         TextView tv_goods_weight;
         @ViewInject(R.id.tv_goods_traveltime)
         TextView tv_goods_traveltime;
+
 
         ViewHolder(View view) {
             x.view().inject(this, view);

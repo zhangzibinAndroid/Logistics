@@ -68,12 +68,7 @@ public class RoundImageView extends ImageView {
 		if (defaultHeight == 0) {
 			defaultHeight = getHeight();
 		}
-		// 保证重新读取图片后不会因为图片大小而改变控件宽、高的大小（针对宽、高为wrap_content布局的imageview，但会导致margin无效）
-		// if (defaultWidth != 0 && defaultHeight != 0) {
-		// LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-		// defaultWidth, defaultHeight);
-		// setLayoutParams(params);
-		// }
+
 		int radius = 0;
 		if (mBorderInsideColor != defaultColor
 				&& mBorderOutsideColor != defaultColor) {// 定义画两个边框，分别为外圆边框和内圆边框
@@ -164,13 +159,6 @@ public class RoundImageView extends ImageView {
 				paint);
 		paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
 		canvas.drawBitmap(scaledSrcBmp, rect, rect, paint);
-		// bitmap回收(recycle导致在布局文件XML看不到效果)
-		// bmp.recycle();
-		// squareBitmap.recycle();
-		// scaledSrcBmp.recycle();
-		bmp = null;
-		squareBitmap = null;
-		scaledSrcBmp = null;
 		return output;
 	}
 

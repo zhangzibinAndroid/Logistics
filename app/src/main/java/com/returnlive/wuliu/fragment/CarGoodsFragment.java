@@ -4,6 +4,7 @@ package com.returnlive.wuliu.fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,6 +31,7 @@ import com.returnlive.wuliu.R;
 import com.returnlive.wuliu.activity.CarDetailsActivity;
 import com.returnlive.wuliu.activity.GoodsDetailsActivity;
 import com.returnlive.wuliu.adapter.CarSourceAdapter;
+import com.returnlive.wuliu.adapter.GoodsSourceAdapter;
 import com.returnlive.wuliu.constant.ConstantNumber;
 import com.returnlive.wuliu.constant.NetworkUrl;
 import com.returnlive.wuliu.constant.ReturnCode;
@@ -226,13 +228,15 @@ public class CarGoodsFragment extends Fragment {
                 pageJump(CarDetailsActivity.class,_id);
             }
         });
-
-
+        carSourceAdapter.setOnImgClickListener(new CarSourceAdapter.OnImgClickListener() {
+            @Override
+            public void onImgClickListener(View view, int position) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:13771853364"));
+                startActivity(intent);
+            }
+        });
     }
-
-
-
-
 
     public void pageJump(Class<?> cls,String _id) {
         Intent intent = new Intent(getActivity(), cls);

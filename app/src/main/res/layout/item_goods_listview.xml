@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:addStatesFromChildren="true"
+    android:descendantFocusability="blocksDescendants"
     android:id="@+id/linear_item_goods">
 
     <!--上面的头像部分-->
@@ -54,6 +56,7 @@
             android:id="@+id/img_goods_callphone"
             android:layout_width="@dimen/px90"
             android:layout_height="@dimen/px90"
+            android:clickable="true"
             android:src="@mipmap/ic_goods_phone"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/px20"

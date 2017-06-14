@@ -13,9 +13,6 @@ import com.returnlive.wuliu.base.MyBaseAdapter;
 import com.returnlive.wuliu.entity.CarsourceListEntity;
 import com.returnlive.wuliu.utils.DateUtilsTime;
 import com.returnlive.wuliu.view.RoundImageView;
-
-import org.xutils.common.Callback;
-import org.xutils.image.ImageOptions;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -27,6 +24,7 @@ import org.xutils.x;
  */
 public class CarSourceAdapter extends MyBaseAdapter<CarsourceListEntity.CarsourceBean> {
     Context context;
+    private OnImgClickListener onImgClickListener = null;
 
     public CarSourceAdapter(Context context) {
         super(context);
@@ -41,6 +39,8 @@ public class CarSourceAdapter extends MyBaseAdapter<CarsourceListEntity.Carsourc
             convertView = inflater.inflate(R.layout.item_goods_listview, null);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
+            viewHolder.img_goods_callphone.setTag(position);
+
         }else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
@@ -59,10 +59,24 @@ public class CarSourceAdapter extends MyBaseAdapter<CarsourceListEntity.Carsourc
         viewHolder.tv_goods_carlength.setText("车长");
         viewHolder.tv_goods_weight.setText(carsourceListEntity.getWeight()+"吨/"+carsourceListEntity.getVolume()+"方");
         viewHolder.tv_goods_traveltime.setText(dateUtilsTime.getDay(carsourceListEntity.getCar_time())+" 全天可装货");
-
-
-
+        viewHolder.img_goods_callphone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onImgClickListener != null) {
+                    //注意这里使用getTag方法获取position
+                    onImgClickListener.onImgClickListener(v,(int)v.getTag());
+                }
+            }
+        });
         return convertView;
+    }
+
+    public void setOnImgClickListener(OnImgClickListener listener) {
+        this.onImgClickListener = listener;
+    }
+
+    public static interface OnImgClickListener{
+        void onImgClickListener(View view, int position);
     }
 
     static class ViewHolder {
