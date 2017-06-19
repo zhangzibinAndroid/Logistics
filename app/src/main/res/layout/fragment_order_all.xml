@@ -1,0 +1,25 @@
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.returnlive.wuliu.fragment.OrderAllFragment">
+
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/refresh_list_all"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000"
+        android:divider="@color/table_bg"
+        android:dividerHeight="@dimen/px15"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:smoothScrollbar="true"
+        android:layout_marginTop="@dimen/px20"
+        android:layout_marginLeft="@dimen/px20"
+        android:layout_marginRight="@dimen/px20"/>
+
+</com.zhy.autolayout.AutoLinearLayout>

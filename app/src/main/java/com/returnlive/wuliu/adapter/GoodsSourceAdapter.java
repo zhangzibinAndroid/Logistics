@@ -10,6 +10,8 @@ import com.returnlive.wuliu.base.MyBaseAdapter;
 import com.returnlive.wuliu.entity.GoodsSourceListEntity;
 import com.returnlive.wuliu.utils.DateUtilsTime;
 import com.returnlive.wuliu.view.RoundImageView;
+import com.zhy.autolayout.utils.AutoUtils;
+
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -36,6 +38,8 @@ public class GoodsSourceAdapter extends MyBaseAdapter<GoodsSourceListEntity.Goos
             viewHolder = new CarSourceAdapter.ViewHolder(convertView);
             convertView.setTag(viewHolder);
             viewHolder.img_goods_callphone.setTag(position);
+            AutoUtils.autoSize(convertView);
+
         }else {
             viewHolder = (CarSourceAdapter.ViewHolder) convertView.getTag();
         }

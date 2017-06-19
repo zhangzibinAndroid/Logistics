@@ -103,7 +103,6 @@ public class GoodsDetailsActivity extends AppCompatActivity {
 
             }
         }).start();
-
     }
 
     //货源详情列表接口
@@ -150,6 +149,9 @@ public class GoodsDetailsActivity extends AppCompatActivity {
             case R.id.btn_goods_callphone://查看评价
                 break;
             case R.id.btn_details_pay_deposit://支付定金
+
+
+
                 break;
             case R.id.btn_details_Contact_owner://联系货主
                 Intent intentphone = new Intent(Intent.ACTION_DIAL);
@@ -177,7 +179,6 @@ public class GoodsDetailsActivity extends AppCompatActivity {
                 tv_goods_details_cartype.setText(carType + " 车长");//车型
                 tv_goods_details_message.setText(goodsDetailsBean.getRemarks());
                 tv_goods_phone.setText(goodsDetailsBean.getPhone());
-
             } else {
                 errorCode(result);
             }

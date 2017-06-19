@@ -23,6 +23,7 @@ import com.orhanobut.dialogplus.ViewHolder;
 import com.returnlive.wuliu.R;
 import com.returnlive.wuliu.activity.DriverCertificationActivity;
 import com.returnlive.wuliu.activity.LoginActivity;
+import com.returnlive.wuliu.activity.OrderDetailsActivity;
 import com.returnlive.wuliu.activity.OwnerMainActivity;
 import com.returnlive.wuliu.activity.SettingActivity;
 import com.returnlive.wuliu.activity.ShipperCertificationActivity;
@@ -122,6 +123,9 @@ public class MineFragment extends Fragment {
     TextView tv_setting;
     @ViewInject(R.id.lay_set)
     AutoRelativeLayout lay_set;
+
+
+
     private View view;
     private SharedPreferencesUtils sharedPreferencesUtils;
     private static final String TAG = "MineFragment";
@@ -316,7 +320,7 @@ public class MineFragment extends Fragment {
         }).start();
     }
 
-    @Event(value = {R.id.img_driver, R.id.img_shipper, R.id.lay_balance, R.id.lay_topup, R.id.lay_mycertification, R.id.lay_set,R.id.lay_my_driver_certification})
+    @Event(value = {R.id.lay_my_order,R.id.img_driver, R.id.img_shipper, R.id.lay_balance, R.id.lay_topup, R.id.lay_mycertification, R.id.lay_set,R.id.lay_my_driver_certification})
     private void onClick(View view) {
 
         switch (view.getId()) {
@@ -347,6 +351,9 @@ public class MineFragment extends Fragment {
                 break;
             case R.id.lay_set:
                 pageJump(SettingActivity.class);
+                break;
+            case R.id.lay_my_order:
+                pageJump(OrderDetailsActivity.class);
                 break;
         }
     }

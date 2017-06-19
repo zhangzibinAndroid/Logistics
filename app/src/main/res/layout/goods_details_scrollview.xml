@@ -34,7 +34,7 @@
                 android:gravity="center_vertical"
                 android:text="出发地"
                 android:textColor="@color/black"
-                android:textSize="@dimen/px40" />
+                android:textSize="@dimen/px30" />
 
         </com.zhy.autolayout.AutoRelativeLayout>
 
@@ -68,7 +68,7 @@
                 android:layout_toRightOf="@+id/img_gray"
                 android:gravity="center_vertical"
                 android:text="距离装货地约2449.08公里"
-                android:textSize="@dimen/px34" />
+                android:textSize="@dimen/px26" />
 
         </com.zhy.autolayout.AutoRelativeLayout>
 
@@ -127,7 +127,7 @@
                     android:singleLine="true"
                     android:text="目的地"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/px40" />
+                    android:textSize="@dimen/px30" />
 
 
                 <com.zhy.autolayout.AutoRelativeLayout
@@ -150,7 +150,7 @@
                         android:layout_marginTop="@dimen/px15"
                         android:layout_toRightOf="@+id/img6"
                         android:text="运货里程约2449.08公里"
-                        android:textSize="@dimen/px34" />
+                        android:textSize="@dimen/px26" />
                 </com.zhy.autolayout.AutoRelativeLayout>
 
             </com.zhy.autolayout.AutoRelativeLayout>
@@ -166,11 +166,11 @@
         android:layout_height="@dimen/px160"
         android:background="@drawable/sel_shape_navigation"
         android:text="导航"
-        android:textColor="#FFBA02"
+        android:textColor="@color/white"
         android:textSize="@dimen/px30"
         android:textStyle="bold"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="@dimen/px60"/>
+        android:layout_marginTop="@dimen/px48"/>
 
     <!--详细信息-->
     <com.zhy.autolayout.AutoLinearLayout
@@ -183,21 +183,7 @@
         android:paddingBottom="@dimen/px25"
         android:id="@+id/autoLinearLayout">
 
-        <com.zhy.autolayout.AutoRelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/px20">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/px60"
-                android:layout_marginLeft="@dimen/px20"
-                android:gravity="center_vertical"
-                android:text="详细信息"
-                android:textColor="@color/black"
-                android:textSize="@dimen/px38" />
-
-        </com.zhy.autolayout.AutoRelativeLayout>
 
         <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="wrap_content"
@@ -210,7 +196,6 @@
                 android:layout_height="@dimen/px60"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/px20"
-                android:background="@drawable/shape_left_time"
                 android:padding="@dimen/px05"
                 android:src="@mipmap/ic_goods_traveltime" />
 
@@ -219,11 +204,9 @@
                 android:layout_width="@dimen/px120"
                 android:layout_height="@dimen/px60"
                 android:layout_toRightOf="@+id/img8"
-                android:background="@drawable/shape_left_time2"
                 android:gravity="center"
                 android:text="时间"
-                android:textColor="#6FB1F9"
-                android:textSize="@dimen/px32" />
+                android:textSize="@dimen/px26" />
 
             <TextView
                 android:id="@+id/tv_goods_details_time"
@@ -233,8 +216,7 @@
                 android:layout_toRightOf="@+id/tv1"
                 android:gravity="center_vertical"
                 android:text="2017-08-28 全天均可装"
-                android:textColor="@color/textcolor"
-                android:textSize="@dimen/px35" />
+                android:textSize="@dimen/px26" />
         </com.zhy.autolayout.AutoRelativeLayout>
 
         <com.zhy.autolayout.AutoRelativeLayout
@@ -249,20 +231,17 @@
                 android:layout_height="@dimen/px60"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/px20"
-                android:background="@drawable/shape_left_goods"
                 android:padding="5px"
-                android:src="@mipmap/ic_goods_remark" />
+                android:src="@mipmap/ic_goods_remark"/>
 
             <TextView
                 android:id="@+id/tv2"
                 android:layout_width="@dimen/px120"
                 android:layout_height="@dimen/px60"
                 android:layout_toRightOf="@+id/img9"
-                android:background="@drawable/shape_left_time2"
                 android:gravity="center"
                 android:text="货品"
-                android:textColor="#00A84B"
-                android:textSize="@dimen/px32" />
+                android:textSize="@dimen/px26" />
 
             <TextView
                 android:id="@+id/tv_goods_details_goods"
@@ -272,8 +251,7 @@
                 android:layout_toRightOf="@+id/tv2"
                 android:gravity="center_vertical"
                 android:text="长背螺旋"
-                android:textColor="@color/textcolor"
-                android:textSize="@dimen/px35" />
+                android:textSize="@dimen/px26" />
         </com.zhy.autolayout.AutoRelativeLayout>
 
         <com.zhy.autolayout.AutoRelativeLayout
@@ -287,20 +265,17 @@
                 android:layout_height="@dimen/px60"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/px20"
-                android:background="@drawable/shape_left_specificons"
-                android:padding="@dimen/px05"
-                android:src="@drawable/ic_goods_weight" />
+                android:src="@drawable/ic_goods_weight"
+                android:padding="@dimen/px05"/>
 
             <TextView
                 android:id="@+id/tv3"
                 android:layout_width="@dimen/px120"
                 android:layout_height="@dimen/px60"
                 android:layout_toRightOf="@+id/img10"
-                android:background="@drawable/shape_left_time2"
                 android:gravity="center"
                 android:text="规格"
-                android:textColor="#b233a6"
-                android:textSize="@dimen/px32" />
+                android:textSize="@dimen/px26" />
 
             <TextView
                 android:id="@+id/tv_goods_details_specifications"
@@ -310,8 +285,7 @@
                 android:layout_toRightOf="@+id/tv3"
                 android:gravity="center_vertical"
                 android:text="333.3吨/100方"
-                android:textColor="@color/textcolor"
-                android:textSize="@dimen/px35" />
+                android:textSize="@dimen/px26" />
         </com.zhy.autolayout.AutoRelativeLayout>
 
         <com.zhy.autolayout.AutoRelativeLayout
@@ -325,20 +299,17 @@
                 android:layout_height="@dimen/px60"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/px20"
-                android:background="@drawable/shape_left_cartype"
-                android:padding="@dimen/px05"
-                android:src="@drawable/ic_goods_cartype" />
+                android:src="@drawable/ic_goods_cartype"
+                android:padding="@dimen/px05" />
 
             <TextView
                 android:id="@+id/tv4"
                 android:layout_width="@dimen/px120"
                 android:layout_height="@dimen/px60"
                 android:layout_toRightOf="@+id/img11"
-                android:background="@drawable/shape_left_time2"
                 android:gravity="center"
                 android:text="车型"
-                android:textColor="#60559d"
-                android:textSize="@dimen/px32" />
+                android:textSize="@dimen/px26" />
 
             <TextView
                 android:id="@+id/tv_goods_details_cartype"
@@ -348,8 +319,7 @@
                 android:layout_toRightOf="@+id/tv4"
                 android:gravity="center_vertical"
                 android:text="高低板车 13米"
-                android:textColor="@color/textcolor"
-                android:textSize="@dimen/px35" />
+                android:textSize="@dimen/px26" />
         </com.zhy.autolayout.AutoRelativeLayout>
 
 
@@ -369,7 +339,6 @@
                     android:layout_height="@dimen/px60"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/px20"
-                    android:background="@drawable/shape_left_message"
                     android:padding="@dimen/px05"
                     android:src="@drawable/ic_leave_message" />
 
@@ -379,11 +348,9 @@
                     android:layout_height="@dimen/px60"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/img12"
-                    android:background="@drawable/shape_left_time2"
                     android:gravity="center"
                     android:text="备注"
-                    android:textColor="#638202"
-                    android:textSize="@dimen/px32" />
+                    android:textSize="@dimen/px26" />
             </com.zhy.autolayout.AutoRelativeLayout>
 
             <TextView
@@ -395,8 +362,7 @@
                 android:layout_toRightOf="@+id/real_y"
                 android:text="联系我时，请说明你是某省回头车的哪个司机，谢谢！祝你出车愉快！！！"
                 android:layout_marginTop="@dimen/px07"
-                android:textColor="@color/textcolor"
-                android:textSize="@dimen/px35" />
+                android:textSize="@dimen/px26" />
         </com.zhy.autolayout.AutoRelativeLayout>
     </com.zhy.autolayout.AutoLinearLayout>
 </com.zhy.autolayout.AutoRelativeLayout>

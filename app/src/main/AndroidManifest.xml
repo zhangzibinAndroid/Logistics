@@ -50,7 +50,6 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="51596e0b0692aa8de92f8d6146218513" />
-
         <meta-data
             android:name="design_width"
             android:value="768" />
@@ -59,27 +58,31 @@
             android:value="1280" />
 
         <activity android:name=".activity.GuideActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".activity.LoginActivity" >
+        <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".activity.ForgetPassWordActivity" />
-        <activity android:name=".activity.OwnerMainActivity" >
-           <!-- <intent-filter>
+        <activity android:name=".activity.OwnerMainActivity">
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.AboutActivity" />
@@ -98,8 +101,10 @@
         <activity android:name=".activity.CarDetailsActivity" />
         <activity android:name=".map.RouteActivity" />
         <activity android:name=".map.DaoHangActivity" />
-        <service android:name="com.amap.api.location.APSService"/>
 
+        <service android:name="com.amap.api.location.APSService" />
+
+        <activity android:name=".activity.OrderDetailsActivity"></activity>
     </application>
 
 </manifest>

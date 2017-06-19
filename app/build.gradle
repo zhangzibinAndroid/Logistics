@@ -25,6 +25,12 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     //Gif加载动画比Xutils3自带的流畅
+    //对话框的展示（实现底部可向上拉到动画）
+    compile project(':pullToRefreshLibrary')
+    compile files('libs/Msc.jar')
+    compile files('libs/Sunflower.jar')
+
+
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.zhy:autolayout:1.4.5'
@@ -33,19 +39,14 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.1'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.4'
     compile 'com.google.code.gson:gson:2.8.0'
-    testCompile 'junit:junit:4.12'
-    //对话框的展示（实现底部可向上拉到动画）
     compile 'com.orhanobut:dialogplus:1.11@aar'
     compile 'com.contrarywind:Android-PickerView:3.2.1'
-    compile project(':pullToRefreshLibrary')
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.youth.banner:banner:1.4.9'
     compile 'com.google.zxing:core:3.2.1'
     compile 'cn.bingoogolapple:bga-qrcodecore:1.1.7@aar'
     compile 'cn.bingoogolapple:bga-zxing:1.1.7@aar'
     compile 'pub.devrel:easypermissions:0.1.7'
-    compile files('libs/Msc.jar')
-    compile files('libs/Sunflower.jar')
     compile 'com.amap.api:map2d:latest.integration'
     compile 'com.amap.api:search:latest.integration'
     compile 'com.amap.api:location:latest.integration'
@@ -53,6 +54,6 @@ dependencies {
     compile 'com.github.zcweng:switch-button:0.0.3@aar'
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'jp.wasabeef:recyclerview-animators:2.2.3'
-
-
+    compile 'com.android.support:design:25.3.1'
+    testCompile 'junit:junit:4.12'
 }
