@@ -74,16 +74,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.ForgetPassWordActivity" />
-        <activity android:name=".activity.OwnerMainActivity">
-
-            <!--
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            -->
-        </activity>
+        <activity android:name=".activity.OwnerMainActivity"/>
         <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.AboutActivity" />
         <activity android:name=".activity.HelpCenterActivity" />
@@ -104,7 +95,14 @@
 
         <service android:name="com.amap.api.location.APSService" />
 
-        <activity android:name=".activity.OrderDetailsActivity"></activity>
+        <activity android:name=".activity.OrderDetailsActivity" />
+        <activity android:name=".activity.MessageItemActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

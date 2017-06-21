@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.returnlive.wuliu.activity.MessageItemActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/ftoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/px100"
+        android:background="@color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <ImageView android:id="@+id/img_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/tv_select"
+                android:src="@drawable/ic_back_left"/>
+
+            <TextView android:id="@+id/tv_title"
+                android:layout_marginLeft="@dimen/px15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_color"
+                android:layout_gravity="center"
+                android:text="@string/my_orders"
+                android:textSize="@dimen/px40"/>
+    </android.support.v7.widget.Toolbar>
+
+    <com.amap.api.maps.MapView
+        android:id="@+id/map_route"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View style="@style/ViewStyle"/>
+
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/px40"
+            android:layout_marginTop="@dimen/px20">
+
+            <com.returnlive.wuliu.view.RoundImageView
+                android:id="@+id/rimg_driver_portrait"
+                android:layout_width="@dimen/px130"
+                android:layout_height="@dimen/px130"
+                android:src="@mipmap/portrait"/>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/lay_driver"
+                android:layout_marginLeft="@dimen/px30"
+                android:layout_alignTop="@+id/rimg_driver_portrait"
+                android:layout_toRightOf="@+id/rimg_driver_portrait"
+                android:gravity="center_vertical">
+                <TextView android:id="@+id/tv_driver_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_ownner"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/px30" />
+
+                <TextView
+                    android:id="@+id/tv_level_star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/tv_driver_name"
+                    android:drawableLeft="@drawable/ic_me_pentagram"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/px26"
+                    android:layout_marginLeft="@dimen/px10"
+                    android:text="@string/tv_level" />
+
+                <TextView android:id="@+id/tv_order_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="885单"
+                    android:layout_marginLeft="@dimen/px20"
+                    android:textSize="@dimen/px26"/>
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/lay_car_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/lay_driver"
+                android:padding="@dimen/px01"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shape_border_lay">
+
+                <TextView android:id="@+id/tv_car_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/share_text_bg"
+                    android:textSize="@dimen/px25"
+                    android:textColor="@color/black"
+                    android:text=" 苏AZ6T59 "/>
+
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <TextView
+                android:id="@+id/tv_kind"
+                android:layout_width="@dimen/px80"
+                android:layout_height="wrap_content"
+                android:background="@color/yellow"
+                android:gravity="center"
+                android:text="@string/tv_ownner"
+                android:textColor="@color/red"
+                android:textSize="@dimen/px26"
+                android:layout_alignLeft="@+id/lay_driver"
+                android:layout_alignBottom="@+id/rimg_driver_portrait"/>
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <View style="@style/ViewStyle"
+            android:layout_marginTop="@dimen/px20"/>
+
+        <!--++++++++++++++++++++++++++++++++++++++++++-->
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/px40"
+            android:layout_marginTop="@dimen/px20">
+
+            <com.returnlive.wuliu.view.RoundImageView
+                android:id="@+id/rimg_shipper_portrait"
+                android:layout_width="@dimen/px130"
+                android:layout_height="@dimen/px130"
+                android:src="@mipmap/portrait_sun" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:id="@+id/lay_shipper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/rimg_shipper_portrait"
+                android:layout_marginLeft="@dimen/px30"
+                android:layout_toRightOf="@+id/rimg_shipper_portrait"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_shipper_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/shipper"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/px30" />
+
+                <TextView
+                    android:id="@+id/tv_level_star_shipper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/tv_driver_name"
+                    android:layout_marginLeft="@dimen/px10"
+                    android:drawableLeft="@drawable/ic_me_pentagram"
+                    android:gravity="center_vertical"
+                    android:text="@string/tv_level"
+                    android:textSize="@dimen/px26" />
+
+                <TextView
+                    android:id="@+id/tv_order_number_shipper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/px20"
+                    android:text="885单"
+                    android:textSize="@dimen/px26" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_kind_shipper"
+                android:layout_width="@dimen/px80"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/rimg_shipper_portrait"
+                android:layout_alignLeft="@+id/lay_shipper"
+                android:background="@color/yellow"
+                android:gravity="center"
+                android:textSize="@dimen/px26"
+                android:text="@string/shipper"
+                android:textColor="@color/red" />
+
+            <ImageView
+                android:id="@+id/img_goods_callphone"
+                android:layout_width="@dimen/px90"
+                android:layout_height="@dimen/px90"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/px40"
+                android:clickable="true"
+                android:src="@mipmap/ic_goods_phone" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <View style="@style/ViewStyle"
+            android:layout_marginTop="@dimen/px20"/>
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px100"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="评价本次服务"
+                android:gravity="center"
+                android:textSize="@dimen/px30"
+                android:drawableRight="@drawable/ic_right"/>
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

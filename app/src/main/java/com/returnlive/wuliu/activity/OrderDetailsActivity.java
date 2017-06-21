@@ -36,7 +36,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
     private OrderFinishFragment orderFinishFragment;
     private OrderUnfinishFragment orderUnfinishFragment;
 
-    private List<Fragment> list_fragment;                                //定义要装fragment的列表
+    private List<Fragment> list_fragment;  //定义要装fragment的列表
     private List<String> list_title;
     private TableAdapter tableAdapter;
 
@@ -63,7 +63,6 @@ public class OrderDetailsActivity extends AppCompatActivity {
         list_title.add(getResources().getString(R.string.all));
         list_title.add(getResources().getString(R.string.finish));
         list_title.add(getResources().getString(R.string.unfinish));
-
         tab_sel_title.setTabMode(TabLayout.MODE_FIXED);        //设置TabLayout的模式
 
         //为TabLayout添加tab名称

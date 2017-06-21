@@ -132,7 +132,6 @@ public class RouteActivity extends AppCompatActivity implements AMapNaviListener
     /**
      * 路线计算成功标志位
      */
-    private boolean chooseRouteSuccess = false;
     private static final String TAG = "RouteActivity";
 
     private List<MapMessageEntity> messageList = new ArrayList<>();
@@ -588,7 +587,7 @@ public class RouteActivity extends AppCompatActivity implements AMapNaviListener
         routeOverLay.setTrafficLine(false);
         routeOverLay.addToMap();
         routeOverlays.put(routeId, routeOverLay);
-//        changeRoute();
+        routeOverLay.zoomToSpan();
     }
 
     public void changeRoute(int routeID) {
@@ -596,7 +595,6 @@ public class RouteActivity extends AppCompatActivity implements AMapNaviListener
          * 计算出来的路径只有一条
          */
         if (routeOverlays.size() == 1) {
-            chooseRouteSuccess = true;
             //必须告诉AMapNavi 你最后选择的哪条路
             mAMapNavi.selectRouteId(routeOverlays.keyAt(0));
 //            Toast.makeText(this, "导航距离:" + (mAMapNavi.getNaviPath()).getAllLength() + "m" + "\n" + "导航时间:" + (mAMapNavi.getNaviPath()).getAllTime() + "s", Toast.LENGTH_SHORT).show();
@@ -625,7 +623,6 @@ public class RouteActivity extends AppCompatActivity implements AMapNaviListener
         tv_light.setText("红绿灯"+a+"个");
 
         routeIndex++;
-        chooseRouteSuccess = true;
 
         /**选完路径后判断路线是否是限行路线**/
         AMapRestrictionInfo info = mAMapNavi.getNaviPath().getRestrictionInfo();
@@ -687,7 +684,7 @@ public class RouteActivity extends AppCompatActivity implements AMapNaviListener
 
                 //解析定位结果，
                 String result = sb.toString();
-//                Log.e(TAG, "result: " + result);
+                Log.e(TAG, "result: " + result);
                 locationClient.stopLocation();//定位成功后停止定位
             } else {
 //                Log.e(TAG, "定位失败: ");

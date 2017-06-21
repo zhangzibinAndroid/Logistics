@@ -1,6 +1,7 @@
 package com.returnlive.wuliu.fragment;
 
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,11 +9,13 @@ import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.returnlive.wuliu.R;
+import com.returnlive.wuliu.activity.MessageItemActivity;
 import com.returnlive.wuliu.adapter.OrderDetailsAllAdapter;
 import com.returnlive.wuliu.entity.OrderDetailsAllEntity;
 
@@ -75,6 +78,13 @@ public class OrderAllFragment extends Fragment {
         }
 
         orderDetailsAllAdapter.notifyDataSetChanged();
+        actualListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(),MessageItemActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

@@ -61,6 +61,8 @@
     <dimen name="px100">100px</dimen>
     <dimen name="px110">110px</dimen>
     <dimen name="px120">120px</dimen>
+    <dimen name="px130">130px</dimen>
+    <dimen name="px140">140px</dimen>
     <dimen name="px150">150px</dimen>
     <dimen name="px155">155px</dimen>
     <dimen name="px160">160px</dimen>

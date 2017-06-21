@@ -13,7 +13,7 @@ public class NetworkUrl {
 
     public String UID_SESSON_URL = GsonParsing.uid+"/"+GsonParsing.zSesson+GsonParsing.uid+"/"+GsonParsing.mSesson;
     public static final String VERSION_UPDATE = "http://192.168.0.14";
-    public static final String WULIU_URL = "http://road.zhufx.cn/mobile/";
+    public static final String WULIU_URL = "http://roads.zhufx.cn/mobile/";
 //    public static final String WULIU_URL = "http://wuliu.returnlive.com/mobile/";
     public static final String REGISTER_URL = WULIU_URL+"User/register";
     public static final String SENDCODE_URL = WULIU_URL+"User/sendCode";
