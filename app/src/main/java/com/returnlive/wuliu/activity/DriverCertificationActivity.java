@@ -12,7 +12,6 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -132,9 +131,7 @@ public class DriverCertificationActivity extends AppCompatActivity {
                 .setContentTextSize(20)//设置滚轮文字大小
                 .setSelectOptions(0,0)//默认选中项
                 .build();
-
         mOpv.setNPicker(mListProvince, number,null);
-
 
     }
 

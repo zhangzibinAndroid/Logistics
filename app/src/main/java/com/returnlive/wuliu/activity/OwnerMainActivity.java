@@ -24,7 +24,6 @@ import com.returnlive.wuliu.utils.SourceList;
 import com.returnlive.wuliu.utils.MyCallBack;
 import com.returnlive.wuliu.utils.XUtil;
 import com.zhy.autolayout.AutoLinearLayout;
-
 import org.greenrobot.eventbus.EventBus;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -230,8 +229,13 @@ public class OwnerMainActivity extends AppCompatActivity {
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
                 super.onError(ex, isOnCallback);
-                SourceList.goodsList.clear();
-                SourceList.cacheCarList.clear();
+                if (SourceList.goodsList!=null){
+                    SourceList.goodsList.clear();
+                }
+
+                if (SourceList.cacheCarList!=null){
+                    SourceList.cacheCarList.clear();
+                }
                 System.exit(0);
 
             }

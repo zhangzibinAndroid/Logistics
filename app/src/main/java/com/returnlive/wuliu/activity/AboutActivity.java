@@ -17,7 +17,6 @@ import org.xutils.x;
  * Describe : 关于页面
  */
 public class AboutActivity extends AppCompatActivity {
-
     @ViewInject(R.id.tv_aboutcontext)
     TextView tv_aboutcontext;
 

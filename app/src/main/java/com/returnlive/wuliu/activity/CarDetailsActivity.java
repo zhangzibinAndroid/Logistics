@@ -1,6 +1,5 @@
 package com.returnlive.wuliu.activity;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
@@ -56,7 +55,6 @@ public class CarDetailsActivity extends AppCompatActivity {
     TextView tv_goods_details_end;
     @ViewInject(R.id.tv_goods_details_time)
     TextView tv_goods_details_time;
-
     @ViewInject(R.id.tv_goods_details_specifications)
     TextView tv_goods_details_specifications;
     @ViewInject(R.id.tv_goods_details_cartype)

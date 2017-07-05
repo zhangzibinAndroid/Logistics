@@ -8,21 +8,22 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.returnlive.wuliu.R;
 import com.returnlive.wuliu.view.Xcircleindicator;
+
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,7 +73,6 @@ public class GuideActivity extends Activity implements ViewPager.OnPageChangeLis
     }
 
     private void init() {
-
         //判断
         if (i == 0) {
             //把那一张图给gone掉
